@@ -4,7 +4,7 @@
 [![Supported languages](https://img.shields.io/badge/supported%20languages-swift-green.svg)]()
 [![Platform](https://img.shields.io/badge/platform-ios-green.svg)]()
 
-## What is ?
+## What is this ?
 
 FNMNetworkMonitor is a networking SDK that can be used to monitor the network of an iOS app. In addition, it can also mock network requests.
 
