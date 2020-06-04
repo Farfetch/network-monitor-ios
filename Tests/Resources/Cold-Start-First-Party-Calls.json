@@ -1,0 +1,17 @@
+ [{
+  "identifier": "A",
+  "description": "Intel robots",
+  "type": "blocking",
+  "request-expressions": [
+                          "^.*alphabet.com/robots.txt$"
+                          ]
+  },
+  {
+  "identifier": "B",
+  "description": "Amazon Robots",
+  "type": "nonBlocking",
+  "request-expressions": [
+                          "^.*alphabet.com/.*$"
+                          ]
+  }
+  ]

@@ -1,0 +1,91 @@
+[{
+"request": {
+"urlPattern": {
+"dynamicPattern": "*alphabet.*robots"
+},
+"httpMethod": "GET"
+},
+"responses": [
+              {
+              "identifier": "A",
+              "meta": {
+              "statusCode": 200,
+              "headerFields": {
+              "Content-Type": "text/plain"
+              },
+              "url": "https://www.alphabet.com/robots.txt",
+              "httpVersion": "HTTP\/1.1"
+              },
+              "delay": 0,
+              "repeatability": {
+              "base": "unlimited"
+              },
+              "response": "Hello nice robot"
+              }]
+},
+{
+"request": {
+"urlPattern": {
+"dynamicPattern": "*facebook.*robots"
+},
+"httpMethod": "GET"
+},
+"responses": [{
+              "identifier": "A",
+              "meta": {
+              "statusCode": 200,
+              "headerFields": {
+              "Content-Type": "text/plain"
+              },
+              "url": "https://www.facebook.com/robots.txt",
+              "httpVersion": "HTTP\/1.1"
+              },
+              "delay": 0,
+              "repeatability": {
+              "base": "limited",
+              "numberOfUsesTotal": 2,
+              },
+              "response": "Hello nice robot"
+              },
+              {
+              "identifier": "A",
+              "meta": {
+              "statusCode": 200,
+              "headerFields": {
+              "Content-Type": "text/plain"
+              },
+              "url": "https://www.facebook.com/robots.txt",
+              "httpVersion": "HTTP\/1.1"
+              },
+              "delay": 0,
+              "repeatability": {
+              "base": "unlimited"
+              },
+              "response": "Hello nice robot"
+              }]
+},
+{
+"request": {
+"urlPattern": {
+"dynamicPattern": "*amazon.*robots"
+},
+"httpMethod": "GET"
+},
+"responses": [{
+              "identifier": "A",
+              "meta": {
+              "statusCode": 200,
+              "headerFields": {
+              "Content-Type": "text/plain"
+              },
+              "url": "https://www.amazon.com/robots.txt",
+              "httpVersion": "HTTP\/1.1"
+              },
+              "delay": 0,
+              "repeatability": {
+              "base": "limited",
+              "numberOfUsesTotal": 1,
+              }
+              }]
+}
+]

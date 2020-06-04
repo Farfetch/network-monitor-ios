@@ -1,0 +1,845 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4055D74F21BFBDDE0058EC1D /* FNMNetworkMonitorURLProtocol+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055D74E21BFBDDE0058EC1D /* FNMNetworkMonitorURLProtocol+Protocols.swift */; };
+		433A1A0A2355DA3A00CB0A8D /* HighlightReloadableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A1A092355DA3A00CB0A8D /* HighlightReloadableProtocol.swift */; };
+		433A1A0C2355DAA000CB0A8D /* DebugDetailHeadersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A1A0B2355DAA000CB0A8D /* DebugDetailHeadersViewController.swift */; };
+		433A1A0E2355DAFB00CB0A8D /* DebugDetailBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A1A0D2355DAFB00CB0A8D /* DebugDetailBodyViewController.swift */; };
+		A3391C821FE27F8200BBBC18 /* FNMDebugDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3391C811FE27F8200BBBC18 /* FNMDebugDetailViewController.swift */; };
+		A3391C841FE2837B00BBBC18 /* FNMDebugDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3391C831FE2837B00BBBC18 /* FNMDebugDetailInfoTableViewCell.swift */; };
+		A38AEE691FE3CEFC00778860 /* FNMRecordDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AEE681FE3CEFC00778860 /* FNMRecordDetailInfo.swift */; };
+		A39500011FD83AB1001D6086 /* FNMRecordExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFE91FD83AB1001D6086 /* FNMRecordExporter.swift */; };
+		A39500031FD83AB1001D6086 /* FNMDebugListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFEC1FD83AB1001D6086 /* FNMDebugListingViewController.swift */; };
+		A39500041FD83AB1001D6086 /* FNMAppLaunchRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFEF1FD83AB1001D6086 /* FNMAppLaunchRecord.swift */; };
+		A39500051FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFF01FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift */; };
+		A395000C1FD83AB1001D6086 /* FNMNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFFA1FD83AB1001D6086 /* FNMNetworkMonitor.swift */; };
+		A395000D1FD83AB1001D6086 /* FNMAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFFC1FD83AB1001D6086 /* FNMAdditions.swift */; };
+		A39500101FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395000F1FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift */; };
+		A395FFFD1FD83AB1001D6086 /* FNMNetworkMonitorURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFE31FD83AB1001D6086 /* FNMNetworkMonitorURLProtocol.swift */; };
+		A3DA63EE201B3637002CB2C0 /* FNMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA63ED201B3637002CB2C0 /* FNMViewController.swift */; };
+		A3E27FC51FC81F9000245188 /* Cold-Start-First-Party-Calls.json in Resources */ = {isa = PBXBuildFile; fileRef = A3E27FC11FC81F8400245188 /* Cold-Start-First-Party-Calls.json */; };
+		A3E27FC71FC81F9000245188 /* Cold-Start-Third-Party-Calls.json in Resources */ = {isa = PBXBuildFile; fileRef = A3E27FC01FC81F8400245188 /* Cold-Start-Third-Party-Calls.json */; };
+		F737BF202080F97D00ECCDE3 /* FNMHTTPRequestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF1F2080F97C00ECCDE3 /* FNMHTTPRequestRecord.swift */; };
+		F737BF222080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF212080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift */; };
+		F737BF262080FC9100ECCDE3 /* FNMProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF252080FC9100ECCDE3 /* FNMProfile.swift */; };
+		F76084C72409678E00451AE8 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = F76084C62409678E00451AE8 /* Image.png */; };
+		F77D3F32209A16F0008F5E56 /* Generic-Profiles-Duplicates.json in Resources */ = {isa = PBXBuildFile; fileRef = F77D3F31209A16F0008F5E56 /* Generic-Profiles-Duplicates.json */; };
+		F78DB25A2089F9020064E76C /* Generic-Profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F7A9A8B72089DDB700A56003 /* Generic-Profiles.json */; };
+		F792A3922099D0A500D9C894 /* Matching-Profiles-3.json in Resources */ = {isa = PBXBuildFile; fileRef = F792A3912099D0A500D9C894 /* Matching-Profiles-3.json */; };
+		F793CA6B1F9E474200AA9C41 /* FNMNetworkMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */; };
+		F7995B6A1F9F9CC900CA4B2F /* NetworkMonitorUnitTests-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = F7995B691F9F9CC900CA4B2F /* NetworkMonitorUnitTests-Bridging-Header.h */; };
+		F7A5E79A208E29E4008C74CE /* Matching-Profiles-1.json in Resources */ = {isa = PBXBuildFile; fileRef = F7A5E799208E29E4008C74CE /* Matching-Profiles-1.json */; };
+		F7A5E79C208E2C96008C74CE /* Matching-Profiles-2.json in Resources */ = {isa = PBXBuildFile; fileRef = F7A5E79B208E2C96008C74CE /* Matching-Profiles-2.json */; };
+		F7AB3DDF243E1F7A0028D43E /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AB3DDE243E1F7A0028D43E /* NetworkMonitorTests.swift */; };
+		F7ABADD7243C949B008E417A /* NetworkMonitorDebugUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABADD2243C949B008E417A /* NetworkMonitorDebugUITests.swift */; };
+		F7ABADD8243C949B008E417A /* NetworkMonitorFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABADD3243C949B008E417A /* NetworkMonitorFlowTests.swift */; };
+		F7ABADD9243C949B008E417A /* NetworkMonitorProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABADD4243C949B008E417A /* NetworkMonitorProfileTests.swift */; };
+		F7ABADDA243C949B008E417A /* NetworkMonitorAppLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABADD5243C949B008E417A /* NetworkMonitorAppLaunchTests.swift */; };
+		F7ABADDB243C949B008E417A /* NetworkMonitorExportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABADD6243C949B008E417A /* NetworkMonitorExportTests.swift */; };
+		F7BD0C5B20A4A3F900B1E3EA /* FNMLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD0C5A20A4A3F900B1E3EA /* FNMLogger.swift */; };
+		F7DA82F424093AF20095D93F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DA82F324093AF20095D93F /* AppDelegate.swift */; };
+		F7DA82F824093AF20095D93F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DA82F724093AF20095D93F /* ViewController.swift */; };
+		F7DA82FD24093AF40095D93F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DA82FC24093AF40095D93F /* Assets.xcassets */; };
+		F7DA830024093AF40095D93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */; };
+		F7DA8306240956280095D93F /* Generic-Profile-Response.json in Resources */ = {isa = PBXBuildFile; fileRef = F7C47A8F2406EA7100875E72 /* Generic-Profile-Response.json */; };
+		F7EDC62020ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61B20ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift */; };
+		F7EDC62220ADB2670027B771 /* FNMAppLaunchTimestamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61D20ADB2670027B771 /* FNMAppLaunchTimestamps.swift */; };
+		F7EDC62620ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */; };
+		F7FA58A82084A5E700CEFB88 /* FNMProfile+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FA58A72084A5E700CEFB88 /* FNMProfile+Codable.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F793CA6C1F9E474200AA9C41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F793CA441F9E361900AA9C41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F793CA4C1F9E361900AA9C41;
+			remoteInfo = NetworkMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1FA99E1422F96E2000C084BF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		4055D74E21BFBDDE0058EC1D /* FNMNetworkMonitorURLProtocol+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FNMNetworkMonitorURLProtocol+Protocols.swift"; sourceTree = "<group>"; };
+		433A1A092355DA3A00CB0A8D /* HighlightReloadableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightReloadableProtocol.swift; sourceTree = "<group>"; };
+		433A1A0B2355DAA000CB0A8D /* DebugDetailHeadersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugDetailHeadersViewController.swift; sourceTree = "<group>"; };
+		433A1A0D2355DAFB00CB0A8D /* DebugDetailBodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugDetailBodyViewController.swift; sourceTree = "<group>"; };
+		A3391C811FE27F8200BBBC18 /* FNMDebugDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMDebugDetailViewController.swift; sourceTree = "<group>"; };
+		A3391C831FE2837B00BBBC18 /* FNMDebugDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMDebugDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
+		A3805A781FA374DA00DA4183 /* FNMNetworkMonitor.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FNMNetworkMonitor.podspec; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A38AEE681FE3CEFC00778860 /* FNMRecordDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMRecordDetailInfo.swift; sourceTree = "<group>"; };
+		A395000F1FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMDebugSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		A395FFE31FD83AB1001D6086 /* FNMNetworkMonitorURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMNetworkMonitorURLProtocol.swift; sourceTree = "<group>"; };
+		A395FFE91FD83AB1001D6086 /* FNMRecordExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMRecordExporter.swift; sourceTree = "<group>"; };
+		A395FFEC1FD83AB1001D6086 /* FNMDebugListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMDebugListingViewController.swift; sourceTree = "<group>"; };
+		A395FFEF1FD83AB1001D6086 /* FNMAppLaunchRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchRecord.swift; sourceTree = "<group>"; };
+		A395FFF01FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchRequestNode.swift; sourceTree = "<group>"; };
+		A395FFFA1FD83AB1001D6086 /* FNMNetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMNetworkMonitor.swift; sourceTree = "<group>"; };
+		A395FFFC1FD83AB1001D6086 /* FNMAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAdditions.swift; sourceTree = "<group>"; };
+		A3DA63ED201B3637002CB2C0 /* FNMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMViewController.swift; sourceTree = "<group>"; };
+		A3E27FC01FC81F8400245188 /* Cold-Start-Third-Party-Calls.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Cold-Start-Third-Party-Calls.json"; sourceTree = "<group>"; };
+		A3E27FC11FC81F8400245188 /* Cold-Start-First-Party-Calls.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Cold-Start-First-Party-Calls.json"; sourceTree = "<group>"; };
+		F737BF1F2080F97C00ECCDE3 /* FNMHTTPRequestRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMHTTPRequestRecord.swift; sourceTree = "<group>"; };
+		F737BF212080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FNMHTTPRequestRecord+Codable.swift"; sourceTree = "<group>"; };
+		F737BF252080FC9100ECCDE3 /* FNMProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMProfile.swift; sourceTree = "<group>"; };
+		F76084C62409678E00451AE8 /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
+		F77D3F31209A16F0008F5E56 /* Generic-Profiles-Duplicates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Generic-Profiles-Duplicates.json"; sourceTree = "<group>"; };
+		F792A3912099D0A500D9C894 /* Matching-Profiles-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Matching-Profiles-3.json"; sourceTree = "<group>"; };
+		F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FNMNetworkMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F793CA511F9E361900AA9C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F793CA661F9E474200AA9C41 /* FNMNetworkMonitorUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FNMNetworkMonitorUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F793CA6A1F9E474200AA9C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7995B691F9F9CC900CA4B2F /* NetworkMonitorUnitTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetworkMonitorUnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		F7A5E799208E29E4008C74CE /* Matching-Profiles-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Matching-Profiles-1.json"; sourceTree = "<group>"; };
+		F7A5E79B208E2C96008C74CE /* Matching-Profiles-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Matching-Profiles-2.json"; sourceTree = "<group>"; };
+		F7A9A8B72089DDB700A56003 /* Generic-Profiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Generic-Profiles.json"; sourceTree = "<group>"; };
+		F7AB3DDE243E1F7A0028D43E /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
+		F7ABADD2243C949B008E417A /* NetworkMonitorDebugUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitorDebugUITests.swift; sourceTree = "<group>"; };
+		F7ABADD3243C949B008E417A /* NetworkMonitorFlowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitorFlowTests.swift; sourceTree = "<group>"; };
+		F7ABADD4243C949B008E417A /* NetworkMonitorProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitorProfileTests.swift; sourceTree = "<group>"; };
+		F7ABADD5243C949B008E417A /* NetworkMonitorAppLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitorAppLaunchTests.swift; sourceTree = "<group>"; };
+		F7ABADD6243C949B008E417A /* NetworkMonitorExportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitorExportTests.swift; sourceTree = "<group>"; };
+		F7BD0C5A20A4A3F900B1E3EA /* FNMLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMLogger.swift; sourceTree = "<group>"; };
+		F7C47A8F2406EA7100875E72 /* Generic-Profile-Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Generic-Profile-Response.json"; sourceTree = "<group>"; };
+		F7DA82F124093AF20095D93F /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7DA82F324093AF20095D93F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F7DA82F724093AF20095D93F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F7DA82FC24093AF40095D93F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F7DA82FF24093AF40095D93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F7DA830124093AF40095D93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7EDC61B20ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchCurrentRunCodableContainer.swift; sourceTree = "<group>"; };
+		F7EDC61D20ADB2670027B771 /* FNMAppLaunchTimestamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchTimestamps.swift; sourceTree = "<group>"; };
+		F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMHTTPRequestRecordCodableContainer.swift; sourceTree = "<group>"; };
+		F7FA58A72084A5E700CEFB88 /* FNMProfile+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FNMProfile+Codable.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F793CA491F9E361900AA9C41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F793CA631F9E474200AA9C41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F793CA6B1F9E474200AA9C41 /* FNMNetworkMonitor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7DA82EE24093AF20095D93F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FA99E1222F96DB700C084BF /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				1FA99E1422F96E2000C084BF /* README.md */,
+			);
+			name = Metadata;
+			sourceTree = "<group>";
+		};
+		A395000E1FD84F52001D6086 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A395000F1FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift */,
+				A3391C831FE2837B00BBBC18 /* FNMDebugDetailInfoTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A395FFE21FD83AB1001D6086 /* URLProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				A395FFE31FD83AB1001D6086 /* FNMNetworkMonitorURLProtocol.swift */,
+				4055D74E21BFBDDE0058EC1D /* FNMNetworkMonitorURLProtocol+Protocols.swift */,
+				F737BF1F2080F97C00ECCDE3 /* FNMHTTPRequestRecord.swift */,
+			);
+			path = URLProtocol;
+			sourceTree = "<group>";
+		};
+		A395FFE81FD83AB1001D6086 /* Exporter */ = {
+			isa = PBXGroup;
+			children = (
+				A395FFE91FD83AB1001D6086 /* FNMRecordExporter.swift */,
+				F7EDC62420ADD2180027B771 /* RequestRecord */,
+				F7EDC62320ADD2110027B771 /* AppLaunch */,
+			);
+			path = Exporter;
+			sourceTree = "<group>";
+		};
+		A395FFEA1FD83AB1001D6086 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				433A1A0D2355DAFB00CB0A8D /* DebugDetailBodyViewController.swift */,
+				433A1A0B2355DAA000CB0A8D /* DebugDetailHeadersViewController.swift */,
+				A3391C811FE27F8200BBBC18 /* FNMDebugDetailViewController.swift */,
+				A395FFEC1FD83AB1001D6086 /* FNMDebugListingViewController.swift */,
+				A3DA63ED201B3637002CB2C0 /* FNMViewController.swift */,
+				433A1A092355DA3A00CB0A8D /* HighlightReloadableProtocol.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A395FFFB1FD83AB1001D6086 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A395FFFC1FD83AB1001D6086 /* FNMAdditions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A3E27FBE1FC81F6E00245188 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F76084C62409678E00451AE8 /* Image.png */,
+				F7A9A8B72089DDB700A56003 /* Generic-Profiles.json */,
+				F77D3F31209A16F0008F5E56 /* Generic-Profiles-Duplicates.json */,
+				F7C47A8F2406EA7100875E72 /* Generic-Profile-Response.json */,
+				F7A5E799208E29E4008C74CE /* Matching-Profiles-1.json */,
+				F7A5E79B208E2C96008C74CE /* Matching-Profiles-2.json */,
+				F792A3912099D0A500D9C894 /* Matching-Profiles-3.json */,
+				A3E27FC11FC81F8400245188 /* Cold-Start-First-Party-Calls.json */,
+				A3E27FC01FC81F8400245188 /* Cold-Start-Third-Party-Calls.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F737BF1E2080F35B00ECCDE3 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				A395FFEA1FD83AB1001D6086 /* Controller */,
+				A395000E1FD84F52001D6086 /* View */,
+				F737BF232080FAFC00ECCDE3 /* Model */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		F737BF232080FAFC00ECCDE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A38AEE681FE3CEFC00778860 /* FNMRecordDetailInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F737BF242080FC7300ECCDE3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F737BF252080FC9100ECCDE3 /* FNMProfile.swift */,
+				F7FA58A72084A5E700CEFB88 /* FNMProfile+Codable.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F793CA431F9E361900AA9C41 = {
+			isa = PBXGroup;
+			children = (
+				F793CA4F1F9E361900AA9C41 /* NetworkMonitor */,
+				F793CA671F9E474200AA9C41 /* Tests */,
+				F7DA82F224093AF20095D93F /* Sample */,
+				F793CA4E1F9E361900AA9C41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F793CA4E1F9E361900AA9C41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */,
+				F793CA661F9E474200AA9C41 /* FNMNetworkMonitorUnitTests.xctest */,
+				F7DA82F124093AF20095D93F /* Sample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F793CA4F1F9E361900AA9C41 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				1FA99E1222F96DB700C084BF /* Metadata */,
+				F793CA5C1F9E3AB400AA9C41 /* Podspec Metadata */,
+				F793CA5F1F9E3C6B00AA9C41 /* Classes */,
+				F793CA511F9E361900AA9C41 /* Info.plist */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
+		F793CA5C1F9E3AB400AA9C41 /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				A3805A781FA374DA00DA4183 /* FNMNetworkMonitor.podspec */,
+			);
+			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		F793CA5F1F9E3C6B00AA9C41 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A395FFFA1FD83AB1001D6086 /* FNMNetworkMonitor.swift */,
+				F737BF1E2080F35B00ECCDE3 /* Debug */,
+				A395FFE81FD83AB1001D6086 /* Exporter */,
+				A395FFFB1FD83AB1001D6086 /* Extension */,
+				F7BD0C5920A4A3E200B1E3EA /* Log */,
+				F737BF242080FC7300ECCDE3 /* Profile */,
+				A395FFE21FD83AB1001D6086 /* URLProtocol */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F793CA671F9E474200AA9C41 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F7ABADD5243C949B008E417A /* NetworkMonitorAppLaunchTests.swift */,
+				F7ABADD2243C949B008E417A /* NetworkMonitorDebugUITests.swift */,
+				F7ABADD6243C949B008E417A /* NetworkMonitorExportTests.swift */,
+				F7ABADD3243C949B008E417A /* NetworkMonitorFlowTests.swift */,
+				F7ABADD4243C949B008E417A /* NetworkMonitorProfileTests.swift */,
+				F7AB3DDE243E1F7A0028D43E /* NetworkMonitorTests.swift */,
+				A3E27FBE1FC81F6E00245188 /* Resources */,
+				F793CA6A1F9E474200AA9C41 /* Info.plist */,
+				F7995B691F9F9CC900CA4B2F /* NetworkMonitorUnitTests-Bridging-Header.h */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		F7BD0C5920A4A3E200B1E3EA /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				F7BD0C5A20A4A3F900B1E3EA /* FNMLogger.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		F7DA82F224093AF20095D93F /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				F7DA82F324093AF20095D93F /* AppDelegate.swift */,
+				F7DA82F724093AF20095D93F /* ViewController.swift */,
+				F7DA82FC24093AF40095D93F /* Assets.xcassets */,
+				F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */,
+				F7DA830124093AF40095D93F /* Info.plist */,
+			);
+			path = Sample;
+			sourceTree = "<group>";
+		};
+		F7EDC62320ADD2110027B771 /* AppLaunch */ = {
+			isa = PBXGroup;
+			children = (
+				A395FFEF1FD83AB1001D6086 /* FNMAppLaunchRecord.swift */,
+				F7EDC61D20ADB2670027B771 /* FNMAppLaunchTimestamps.swift */,
+				A395FFF01FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift */,
+				F7EDC61B20ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift */,
+			);
+			path = AppLaunch;
+			sourceTree = "<group>";
+		};
+		F7EDC62420ADD2180027B771 /* RequestRecord */ = {
+			isa = PBXGroup;
+			children = (
+				F737BF212080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift */,
+				F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */,
+			);
+			path = RequestRecord;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F793CA4A1F9E361900AA9C41 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7995B6A1F9F9CC900CA4B2F /* NetworkMonitorUnitTests-Bridging-Header.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F793CA551F9E361900AA9C41 /* Build configuration list for PBXNativeTarget "FNMNetworkMonitor" */;
+			buildPhases = (
+				F793CA481F9E361900AA9C41 /* Sources */,
+				F793CA491F9E361900AA9C41 /* Frameworks */,
+				F793CA4A1F9E361900AA9C41 /* Headers */,
+				F793CA4B1F9E361900AA9C41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FNMNetworkMonitor;
+			productName = NetworkMonitor;
+			productReference = F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F793CA651F9E474200AA9C41 /* FNMNetworkMonitorUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F793CA701F9E474200AA9C41 /* Build configuration list for PBXNativeTarget "FNMNetworkMonitorUnitTests" */;
+			buildPhases = (
+				F793CA621F9E474200AA9C41 /* Sources */,
+				F793CA631F9E474200AA9C41 /* Frameworks */,
+				F793CA641F9E474200AA9C41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F793CA6D1F9E474200AA9C41 /* PBXTargetDependency */,
+			);
+			name = FNMNetworkMonitorUnitTests;
+			productName = NetworkMonitorUnitTests;
+			productReference = F793CA661F9E474200AA9C41 /* FNMNetworkMonitorUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F7DA82F024093AF20095D93F /* Sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7DA830424093AF40095D93F /* Build configuration list for PBXNativeTarget "Sample" */;
+			buildPhases = (
+				F7DA82ED24093AF20095D93F /* Sources */,
+				F7DA82EE24093AF20095D93F /* Frameworks */,
+				F7DA82EF24093AF20095D93F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sample;
+			productName = Sample;
+			productReference = F7DA82F124093AF20095D93F /* Sample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F793CA441F9E361900AA9C41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Farfetch;
+				TargetAttributes = {
+					F793CA4C1F9E361900AA9C41 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = YRR3Z73Z6M;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+					};
+					F793CA651F9E474200AA9C41 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = YRR3Z73Z6M;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+					};
+					F7DA82F024093AF20095D93F = {
+						CreatedOnToolsVersion = 11.3;
+						DevelopmentTeam = YRR3Z73Z6M;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F793CA471F9E361900AA9C41 /* Build configuration list for PBXProject "NetworkMonitor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F793CA431F9E361900AA9C41;
+			productRefGroup = F793CA4E1F9E361900AA9C41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */,
+				F793CA651F9E474200AA9C41 /* FNMNetworkMonitorUnitTests */,
+				F7DA82F024093AF20095D93F /* Sample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F793CA4B1F9E361900AA9C41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F793CA641F9E474200AA9C41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F76084C72409678E00451AE8 /* Image.png in Resources */,
+				F792A3922099D0A500D9C894 /* Matching-Profiles-3.json in Resources */,
+				F7DA8306240956280095D93F /* Generic-Profile-Response.json in Resources */,
+				A3E27FC51FC81F9000245188 /* Cold-Start-First-Party-Calls.json in Resources */,
+				A3E27FC71FC81F9000245188 /* Cold-Start-Third-Party-Calls.json in Resources */,
+				F77D3F32209A16F0008F5E56 /* Generic-Profiles-Duplicates.json in Resources */,
+				F7A5E79C208E2C96008C74CE /* Matching-Profiles-2.json in Resources */,
+				F7A5E79A208E29E4008C74CE /* Matching-Profiles-1.json in Resources */,
+				F78DB25A2089F9020064E76C /* Generic-Profiles.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7DA82EF24093AF20095D93F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7DA830024093AF40095D93F /* LaunchScreen.storyboard in Resources */,
+				F7DA82FD24093AF40095D93F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F793CA481F9E361900AA9C41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A395000D1FD83AB1001D6086 /* FNMAdditions.swift in Sources */,
+				A3DA63EE201B3637002CB2C0 /* FNMViewController.swift in Sources */,
+				4055D74F21BFBDDE0058EC1D /* FNMNetworkMonitorURLProtocol+Protocols.swift in Sources */,
+				A39500041FD83AB1001D6086 /* FNMAppLaunchRecord.swift in Sources */,
+				F737BF262080FC9100ECCDE3 /* FNMProfile.swift in Sources */,
+				F7FA58A82084A5E700CEFB88 /* FNMProfile+Codable.swift in Sources */,
+				F737BF222080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift in Sources */,
+				F737BF202080F97D00ECCDE3 /* FNMHTTPRequestRecord.swift in Sources */,
+				A3391C841FE2837B00BBBC18 /* FNMDebugDetailInfoTableViewCell.swift in Sources */,
+				F7EDC62220ADB2670027B771 /* FNMAppLaunchTimestamps.swift in Sources */,
+				A39500051FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift in Sources */,
+				A39500011FD83AB1001D6086 /* FNMRecordExporter.swift in Sources */,
+				A39500101FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift in Sources */,
+				433A1A0C2355DAA000CB0A8D /* DebugDetailHeadersViewController.swift in Sources */,
+				A395FFFD1FD83AB1001D6086 /* FNMNetworkMonitorURLProtocol.swift in Sources */,
+				A3391C821FE27F8200BBBC18 /* FNMDebugDetailViewController.swift in Sources */,
+				F7EDC62020ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift in Sources */,
+				A395000C1FD83AB1001D6086 /* FNMNetworkMonitor.swift in Sources */,
+				A39500031FD83AB1001D6086 /* FNMDebugListingViewController.swift in Sources */,
+				F7BD0C5B20A4A3F900B1E3EA /* FNMLogger.swift in Sources */,
+				A38AEE691FE3CEFC00778860 /* FNMRecordDetailInfo.swift in Sources */,
+				433A1A0E2355DAFB00CB0A8D /* DebugDetailBodyViewController.swift in Sources */,
+				F7EDC62620ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift in Sources */,
+				433A1A0A2355DA3A00CB0A8D /* HighlightReloadableProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F793CA621F9E474200AA9C41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7ABADD7243C949B008E417A /* NetworkMonitorDebugUITests.swift in Sources */,
+				F7ABADD8243C949B008E417A /* NetworkMonitorFlowTests.swift in Sources */,
+				F7AB3DDF243E1F7A0028D43E /* NetworkMonitorTests.swift in Sources */,
+				F7ABADDB243C949B008E417A /* NetworkMonitorExportTests.swift in Sources */,
+				F7ABADDA243C949B008E417A /* NetworkMonitorAppLaunchTests.swift in Sources */,
+				F7ABADD9243C949B008E417A /* NetworkMonitorProfileTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7DA82ED24093AF20095D93F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7DA82F824093AF20095D93F /* ViewController.swift in Sources */,
+				F7DA82F424093AF20095D93F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F793CA6D1F9E474200AA9C41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */;
+			targetProxy = F793CA6C1F9E474200AA9C41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7DA82FF24093AF40095D93F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F793CA531F9E361900AA9C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YRR3Z73Z6M;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F793CA541F9E361900AA9C41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YRR3Z73Z6M;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F793CA561F9E361900AA9C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = NetworkMonitor/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.NetworkMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F793CA571F9E361900AA9C41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = NetworkMonitor/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.NetworkMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F793CA6E1F9E474200AA9C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FNM.NetworkMonitorUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/NetworkMonitorUnitTests-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		F793CA6F1F9E474200AA9C41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FNM.NetworkMonitorUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/NetworkMonitorUnitTests-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		F7DA830224093AF40095D93F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YRR3Z73Z6M;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.Sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F7DA830324093AF40095D93F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YRR3Z73Z6M;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.Sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F793CA471F9E361900AA9C41 /* Build configuration list for PBXProject "NetworkMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F793CA531F9E361900AA9C41 /* Debug */,
+				F793CA541F9E361900AA9C41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F793CA551F9E361900AA9C41 /* Build configuration list for PBXNativeTarget "FNMNetworkMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F793CA561F9E361900AA9C41 /* Debug */,
+				F793CA571F9E361900AA9C41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F793CA701F9E474200AA9C41 /* Build configuration list for PBXNativeTarget "FNMNetworkMonitorUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F793CA6E1F9E474200AA9C41 /* Debug */,
+				F793CA6F1F9E474200AA9C41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7DA830424093AF40095D93F /* Build configuration list for PBXNativeTarget "Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7DA830224093AF40095D93F /* Debug */,
+				F7DA830324093AF40095D93F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F793CA441F9E361900AA9C41 /* Project object */;
+}

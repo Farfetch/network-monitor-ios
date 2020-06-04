@@ -1,0 +1,14 @@
+[{
+ "request": {
+ "urlPattern": {
+ "staticPattern": "https://repeat.tasty.secretive.yarn/muddled/get"
+ },
+ "httpMethod": "GET",
+ "headers": {
+ "FF-Country": "US",
+ "FF-Currency": "USD"
+ }
+ },
+ "responses": []
+ }
+ ]

@@ -1,0 +1,8 @@
+ [{
+  "identifier": "A",
+  "description": "Various third-party endpoints",
+  "type": "other",
+  "request-expressions": [
+                          "^.*alphabet.com/.*$"
+                          ]
+  }]

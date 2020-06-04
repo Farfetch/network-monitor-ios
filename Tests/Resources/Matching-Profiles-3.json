@@ -1,0 +1,11 @@
+[{
+ "request": {
+ "urlPattern": {
+ "staticPattern": "https://repeat.tasty.secretive.yarn/muddled/get"
+ },
+ "httpMethod": "GET",
+ "body": "Swimsuit body"
+ },
+ "responses": []
+ }
+ ]

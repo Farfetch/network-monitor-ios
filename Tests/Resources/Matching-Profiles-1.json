@@ -1,0 +1,37 @@
+[{
+ "request": {
+ "urlPattern": {
+ "staticPattern": "https://repeat.tasty.secretive.yarn/muddled/get"
+ },
+ "httpMethod": "GET"
+ },
+ "responses": []
+ },
+ {
+ "request": {
+ "urlPattern": {
+ "staticPattern": "https://repeat.tasty.secretive.yarn/muddled/post"
+ },
+ "httpMethod": "POST"
+ },
+ "responses": []
+ },
+ {
+ "request": {
+ "urlPattern": {
+ "dynamicPattern": "^.*gruesome.breathe/use/get"
+ },
+ "httpMethod": "GET"
+ },
+ "responses": []
+ },
+ {
+ "request": {
+ "urlPattern": {
+ "dynamicPattern": "^.*gruesome.breathe/use/post"
+ },
+ "httpMethod": "POST"
+ },
+ "responses": []
+ }
+ ]
