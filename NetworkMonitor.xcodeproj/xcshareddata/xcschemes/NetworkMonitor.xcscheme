@@ -57,11 +57,6 @@
                BlueprintName = "FNMNetworkMonitorUnitTests"
                ReferencedContainer = "container:NetworkMonitor.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "NetworkMonitorUnitProfileDemoTests_Empty">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
