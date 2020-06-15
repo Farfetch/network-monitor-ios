@@ -8,14 +8,6 @@ Hi there! We're thrilled that you'd like to contribute to this project. Your hel
 
 Please note that this project is released with a [Contributor Code of Conduct][code-of-conduct]. By participating in this project you agree to abide by its terms.
 
-## Installation
-
-Fork this repository and run the following commands in the terminal to install all necessary dependencies:
-
-        $ gem install bundler
-        $ bundle install
-        $ bundle exec pod install
-
 ## Submitting a pull request
 
 1. Check the issues or open a new one
