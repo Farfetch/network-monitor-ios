@@ -13,11 +13,6 @@ import XCTest
 
 class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTests {
 
-    func testFailure() {
-
-        XCTAssert(false, "Oh the humanity")
-    }
-
     func testAppLaunch() {
 
         let appLaunchRecordBuilder = FFSDebugEnvironmentHelperAppLaunchRecordBuilder()
