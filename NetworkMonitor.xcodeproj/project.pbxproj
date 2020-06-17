@@ -30,7 +30,6 @@
 		F737BF262080FC9100ECCDE3 /* FNMProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF252080FC9100ECCDE3 /* FNMProfile.swift */; };
 		F76084C72409678E00451AE8 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = F76084C62409678E00451AE8 /* Image.png */; };
 		F77D3F32209A16F0008F5E56 /* Generic-Profiles-Duplicates.json in Resources */ = {isa = PBXBuildFile; fileRef = F77D3F31209A16F0008F5E56 /* Generic-Profiles-Duplicates.json */; };
-		F77E3E07249A792B002A1A92 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E3E06249A792B002A1A92 /* Test.swift */; };
 		F78DB25A2089F9020064E76C /* Generic-Profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F7A9A8B72089DDB700A56003 /* Generic-Profiles.json */; };
 		F792A3922099D0A500D9C894 /* Matching-Profiles-3.json in Resources */ = {isa = PBXBuildFile; fileRef = F792A3912099D0A500D9C894 /* Matching-Profiles-3.json */; };
 		F793CA6B1F9E474200AA9C41 /* FNMNetworkMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */; };
@@ -91,7 +90,6 @@
 		F737BF252080FC9100ECCDE3 /* FNMProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMProfile.swift; sourceTree = "<group>"; };
 		F76084C62409678E00451AE8 /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
 		F77D3F31209A16F0008F5E56 /* Generic-Profiles-Duplicates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Generic-Profiles-Duplicates.json"; sourceTree = "<group>"; };
-		F77E3E06249A792B002A1A92 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		F792A3912099D0A500D9C894 /* Matching-Profiles-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Matching-Profiles-3.json"; sourceTree = "<group>"; };
 		F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FNMNetworkMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F793CA511F9E361900AA9C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 				F793CA5C1F9E3AB400AA9C41 /* Podspec Metadata */,
 				F793CA5F1F9E3C6B00AA9C41 /* Classes */,
 				F793CA511F9E361900AA9C41 /* Info.plist */,
-				F77E3E06249A792B002A1A92 /* Test.swift */,
 			);
 			path = NetworkMonitor;
 			sourceTree = "<group>";
@@ -536,7 +533,6 @@
 				F7BD0C5B20A4A3F900B1E3EA /* FNMLogger.swift in Sources */,
 				A38AEE691FE3CEFC00778860 /* FNMRecordDetailInfo.swift in Sources */,
 				433A1A0E2355DAFB00CB0A8D /* DebugDetailBodyViewController.swift in Sources */,
-				F77E3E07249A792B002A1A92 /* Test.swift in Sources */,
 				F7EDC62620ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift in Sources */,
 				433A1A0A2355DA3A00CB0A8D /* HighlightReloadableProtocol.swift in Sources */,
 			);
