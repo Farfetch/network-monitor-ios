@@ -1,0 +1,21 @@
+name: PR Action
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Network Monitor
+      run: xcodebuild build -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'       
+    - name: Test Network Monitor
+      run: xcodebuild test -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'      
+    - name: Build Sample
+      run: xcodebuild build -scheme Sample -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'       
