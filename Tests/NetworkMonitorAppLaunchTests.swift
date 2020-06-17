@@ -11,7 +11,12 @@ import XCTest
 
 @testable import FNMNetworkMonitor
 
-class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTest s {
+class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTests {
+
+    func testFailure() {
+
+        XCTAssert(false, "Oh the humanity")
+    }
 
     func testAppLaunch() {
 
