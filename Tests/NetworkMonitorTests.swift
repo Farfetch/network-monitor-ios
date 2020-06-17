@@ -29,6 +29,9 @@ class NetworkMonitorUnitTests: XCTestCase {
         self.networkMonitor.clear(completion: { } )
         self.networkMonitor.resetProfiles()
         self.networkMonitor.stopMonitoring()
+
+        // Sleep on tear down to dimish test cross contamination
+        Thread.sleep(forTimeInterval: 5.0)
     }
 
     static var testBundle: Bundle {
