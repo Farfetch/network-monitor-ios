@@ -716,6 +716,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.NetworkMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Debug;
 		};
@@ -731,6 +732,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.NetworkMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Release;
 		};
