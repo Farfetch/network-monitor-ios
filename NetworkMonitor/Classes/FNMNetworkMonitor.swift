@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+public var test: ActionsTest?
+
 @objc
 public protocol FNMNetworkMonitorObserver: class {
 

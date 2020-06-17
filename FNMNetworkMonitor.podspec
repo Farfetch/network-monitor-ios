@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.author = 'Farfetch'
   spec.source = { :git => 'git@github.com:Farfetch/network-monitor-ios.git', :tag => spec.version.to_s }
 
-  spec.ios.deployment_target = '10.0''
+  spec.ios.deployment_target = '10.0'
   spec.requires_arc = true
 
   spec.cocoapods_version = '>= 1.7'
