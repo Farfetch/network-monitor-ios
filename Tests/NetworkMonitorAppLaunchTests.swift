@@ -11,7 +11,7 @@ import XCTest
 
 @testable import FNMNetworkMonitor
 
-class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTests {
+class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTest s {
 
     func testAppLaunch() {
 

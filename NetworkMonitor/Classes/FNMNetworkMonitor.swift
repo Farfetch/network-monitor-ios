@@ -21,7 +21,7 @@ private class NetworkMonitorObserverWrapper: NSObject {
 }
 
 @objc
-public final class FNMNetworkMonitor: NSObjec t {
+public final class FNMNetworkMonitor: NSObject {
 
     /// The shared instance that backs this class
     @objc
