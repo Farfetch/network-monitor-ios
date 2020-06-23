@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.version = '8.0.0'
   spec.summary = 'A network monitor'
   spec.homepage = 'https://github.com/Farfetch/network-monitor-ios'
-  spec.license = 'Code is private.'
+  spec.license = 'MIT'
   spec.author = 'Farfetch'
   spec.source = { :git => 'git@github.com:Farfetch/network-monitor-ios.git', :tag => spec.version.to_s }
 
