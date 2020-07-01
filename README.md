@@ -2,12 +2,14 @@
 # FNMNetworkMonitor
 
 [![CocoaPods Compatible](https://img.shields.io/badge/cocoapods-compatible-green.svg)]()
-[![Supported languages](https://img.shields.io/badge/supported%20languages-swift-green.svg)]()
+[![Supported languages](https://img.shields.io/badge/supported%20languages-swift|objc-green.svg)]()
 [![Platform](https://img.shields.io/badge/platform-ios-green.svg)]()
 
 ## What is this ?
 
-FNMNetworkMonitor is a networking SDK that can be used to monitor the network of an iOS app. In addition, it can also mock network requests.
+FNMNetworkMonitor is an iOS networking framework that can be used to monitor the network of an iOS app. 
+It makes **debugging** the network easy, allowing you to pinpoint the root cause of network related problems in your app. 
+it can also **mock** network requests, making it much easier to use incomplete APIs or model specific states for unit testing.
 
 ## Installation ⚙️
 
@@ -32,7 +34,8 @@ sessionConfig.protocolClasses = FNMNetworkMonitor.normalizedURLProtocols()
 self.customSession = URLSession(configuration: sessionConfig)
 FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
 ```
-3. Monitoring all sessions by sizzling the URLSessionConfiguration creation and by supplying the FNMMonitor URL Protocol manually
+
+3. You can also take advantage of sizzling the URLSessionConfiguration creation to configure the URL Protocol to all sessions, allowing to monitor 3rd party SDKs too.
 
 ### Additionally, you can mock certain requests using:
 
@@ -88,3 +91,4 @@ List of [Maintainers](MAINTAINERS.md)
 ## License
 
 [MIT](LICENSE)
+
