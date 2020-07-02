@@ -1,12 +1,12 @@
 Pod::Spec.new do |spec|
   spec.name = 'FNMNetworkMonitor'
   spec.module_name = 'FNMNetworkMonitor'
-  spec.version = '8.0.0'
+  spec.version = '8.0.1'
   spec.summary = 'A network monitor'
   spec.homepage = 'https://github.com/Farfetch/network-monitor-ios'
   spec.license = 'MIT'
   spec.author = 'Farfetch'
-  spec.source = { :git => 'git@github.com:Farfetch/network-monitor-ios.git', :tag => spec.version.to_s }
+  spec.source = { :git => 'https://github.com/Farfetch/network-monitor-ios.git', :tag => spec.version.to_s }
 
   spec.ios.deployment_target = '10.0'
   spec.requires_arc = true
