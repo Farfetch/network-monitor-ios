@@ -20,14 +20,11 @@ final class ViewController: UIViewController {
         static let robotURL = "https://www.alphabet.com/robots.txt"
         static let errorURL = "https://www.ohthehumanity.error"
 
-        static let specificImageFirstURL = "https://i.picsum.photos/id/"
-        static let specificImageSecondURL = "/500/500.jpg"
         static let randomImageURL = "https://picsum.photos/500?random"
     }
 
     private enum TestRequest: CaseIterable {
 
-        case imageDirect
         case imageRedirect
         case error
         case robot
@@ -109,16 +106,6 @@ final class ViewController: UIViewController {
         print("Fired \(random)")
 
         switch random {
-        case .imageDirect:
-
-            URLSession.shared.dataTask(with: URL(string: Constants.specificImageFirstURL + "\(Int(arc4random_uniform(UInt32(100))))" + Constants.specificImageSecondURL)!) { data, _, _ in
-
-                guard let data = data,
-                    let image = UIImage(data: data)
-                    else { return }
-
-                self.applyImage(image: image)
-            }.resume()
 
         case .imageRedirect:
 
