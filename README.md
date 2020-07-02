@@ -13,7 +13,9 @@ it can also **mock** network requests, making it much easier to use incomplete A
 
 Supports Swift 5 and is bridged for ObjC compatibility.
 
-![Preview:](README.gif)
+Preview:
+
+![](README.gif)
 ## Installation ⚙️
 
 1. Add `pod 'FNMNetworkMonitor'` to your `Podfile`
@@ -94,4 +96,5 @@ List of [Maintainers](MAINTAINERS.md)
 ## License
 
 [MIT](LICENSE)
+
 
