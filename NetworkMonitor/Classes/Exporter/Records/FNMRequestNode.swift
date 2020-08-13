@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct FNMAppLaunchRequestNode {
+public struct FNMRequestNode {
 
-    public enum FNMAppLaunchRequestNodeType: String, Codable {
+    public enum FNMRequestNodeType: String, Codable {
 
         case blocking
         case nonBlocking
@@ -20,10 +20,10 @@ public struct FNMAppLaunchRequestNode {
     let identifier: String
     let nodeDescription: String
     let expressions: [NSRegularExpression]
-    let type: FNMAppLaunchRequestNodeType
+    let type: FNMRequestNodeType
 }
 
-extension FNMAppLaunchRequestNode: Codable {
+extension FNMRequestNode: Codable {
 
     enum CodingKeys: String, CodingKey {
 
@@ -52,7 +52,7 @@ extension FNMAppLaunchRequestNode: Codable {
             try self.init(identifier: values.decode(String.self, forKey: .identifier),
                           nodeDescription: values.decode(String.self, forKey: .nodeDescription),
                           expressions: values.decode([String].self, forKey: .expressions).computedRegularExpressions(),
-                          type: values.decode(FNMAppLaunchRequestNodeType.self, forKey: .type))
+                          type: values.decode(FNMRequestNodeType.self, forKey: .type))
         }
     }
 }

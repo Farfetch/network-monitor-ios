@@ -8,40 +8,18 @@
 
 import Foundation
 
-public struct FNMAppLaunchTimestamps: Encodable {
-
-    public let overall: FNMAppLaunchElement
-    public let thirdPartyFrameworkSetup: FNMAppLaunchElement?
-    public let firstPartyFrameworkSetup: FNMAppLaunchElement?
-    public let firstPartyAPISetup: FNMAppLaunchElement?
-    public let uiSetup: FNMAppLaunchElement
-
-    public init(overall: FNMAppLaunchElement,
-                thirdPartyFrameworkSetup: FNMAppLaunchElement?,
-                firstPartyFrameworkSetup: FNMAppLaunchElement?,
-                firstPartyAPISetup: FNMAppLaunchElement?,
-                uiSetup: FNMAppLaunchElement) {
-
-        self.overall = overall
-        self.thirdPartyFrameworkSetup = thirdPartyFrameworkSetup
-        self.firstPartyFrameworkSetup = firstPartyFrameworkSetup
-        self.firstPartyAPISetup = firstPartyAPISetup
-        self.uiSetup = uiSetup
-    }
-}
-
-public struct FNMAppLaunchElement: Encodable {
+public struct FNMElement: Encodable {
 
     public let identifier: String
     public let start: Date
     public let end: Date
-    public let subElements: [FNMAppLaunchElement]
+    public let subElements: [FNMElement]
     public var timeTotal: TimeInterval {
 
         return end.timeIntervalSince1970 - start.timeIntervalSince1970
     }
 
-    public init(identifier: String, start: Date, end: Date, subElements: [FNMAppLaunchElement]) {
+    public init(identifier: String, start: Date, end: Date, subElements: [FNMElement]) {
 
         self.identifier = identifier
         self.start = start

@@ -31,9 +31,9 @@ public extension Sequence where Iterator.Element == String {
     }
 }
 
-public extension Sequence where Iterator.Element == FNMAppLaunchRequestNode {
+public extension Sequence where Iterator.Element == FNMRequestNode {
 
-    func node(for record: FNMHTTPRequestRecord) -> FNMAppLaunchRequestNode? {
+    func node(for record: FNMHTTPRequestRecord) -> FNMRequestNode? {
 
         guard let absoluteURLString = record.request.url?.absoluteString else { return nil }
 

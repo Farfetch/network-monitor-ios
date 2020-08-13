@@ -8,19 +8,19 @@
 
 import Foundation
 
-public typealias FNMAppLaunchRequestCluster = (firstPartyNodes: [FNMAppLaunchRequestNode], thirdPartyNodes: [FNMAppLaunchRequestNode])
+public typealias FNMRequestCluster = (firstPartyNodes: [FNMRequestNode], thirdPartyNodes: [FNMRequestNode])
 
-final public class FNMAppLaunchRecord: NSObject {
+final public class FNMRecord: NSObject {
 
     public let version: String
     public let freshInstall: Bool
-    public let timestamps: FNMAppLaunchTimestamps
-    public let requestCluster: FNMAppLaunchRequestCluster?
+    public let timestamps: [FNMElement]
+    public let requestCluster: FNMRequestCluster?
 
     required public init(version: String,
                          freshInstall: Bool,
-                         timestamps: FNMAppLaunchTimestamps,
-                         requestCluster: FNMAppLaunchRequestCluster? = nil) {
+                         timestamps: [FNMElement],
+                         requestCluster: FNMRequestCluster? = nil) {
 
         self.version = version
         self.freshInstall = freshInstall
@@ -29,7 +29,7 @@ final public class FNMAppLaunchRecord: NSObject {
     }
 }
 
-extension FNMAppLaunchRecord: Encodable {
+extension FNMRecord: Encodable {
 
     enum CodingKeys: String, CodingKey {
 

@@ -11,11 +11,11 @@ import XCTest
 
 @testable import FNMNetworkMonitor
 
-class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTests {
+class NetworkMonitorTests: NetworkMonitorUnitTests {
 
-    func testAppLaunch() {
+    func test() {
 
-        let appLaunchRecordBuilder = FFSDebugEnvironmentHelperAppLaunchRecordBuilder()
+        let recordBuilder = FFSDebugEnvironmentHelperRecordBuilder()
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)
@@ -30,32 +30,32 @@ class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTests {
 
         let robotsExpectation = expectation(description: "Some Robots")
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { appLaunchRecordBuilder.recordProgress(.overall, dateType: .start) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { recordBuilder.recordProgress(.overall, dateType: .start) }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { appLaunchRecordBuilder.recordProgress(.firstPartyFramework, dateType: .start) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { appLaunchRecordBuilder.recordProgress(.firstPartyFramework, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { recordBuilder.recordProgress(.firstPartyFramework, dateType: .start) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { recordBuilder.recordProgress(.firstPartyFramework, dateType: .end) }
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
 
-            appLaunchRecordBuilder.recordProgress(.thirdPartyFramework, dateType: .start)
+            recordBuilder.recordProgress(.thirdPartyFramework, dateType: .start)
 
             self.reachSitesSequencially(sites: [.alphabet],
                                         completion: {})
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { appLaunchRecordBuilder.recordProgress(.thirdPartyFramework, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { recordBuilder.recordProgress(.thirdPartyFramework, dateType: .end) }
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
 
-            appLaunchRecordBuilder.recordProgress(.firstPartyAPISetup, dateType: .start)
+            recordBuilder.recordProgress(.firstPartyAPISetup, dateType: .start)
 
             self.reachSitesSequencially(sites: [.intel],
                                         completion: {})
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 7) { appLaunchRecordBuilder.recordProgress(.firstPartyAPISetup, dateType: .end) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { appLaunchRecordBuilder.recordProgress(.uiSetup, dateType: .start) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 9) { appLaunchRecordBuilder.recordProgress(.uiSetup, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7) { recordBuilder.recordProgress(.firstPartyAPISetup, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { recordBuilder.recordProgress(.uiSetup, dateType: .start) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 9) { recordBuilder.recordProgress(.uiSetup, dateType: .end) }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { appLaunchRecordBuilder.recordProgress(.overall, dateType: .end)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { recordBuilder.recordProgress(.overall, dateType: .end)
 
-            self.commitAppLaunch(from: appLaunchRecordBuilder)
+            self.commit(from: recordBuilder)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { robotsExpectation.fulfill() }
         }
@@ -68,7 +68,7 @@ class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTests {
     }
 }
 
-private extension NetworkMonitorAppLaunchTests {
+private extension NetworkMonitorTests {
 
     enum FFSLaunchDateType: Int {
 
@@ -106,7 +106,7 @@ private extension NetworkMonitorAppLaunchTests {
         }
     }
 
-    class FFSAppLaunchElementBuilder {
+    class FFSElementBuilder {
 
         var identifier: String
         var start: Date?
@@ -117,33 +117,33 @@ private extension NetworkMonitorAppLaunchTests {
             self.identifier = identifier
         }
 
-        func build() -> FNMAppLaunchElement? {
+        func build() -> FNMElement? {
 
             guard let start = self.start, let end = self.end else {
 
                 return nil
             }
 
-            return FNMAppLaunchElement(identifier: self.identifier,
+            return FNMElement(identifier: self.identifier,
                                        start: start,
                                        end: end,
                                        subElements: [])
         }
     }
 
-    class FFSDebugEnvironmentHelperAppLaunchRecordBuilder: NSObject {
+    class FFSDebugEnvironmentHelperRecordBuilder: NSObject {
 
-        var overall = FFSAppLaunchElementBuilder(identifier: FFSLaunchReportElement.overall.elementIdentifier())
-        var thirdPartyFrameworkSetup = FFSAppLaunchElementBuilder(identifier: FFSLaunchReportElement.thirdPartyFramework.elementIdentifier())
-        var firstPartyFrameworkSetup = FFSAppLaunchElementBuilder(identifier: FFSLaunchReportElement.firstPartyFramework.elementIdentifier())
-        var firstPartyAPISetup = FFSAppLaunchElementBuilder(identifier: FFSLaunchReportElement.firstPartyAPISetup.elementIdentifier())
-        var uiSetup = FFSAppLaunchElementBuilder(identifier: FFSLaunchReportElement.uiSetup.elementIdentifier())
+        var overall = FFSElementBuilder(identifier: FFSLaunchReportElement.overall.elementIdentifier())
+        var thirdPartyFrameworkSetup = FFSElementBuilder(identifier: FFSLaunchReportElement.thirdPartyFramework.elementIdentifier())
+        var firstPartyFrameworkSetup = FFSElementBuilder(identifier: FFSLaunchReportElement.firstPartyFramework.elementIdentifier())
+        var firstPartyAPISetup = FFSElementBuilder(identifier: FFSLaunchReportElement.firstPartyAPISetup.elementIdentifier())
+        var uiSetup = FFSElementBuilder(identifier: FFSLaunchReportElement.uiSetup.elementIdentifier())
 
         func recordProgress(_ elementType: FFSLaunchReportElement, dateType: FFSLaunchDateType) {
 
             let date = Date()
 
-            var element: FFSAppLaunchElementBuilder?
+            var element: FFSElementBuilder?
 
             switch elementType {
 
@@ -168,35 +168,31 @@ private extension NetworkMonitorAppLaunchTests {
         }
     }
 
-    func commitAppLaunch(from appLaunchRecordBuilder: FFSDebugEnvironmentHelperAppLaunchRecordBuilder) {
+    func commit(from recordBuilder: FFSDebugEnvironmentHelperRecordBuilder) {
 
-        guard let overall = appLaunchRecordBuilder.overall.build(),
-            let thirdPartyFrameworkSetup = appLaunchRecordBuilder.thirdPartyFrameworkSetup.build(),
-            let firstPartyFrameworkSetup = appLaunchRecordBuilder.firstPartyFrameworkSetup.build(),
-            let firstPartyAPISetup = appLaunchRecordBuilder.firstPartyAPISetup.build(),
-            let uiSetup = appLaunchRecordBuilder.uiSetup.build() else {
+        guard let overall = recordBuilder.overall.build(),
+            let thirdPartyFrameworkSetup = recordBuilder.thirdPartyFrameworkSetup.build(),
+            let firstPartyFrameworkSetup = recordBuilder.firstPartyFrameworkSetup.build(),
+            let firstPartyAPISetup = recordBuilder.firstPartyAPISetup.build(),
+            let uiSetup = recordBuilder.uiSetup.build() else {
 
-                assertionFailure("Cannot commit app launch record with insufficient data")
+                assertionFailure("Cannot commit record with insufficient data")
                 return
         }
 
-        let firstPartyRequestNodes: [FNMAppLaunchRequestNode] = FNMAppLaunchRequestNode.decodedElements(from: Bundle.main,
+        let firstPartyRequestNodes: [FNMRequestNode] = FNMRequestNode.decodedElements(from: Bundle.main,
                                                                                                         filename: Constants.coldStartFirstPartyCallsFilename)
-        let thirdPartyRequestNodes: [FNMAppLaunchRequestNode] = FNMAppLaunchRequestNode.decodedElements(from: Bundle.main,
+        let thirdPartyRequestNodes: [FNMRequestNode] = FNMRequestNode.decodedElements(from: Bundle.main,
                                                                                                         filename: Constants.coldStartThirdPartyCallsFilename)
 
-        let appLaunchTimestamps = FNMAppLaunchTimestamps(overall: overall,
-                                                         thirdPartyFrameworkSetup: thirdPartyFrameworkSetup,
-                                                         firstPartyFrameworkSetup: firstPartyFrameworkSetup,
-                                                         firstPartyAPISetup: firstPartyAPISetup,
-                                                         uiSetup: uiSetup)
+        let timestamps = [overall, thirdPartyFrameworkSetup, firstPartyFrameworkSetup, firstPartyAPISetup, uiSetup]
 
-        let appLaunchRecord = FNMAppLaunchRecord(version: "1.0.0",
+        let record = FNMRecord(version: "1.0.0",
                                                  freshInstall: false,
-                                                 timestamps: appLaunchTimestamps,
+                                                 timestamps: timestamps,
                                                  requestCluster: (firstPartyRequestNodes, thirdPartyRequestNodes))
 
-        FNMNetworkMonitor.shared.exportLaunchData(appLaunchRecord: appLaunchRecord)
+        FNMNetworkMonitor.shared.exportData(record: record)
     }
 
     var exportFileCount: Int {
