@@ -157,7 +157,7 @@ public final class FNMNetworkMonitor: NSObject {
         self.configure(profiles: [])
     }
 
-    /// Export the  data
+    /// Export the data
     public func exportData(record: FNMRecord) {
 
         self.recordsSyncQueue.async {

@@ -51,7 +51,7 @@
 		F7DA830024093AF40095D93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */; };
 		F7DA8306240956280095D93F /* Generic-Profile-Response.json in Resources */ = {isa = PBXBuildFile; fileRef = F7C47A8F2406EA7100875E72 /* Generic-Profile-Response.json */; };
 		F7EDC62020ADB2670027B771 /* FNMCurrentRunCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */; };
-		F7EDC62220ADB2670027B771 /* FNMTimestamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61D20ADB2670027B771 /* FNMTimestamps.swift */; };
+		F7EDC62220ADB2670027B771 /* FNMElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61D20ADB2670027B771 /* FNMElement.swift */; };
 		F7EDC62620ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */; };
 		F7FA58A82084A5E700CEFB88 /* FNMProfile+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FA58A72084A5E700CEFB88 /* FNMProfile+Codable.swift */; };
 /* End PBXBuildFile section */
@@ -137,7 +137,7 @@
 		F7DA82FF24093AF40095D93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7DA830124093AF40095D93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMCurrentRunCodableContainer.swift; sourceTree = "<group>"; };
-		F7EDC61D20ADB2670027B771 /* FNMTimestamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMTimestamps.swift; sourceTree = "<group>"; };
+		F7EDC61D20ADB2670027B771 /* FNMElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMElement.swift; sourceTree = "<group>"; };
 		F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMHTTPRequestRecordCodableContainer.swift; sourceTree = "<group>"; };
 		F7FA58A72084A5E700CEFB88 /* FNMProfile+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FNMProfile+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -371,7 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				A395FFEF1FD83AB1001D6086 /* FNMRecord.swift */,
-				F7EDC61D20ADB2670027B771 /* FNMTimestamps.swift */,
+				F7EDC61D20ADB2670027B771 /* FNMElement.swift */,
 				A395FFF01FD83AB1001D6086 /* FNMRequestNode.swift */,
 				F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */,
 			);
@@ -554,7 +554,7 @@
 				F737BF222080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift in Sources */,
 				F737BF202080F97D00ECCDE3 /* FNMHTTPRequestRecord.swift in Sources */,
 				A3391C841FE2837B00BBBC18 /* FNMDebugDetailInfoTableViewCell.swift in Sources */,
-				F7EDC62220ADB2670027B771 /* FNMTimestamps.swift in Sources */,
+				F7EDC62220ADB2670027B771 /* FNMElement.swift in Sources */,
 				A39500051FD83AB1001D6086 /* FNMRequestNode.swift in Sources */,
 				A39500011FD83AB1001D6086 /* FNMRecordExporter.swift in Sources */,
 				A39500101FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift in Sources */,
