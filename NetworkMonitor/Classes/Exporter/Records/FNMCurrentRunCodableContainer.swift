@@ -44,9 +44,7 @@ private struct RecordNodeMatchesContainer {
     init?(requestRecords: [FNMHTTPRequestRecord],
           and record: FNMRecord) {
 
-        let callElement = record.timestamps.first { element -> Bool in
-            element.identifier == "firstPartyAPISetup"
-        }
+        let callElement = record.timestamps["firstPartyAPISetup"]
 
         guard let callsStart = callElement?.start,
             let callsEnd = callElement?.end,

@@ -14,12 +14,12 @@ final public class FNMRecord: NSObject {
 
     public let version: String
     public let freshInstall: Bool
-    public let timestamps: [FNMElement]
+    public let timestamps: [String: FNMElement]
     public let requestCluster: FNMRequestCluster?
 
     required public init(version: String,
                          freshInstall: Bool,
-                         timestamps: [FNMElement],
+                         timestamps: [String: FNMElement],
                          requestCluster: FNMRequestCluster? = nil) {
 
         self.version = version

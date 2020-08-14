@@ -185,7 +185,11 @@ private extension NetworkMonitorTests {
         let thirdPartyRequestNodes: [FNMRequestNode] = FNMRequestNode.decodedElements(from: Bundle.main,
                                                                                                         filename: Constants.coldStartThirdPartyCallsFilename)
 
-        let timestamps = [overall, thirdPartyFrameworkSetup, firstPartyFrameworkSetup, firstPartyAPISetup, uiSetup]
+        let timestamps = ["overall": overall,
+                          "thirdPartyFrameworkSetup": thirdPartyFrameworkSetup,
+                          "firstPartyFrameworkSetup": firstPartyFrameworkSetup,
+                          "firstPartyAPISetup": firstPartyAPISetup,
+                          "uiSetup": uiSetup]
 
         let record = FNMRecord(version: "1.0.0",
                                                  freshInstall: false,
