@@ -157,13 +157,12 @@ public final class FNMNetworkMonitor: NSObject {
         self.configure(profiles: [])
     }
 
-    /// Export the launch data
-    public func exportLaunchData(appLaunchRecord: FNMAppLaunchRecord) {
+    /// Export the data
+    public func exportData(record: FNMRecord) {
 
         self.recordsSyncQueue.async {
 
-            FNMRecordExporter.exportAppLaunchRecord(appLaunchRecord,
-                                                    requestRecords: Array(self.records.values))
+            FNMRecordExporter.exportRecord(record, requestRecords: Array(self.records.values))
         }
     }
 

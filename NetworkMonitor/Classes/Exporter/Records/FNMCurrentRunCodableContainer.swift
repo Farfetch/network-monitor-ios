@@ -8,29 +8,29 @@
 
 import Foundation
 
-private typealias FNMRecordNodeMatch = (requestRecord: FNMHTTPRequestRecord, node: FNMAppLaunchRequestNode)
+private typealias FNMRecordNodeMatch = (requestRecord: FNMHTTPRequestRecord, node: FNMRequestNode)
 
-final class FNMAppLaunchCurrentRunCodableContainer: NSObject {
+final class FNMCurrentRunCodableContainer: NSObject {
 
-    let appLaunchRecord: FNMAppLaunchRecord
+    let record: FNMRecord
     let requestRecords: [FNMHTTPRequestRecord]
 
     private let matchesContainer: RecordNodeMatchesContainer?
 
     var unmatchedRequestRecords: [FNMHTTPRequestRecord] { return self.matchesContainer?.unmatchedRequestRecords() ?? [] }
-    var unmatchedBlockingNodes: [FNMAppLaunchRequestNode] { return self.matchesContainer?.unmatchedBlockingNodes() ?? [] }
+    var unmatchedBlockingNodes: [FNMRequestNode] { return self.matchesContainer?.unmatchedBlockingNodes() ?? [] }
 
     var blockingRequestRecords: [FNMHTTPRequestRecord] { return self.matchesContainer?.blockingRequestRecords() ?? [] }
-    var nonBlockingRequestNodes: [FNMAppLaunchRequestNode] { return self.matchesContainer?.nonBlockingRequestNodes() ?? [] }
+    var nonBlockingRequestNodes: [FNMRequestNode] { return self.matchesContainer?.nonBlockingRequestNodes() ?? [] }
 
-    init(appLaunchRecord: FNMAppLaunchRecord,
+    init(record: FNMRecord,
          requestRecords: [FNMHTTPRequestRecord]) {
 
-        self.appLaunchRecord = appLaunchRecord
+        self.record = record
         self.requestRecords = requestRecords
 
         self.matchesContainer = RecordNodeMatchesContainer(requestRecords: self.requestRecords,
-                                                           and: self.appLaunchRecord)
+                                                           and: self.record)
     }
 }
 
@@ -38,16 +38,18 @@ final class FNMAppLaunchCurrentRunCodableContainer: NSObject {
 private struct RecordNodeMatchesContainer {
 
     let allFirstPartyRequestRecords: [FNMHTTPRequestRecord]
-    let allFirstPartyNodes: [FNMAppLaunchRequestNode]
+    let allFirstPartyNodes: [FNMRequestNode]
     let matches: [FNMRecordNodeMatch]
 
     init?(requestRecords: [FNMHTTPRequestRecord],
-          and appLaunchRecord: FNMAppLaunchRecord) {
+          and record: FNMRecord) {
 
-        guard let callsStart = appLaunchRecord.timestamps.firstPartyAPISetup?.start,
-            let callsEnd = appLaunchRecord.timestamps.firstPartyAPISetup?.end,
-            let firstPartyNodes = appLaunchRecord.requestCluster?.firstPartyNodes,
-            let thirdPartyNodes = appLaunchRecord.requestCluster?.thirdPartyNodes
+        let callElement = record.timestamps["firstPartyAPISetup"]
+
+        guard let callsStart = callElement?.start,
+            let callsEnd = callElement?.end,
+            let firstPartyNodes = record.requestCluster?.firstPartyNodes,
+            let thirdPartyNodes = record.requestCluster?.thirdPartyNodes
             else { return nil }
 
         let firstPartyRequestRecords = requestRecords.filter { requestRecord -> Bool in
@@ -77,7 +79,7 @@ private struct RecordNodeMatchesContainer {
     }
 
     init(allFirstPartyRequestRecords: [FNMHTTPRequestRecord],
-         allFirstPartyNodes: [FNMAppLaunchRequestNode],
+         allFirstPartyNodes: [FNMRequestNode],
          matches: [FNMRecordNodeMatch]) {
 
         self.allFirstPartyRequestRecords = allFirstPartyRequestRecords
@@ -93,10 +95,10 @@ private struct RecordNodeMatchesContainer {
         }
     }
 
-    func unmatchedBlockingNodes() -> [FNMAppLaunchRequestNode] {
+    func unmatchedBlockingNodes() -> [FNMRequestNode] {
 
         return self.allFirstPartyNodes
-            .filter { $0.type == FNMAppLaunchRequestNode.FNMAppLaunchRequestNodeType.blocking }
+            .filter { $0.type == FNMRequestNode.FNMRequestNodeType.blocking }
             .filter { (firstPartyNode) -> Bool in
 
                 return self.matches.contains { return $0.node.identifier == firstPartyNode.identifier } == false
@@ -111,18 +113,18 @@ private struct RecordNodeMatchesContainer {
         }
     }
 
-    func nonBlockingRequestNodes() -> [FNMAppLaunchRequestNode]? {
+    func nonBlockingRequestNodes() -> [FNMRequestNode]? {
 
         return self.allFirstPartyNodes
-            .filter { $0.type == FNMAppLaunchRequestNode.FNMAppLaunchRequestNodeType.nonBlocking }
+            .filter { $0.type == FNMRequestNode.FNMRequestNodeType.nonBlocking }
     }
 }
 
-extension FNMAppLaunchCurrentRunCodableContainer: Encodable {
+extension FNMCurrentRunCodableContainer: Encodable {
 
     enum CodingKeys: String, CodingKey {
 
-        case appLaunchRecord = "performance"
+        case records = "performance"
         case uncataloguedCalls = "uncataloguedCalls"
         case unusedExpressions = "unusedExpressions"
         case blockingRequestRecords = "blockingRequestRecords"
@@ -132,7 +134,7 @@ extension FNMAppLaunchCurrentRunCodableContainer: Encodable {
     public func encode(to encoder: Encoder) throws {
 
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.appLaunchRecord, forKey: .appLaunchRecord)
+        try container.encode(self.record, forKey: .records)
         try container.encode(self.unmatchedRequestRecords, forKey: .uncataloguedCalls)
         try container.encode(self.blockingRequestRecords, forKey: .blockingRequestRecords)
         try container.encode(self.nonBlockingRequestNodes, forKey: .nonBlockingRequestNodes)

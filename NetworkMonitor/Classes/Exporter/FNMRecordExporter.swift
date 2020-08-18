@@ -41,7 +41,7 @@ struct FNMRecordExporter {
         }
     }
 
-    static func exportAppLaunchRecord(_ appLaunchRecord: FNMAppLaunchRecord,
+    static func exportRecord(_ record: FNMRecord,
                                       requestRecords: [FNMHTTPRequestRecord]) {
 
         DispatchQueue.global().async {
@@ -51,7 +51,7 @@ struct FNMRecordExporter {
                 // Current run
                 let currentRunConfigurationFilenameURL = try self.currentRunConfigurationFilenameURL()
 
-                let currentRunSerializableObject = FNMAppLaunchCurrentRunCodableContainer(appLaunchRecord: appLaunchRecord,
+                let currentRunSerializableObject = FNMCurrentRunCodableContainer(record: record,
                                                                                           requestRecords: requestRecords)
                 try self.encodeObject(currentRunSerializableObject,
                                       fileUrl: currentRunConfigurationFilenameURL)
@@ -122,8 +122,8 @@ extension FNMRecordExporter {
 
             var path = try self.baseFolder(title: title)
 
-            path.appendPathComponent(Constants.exportAppLaunchGeneralFolderPath)
-            path.appendPathComponent(Constants.exportAppLaunchCurrentRunFolderPath)
+            path.appendPathComponent(Constants.exportGeneralFolderPath)
+            path.appendPathComponent(Constants.exportCurrentRunFolderPath)
 
             return path
         }
@@ -133,7 +133,7 @@ extension FNMRecordExporter {
 
         var filePath = path
 
-        filePath.appendPathComponent(Constants.exportAppLaunchCurrentRunFilename + Constants.exportFileExtension)
+        filePath.appendPathComponent(Constants.exportCurrentRunFilename + Constants.exportFileExtension)
 
         return filePath
     }
@@ -208,10 +208,10 @@ private extension FNMRecordExporter {
     private enum Constants {
 
         static let exportMonitorGeneralFolderPath = "NetworkMonitor"
-        static let exportAppLaunchGeneralFolderPath = "AppLaunch"
-        static let exportAppLaunchCurrentRunFolderPath = "CurrentRun"
+        static let exportGeneralFolderPath = "AppLaunch"
+        static let exportCurrentRunFolderPath = "CurrentRun"
         static let exportRecordsGeneralFolderPath = "Records"
-        static let exportAppLaunchCurrentRunFilename = "configuration"
+        static let exportCurrentRunFilename = "configuration"
         static let exportRecordsSimpleFilename = "records"
         static let exportFileExtension = ".json"
         static let exportFileSeparator = "-"

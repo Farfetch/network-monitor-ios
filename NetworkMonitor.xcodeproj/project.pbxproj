@@ -16,8 +16,8 @@
 		A38AEE691FE3CEFC00778860 /* FNMRecordDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AEE681FE3CEFC00778860 /* FNMRecordDetailInfo.swift */; };
 		A39500011FD83AB1001D6086 /* FNMRecordExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFE91FD83AB1001D6086 /* FNMRecordExporter.swift */; };
 		A39500031FD83AB1001D6086 /* FNMDebugListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFEC1FD83AB1001D6086 /* FNMDebugListingViewController.swift */; };
-		A39500041FD83AB1001D6086 /* FNMAppLaunchRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFEF1FD83AB1001D6086 /* FNMAppLaunchRecord.swift */; };
-		A39500051FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFF01FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift */; };
+		A39500041FD83AB1001D6086 /* FNMRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFEF1FD83AB1001D6086 /* FNMRecord.swift */; };
+		A39500051FD83AB1001D6086 /* FNMRequestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFF01FD83AB1001D6086 /* FNMRequestNode.swift */; };
 		A395000C1FD83AB1001D6086 /* FNMNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFFA1FD83AB1001D6086 /* FNMNetworkMonitor.swift */; };
 		A395000D1FD83AB1001D6086 /* FNMAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FFFC1FD83AB1001D6086 /* FNMAdditions.swift */; };
 		A39500101FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395000F1FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift */; };
@@ -25,6 +25,8 @@
 		A3DA63EE201B3637002CB2C0 /* FNMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA63ED201B3637002CB2C0 /* FNMViewController.swift */; };
 		A3E27FC51FC81F9000245188 /* Cold-Start-First-Party-Calls.json in Resources */ = {isa = PBXBuildFile; fileRef = A3E27FC11FC81F8400245188 /* Cold-Start-First-Party-Calls.json */; };
 		A3E27FC71FC81F9000245188 /* Cold-Start-Third-Party-Calls.json in Resources */ = {isa = PBXBuildFile; fileRef = A3E27FC01FC81F8400245188 /* Cold-Start-Third-Party-Calls.json */; };
+		DDD462ED24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */; };
+		DDD462EE24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F737BF202080F97D00ECCDE3 /* FNMHTTPRequestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF1F2080F97C00ECCDE3 /* FNMHTTPRequestRecord.swift */; };
 		F737BF222080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF212080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift */; };
 		F737BF262080FC9100ECCDE3 /* FNMProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF252080FC9100ECCDE3 /* FNMProfile.swift */; };
@@ -48,13 +50,20 @@
 		F7DA82FD24093AF40095D93F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DA82FC24093AF40095D93F /* Assets.xcassets */; };
 		F7DA830024093AF40095D93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */; };
 		F7DA8306240956280095D93F /* Generic-Profile-Response.json in Resources */ = {isa = PBXBuildFile; fileRef = F7C47A8F2406EA7100875E72 /* Generic-Profile-Response.json */; };
-		F7EDC62020ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61B20ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift */; };
-		F7EDC62220ADB2670027B771 /* FNMAppLaunchTimestamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61D20ADB2670027B771 /* FNMAppLaunchTimestamps.swift */; };
+		F7EDC62020ADB2670027B771 /* FNMCurrentRunCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */; };
+		F7EDC62220ADB2670027B771 /* FNMElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61D20ADB2670027B771 /* FNMElement.swift */; };
 		F7EDC62620ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */; };
 		F7FA58A82084A5E700CEFB88 /* FNMProfile+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FA58A72084A5E700CEFB88 /* FNMProfile+Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DDD462EF24DB54C600F14CD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F793CA441F9E361900AA9C41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F793CA4C1F9E361900AA9C41;
+			remoteInfo = FNMNetworkMonitor;
+		};
 		F793CA6C1F9E474200AA9C41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F793CA441F9E361900AA9C41 /* Project object */;
@@ -63,6 +72,20 @@
 			remoteInfo = NetworkMonitor;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DDD462F124DB54C600F14CD6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DDD462EE24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1FA99E1422F96E2000C084BF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -78,8 +101,8 @@
 		A395FFE31FD83AB1001D6086 /* FNMNetworkMonitorURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMNetworkMonitorURLProtocol.swift; sourceTree = "<group>"; };
 		A395FFE91FD83AB1001D6086 /* FNMRecordExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMRecordExporter.swift; sourceTree = "<group>"; };
 		A395FFEC1FD83AB1001D6086 /* FNMDebugListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMDebugListingViewController.swift; sourceTree = "<group>"; };
-		A395FFEF1FD83AB1001D6086 /* FNMAppLaunchRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchRecord.swift; sourceTree = "<group>"; };
-		A395FFF01FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchRequestNode.swift; sourceTree = "<group>"; };
+		A395FFEF1FD83AB1001D6086 /* FNMRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMRecord.swift; sourceTree = "<group>"; };
+		A395FFF01FD83AB1001D6086 /* FNMRequestNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMRequestNode.swift; sourceTree = "<group>"; };
 		A395FFFA1FD83AB1001D6086 /* FNMNetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMNetworkMonitor.swift; sourceTree = "<group>"; };
 		A395FFFC1FD83AB1001D6086 /* FNMAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAdditions.swift; sourceTree = "<group>"; };
 		A3DA63ED201B3637002CB2C0 /* FNMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMViewController.swift; sourceTree = "<group>"; };
@@ -113,8 +136,8 @@
 		F7DA82FC24093AF40095D93F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7DA82FF24093AF40095D93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7DA830124093AF40095D93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7EDC61B20ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchCurrentRunCodableContainer.swift; sourceTree = "<group>"; };
-		F7EDC61D20ADB2670027B771 /* FNMAppLaunchTimestamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMAppLaunchTimestamps.swift; sourceTree = "<group>"; };
+		F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMCurrentRunCodableContainer.swift; sourceTree = "<group>"; };
+		F7EDC61D20ADB2670027B771 /* FNMElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMElement.swift; sourceTree = "<group>"; };
 		F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMHTTPRequestRecordCodableContainer.swift; sourceTree = "<group>"; };
 		F7FA58A72084A5E700CEFB88 /* FNMProfile+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FNMProfile+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD462ED24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +201,7 @@
 			children = (
 				A395FFE91FD83AB1001D6086 /* FNMRecordExporter.swift */,
 				F7EDC62420ADD2180027B771 /* RequestRecord */,
-				F7EDC62320ADD2110027B771 /* AppLaunch */,
+				F7EDC62320ADD2110027B771 /* Records */,
 			);
 			path = Exporter;
 			sourceTree = "<group>";
@@ -219,6 +243,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		DDD462EC24DB54C600F14CD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F737BF1E2080F35B00ECCDE3 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +284,7 @@
 				F793CA671F9E474200AA9C41 /* Tests */,
 				F7DA82F224093AF20095D93F /* Sample */,
 				F793CA4E1F9E361900AA9C41 /* Products */,
+				DDD462EC24DB54C600F14CD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -335,15 +367,15 @@
 			path = Sample;
 			sourceTree = "<group>";
 		};
-		F7EDC62320ADD2110027B771 /* AppLaunch */ = {
+		F7EDC62320ADD2110027B771 /* Records */ = {
 			isa = PBXGroup;
 			children = (
-				A395FFEF1FD83AB1001D6086 /* FNMAppLaunchRecord.swift */,
-				F7EDC61D20ADB2670027B771 /* FNMAppLaunchTimestamps.swift */,
-				A395FFF01FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift */,
-				F7EDC61B20ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift */,
+				A395FFEF1FD83AB1001D6086 /* FNMRecord.swift */,
+				F7EDC61D20ADB2670027B771 /* FNMElement.swift */,
+				A395FFF01FD83AB1001D6086 /* FNMRequestNode.swift */,
+				F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */,
 			);
-			path = AppLaunch;
+			path = Records;
 			sourceTree = "<group>";
 		};
 		F7EDC62420ADD2180027B771 /* RequestRecord */ = {
@@ -412,10 +444,12 @@
 				F7DA82ED24093AF20095D93F /* Sources */,
 				F7DA82EE24093AF20095D93F /* Frameworks */,
 				F7DA82EF24093AF20095D93F /* Resources */,
+				DDD462F124DB54C600F14CD6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DDD462F024DB54C600F14CD6 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -514,20 +548,20 @@
 				A395000D1FD83AB1001D6086 /* FNMAdditions.swift in Sources */,
 				A3DA63EE201B3637002CB2C0 /* FNMViewController.swift in Sources */,
 				4055D74F21BFBDDE0058EC1D /* FNMNetworkMonitorURLProtocol+Protocols.swift in Sources */,
-				A39500041FD83AB1001D6086 /* FNMAppLaunchRecord.swift in Sources */,
+				A39500041FD83AB1001D6086 /* FNMRecord.swift in Sources */,
 				F737BF262080FC9100ECCDE3 /* FNMProfile.swift in Sources */,
 				F7FA58A82084A5E700CEFB88 /* FNMProfile+Codable.swift in Sources */,
 				F737BF222080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift in Sources */,
 				F737BF202080F97D00ECCDE3 /* FNMHTTPRequestRecord.swift in Sources */,
 				A3391C841FE2837B00BBBC18 /* FNMDebugDetailInfoTableViewCell.swift in Sources */,
-				F7EDC62220ADB2670027B771 /* FNMAppLaunchTimestamps.swift in Sources */,
-				A39500051FD83AB1001D6086 /* FNMAppLaunchRequestNode.swift in Sources */,
+				F7EDC62220ADB2670027B771 /* FNMElement.swift in Sources */,
+				A39500051FD83AB1001D6086 /* FNMRequestNode.swift in Sources */,
 				A39500011FD83AB1001D6086 /* FNMRecordExporter.swift in Sources */,
 				A39500101FD84F96001D6086 /* FNMDebugSummaryTableViewCell.swift in Sources */,
 				433A1A0C2355DAA000CB0A8D /* DebugDetailHeadersViewController.swift in Sources */,
 				A395FFFD1FD83AB1001D6086 /* FNMNetworkMonitorURLProtocol.swift in Sources */,
 				A3391C821FE27F8200BBBC18 /* FNMDebugDetailViewController.swift in Sources */,
-				F7EDC62020ADB2670027B771 /* FNMAppLaunchCurrentRunCodableContainer.swift in Sources */,
+				F7EDC62020ADB2670027B771 /* FNMCurrentRunCodableContainer.swift in Sources */,
 				A395000C1FD83AB1001D6086 /* FNMNetworkMonitor.swift in Sources */,
 				A39500031FD83AB1001D6086 /* FNMDebugListingViewController.swift in Sources */,
 				F7BD0C5B20A4A3F900B1E3EA /* FNMLogger.swift in Sources */,
@@ -563,6 +597,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DDD462F024DB54C600F14CD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */;
+			targetProxy = DDD462EF24DB54C600F14CD6 /* PBXContainerItemProxy */;
+		};
 		F793CA6D1F9E474200AA9C41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */;
