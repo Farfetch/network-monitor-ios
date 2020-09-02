@@ -40,6 +40,7 @@ final class FNMDebugListingViewController: FNMViewController {
             type(of: self).defaults().set(newSortOrder.rawValue, forKey: SortOrder.key)
         }
     }
+
     private var errorFilterType: ErrorFilterType = .allRequests
 
     // MARK: Lifecycle
@@ -405,6 +406,41 @@ private extension FNMDebugListingViewController {
     }
 }
 
+// MARK: - Private
+
+private extension FNMDebugListingViewController {
+
+    @available(iOS 11.0, *)
+    func makeShareContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+
+        let action = UIContextualAction(style: .normal, title: nil) { [weak self] (action, swipeButtonView, completion) in
+
+            guard let self = self else {
+
+                return completion(false)
+            }
+
+            if self.filteredRecords.count > indexPath.row,
+               let requestURL = self.filteredRecords[indexPath.row].request.url {
+
+                let ac = UIActivityViewController(activityItems: [requestURL], applicationActivities: nil)
+                self.present(ac, animated: true)
+            }
+
+            completion(true)
+        }
+
+        action.backgroundColor = .systemTeal
+
+        if #available(iOS 13, *) {
+
+            action.image = UIImage(systemName: Constants.exportImage, withConfiguration: nil)
+        }
+
+        return action
+    }
+}
+
 // MARK: - FNMNetworkMonitorObserver
 
 extension FNMDebugListingViewController: FNMNetworkMonitorObserver {
@@ -466,6 +502,14 @@ extension FNMDebugListingViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(detailViewController,
                                                           animated: true)
         }
+    }
+
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        return UISwipeActionsConfiguration(actions: [
+            self.makeShareContextualAction(forRowAt: indexPath)
+        ])
     }
 }
 
