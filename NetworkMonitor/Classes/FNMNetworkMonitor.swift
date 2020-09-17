@@ -158,11 +158,11 @@ public final class FNMNetworkMonitor: NSObject {
     }
 
     /// Export the data
-    public func exportData(record: FNMRecord) {
+    public func exportData(record: FNMRecord, overallRecords: Bool = false) {
 
         self.recordsSyncQueue.async {
 
-            FNMRecordExporter.exportRecord(record, requestRecords: Array(self.records.values))
+            FNMRecordExporter.exportRecord(record, requestRecords: Array(self.records.values), overallRecords: overallRecords)
         }
     }
 
