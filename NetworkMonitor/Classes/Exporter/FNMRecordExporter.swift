@@ -42,7 +42,8 @@ struct FNMRecordExporter {
     }
 
     static func exportRecord(_ record: FNMRecord,
-                                      requestRecords: [FNMHTTPRequestRecord]) {
+                                      requestRecords: [FNMHTTPRequestRecord],
+                                      overallRecords: Bool = false) {
 
         DispatchQueue.global().async {
 
@@ -52,7 +53,8 @@ struct FNMRecordExporter {
                 let currentRunConfigurationFilenameURL = try self.currentRunConfigurationFilenameURL()
 
                 let currentRunSerializableObject = FNMCurrentRunCodableContainer(record: record,
-                                                                                          requestRecords: requestRecords)
+                                                                                          requestRecords: requestRecords,
+                                                                                          overallRecords: overallRecords)
                 try self.encodeObject(currentRunSerializableObject,
                                       fileUrl: currentRunConfigurationFilenameURL)
 

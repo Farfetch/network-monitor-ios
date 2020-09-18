@@ -24,13 +24,15 @@ final class FNMCurrentRunCodableContainer: NSObject {
     var nonBlockingRequestNodes: [FNMRequestNode] { return self.matchesContainer?.nonBlockingRequestNodes() ?? [] }
 
     init(record: FNMRecord,
-         requestRecords: [FNMHTTPRequestRecord]) {
+         requestRecords: [FNMHTTPRequestRecord],
+         overallRecords: Bool = false) {
 
         self.record = record
         self.requestRecords = requestRecords
 
         self.matchesContainer = RecordNodeMatchesContainer(requestRecords: self.requestRecords,
-                                                           and: self.record)
+                                                           and: self.record,
+                                                           overallRecords: overallRecords)
     }
 }
 
@@ -42,9 +44,9 @@ private struct RecordNodeMatchesContainer {
     let matches: [FNMRecordNodeMatch]
 
     init?(requestRecords: [FNMHTTPRequestRecord],
-          and record: FNMRecord) {
+          and record: FNMRecord, overallRecords: Bool = false) {
 
-        let callElement = record.timestamps["firstPartyAPISetup"]
+        let callElement = record.timestamps[overallRecords ? "overall" : "firstPartyAPISetup"]
 
         guard let callsStart = callElement?.start,
             let callsEnd = callElement?.end,
