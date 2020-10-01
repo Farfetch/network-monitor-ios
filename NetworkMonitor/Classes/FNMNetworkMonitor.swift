@@ -31,7 +31,7 @@ public final class FNMNetworkMonitor: NSObject {
     public var logScope: FNMLogScope?
 
     /// Whether the passive export is enabled
-    public var passiveExport = false
+    public var passiveExportPreference: FNMRecordExporterPreference = .off
 
     /// The current collection of records recorded so far
     @objc
@@ -55,9 +55,7 @@ public final class FNMNetworkMonitor: NSObject {
 
     /// Start monitoring the network
     @objc
-    public func startMonitoring(passiveExport: Bool = false) {
-
-        self.passiveExport = passiveExport
+    public func startMonitoring() {
 
         self.subscribe(observer: self)
 
@@ -176,13 +174,7 @@ public final class FNMNetworkMonitor: NSObject {
             let localRecordsSequence = Array(localRecords.values)
 
             FNMRecordExporter.export(localRecordsSequence,
-                                     option: .sortedAlphabetically)
-
-            FNMRecordExporter.export(localRecordsSequence,
-                                     option: .sortedStartTimestamp)
-
-            FNMRecordExporter.export(localRecordsSequence,
-                                     option: .sortedSlowest)
+                                     preference: self.passiveExportPreference)
         }
     }
 
@@ -324,7 +316,7 @@ extension FNMNetworkMonitor: FNMNetworkMonitorObserver {
 
     public func recordsUpdated(records: [FNMHTTPRequestRecord]) {
 
-        guard self.passiveExport,
+        guard case FNMRecordExporterPreference.on(_) = self.passiveExportPreference,
             records.filter({ $0.conclusion == nil }).count == 0 else { return }
 
         self.exportRecordData()

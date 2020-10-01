@@ -19,7 +19,7 @@ class NetworkMonitorDebugUITests: NetworkMonitorUnitTests {
         XCTAssertEqual(self.networkMonitor.records.count, 0)
 
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+        FNMNetworkMonitor.shared.startMonitoring()
 
         let debugListingViewController = FNMDebugListingViewController()
         debugListingViewController.view.layoutIfNeeded()
@@ -43,7 +43,7 @@ class NetworkMonitorDebugUITests: NetworkMonitorUnitTests {
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+        FNMNetworkMonitor.shared.startMonitoring()
 
         let robotsExpectation = expectation(description: "Some Robots")
         self.reachSitesSequencially(sites: [.alphabet], expectation: robotsExpectation)

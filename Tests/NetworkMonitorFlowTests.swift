@@ -144,7 +144,7 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
         XCTAssertEqual(self.networkMonitor.records.count, 0)
 
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+        FNMNetworkMonitor.shared.startMonitoring()
 
         let robotsExpectation = expectation(description: "Some Robots")
         self.reachVariousSitesConcurrently(expectation: robotsExpectation)
@@ -190,7 +190,7 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
         XCTAssertEqual(self.networkMonitor.records.count, 0)
 
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+        FNMNetworkMonitor.shared.startMonitoring()
 
         let robotsExpectation = expectation(description: "Some Robots")
         self.reachSitesSequencially(expectation: robotsExpectation)
@@ -226,7 +226,7 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+        FNMNetworkMonitor.shared.startMonitoring()
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)
@@ -289,7 +289,7 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+        FNMNetworkMonitor.shared.startMonitoring()
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)

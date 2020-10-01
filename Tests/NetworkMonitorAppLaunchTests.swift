@@ -23,7 +23,8 @@ class NetworkMonitorTests: NetworkMonitorUnitTests {
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: true)
+        FNMNetworkMonitor.shared.startMonitoring()
+        FNMNetworkMonitor.shared.passiveExportPreference = .on(setting: .unlimited)
 
         let debugListingViewController = FNMDebugListingViewController()
         debugListingViewController.view.layoutIfNeeded()

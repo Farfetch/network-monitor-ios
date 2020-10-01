@@ -8,42 +8,75 @@
 
 import Foundation
 
-public enum FNMRecordExporterSortOption: String {
+public enum FNMRecordExporterPreference {
 
-    case sortedStartTimestamp = "sorted-start-timestamp"
-    case sortedAlphabetically = "sorted-alphabetically"
-    case sortedSlowest = "sorted-slowest"
+    case off
+    case on(setting: FNMRecordExporterPreferenceSetting)
+
+    public enum FNMRecordExporterPreferenceSetting {
+
+        case unlimited
+        case first(numberOfRecords: Int)
+        case last(numberOfRecords: Int)
+    }
 }
 
 struct FNMRecordExporter {
 
+    static var requestRecordExportQueued: Bool = false
+
     static func export(_ requestRecords: [FNMHTTPRequestRecord],
-                       option: FNMRecordExporterSortOption) {
+                       preference: FNMRecordExporterPreference) {
 
-        DispatchQueue.global().async {
+        if case let FNMRecordExporterPreference.on(setting) = preference {
 
-            do {
+            NSLog("🌀 Export requested, \(requestRecords.count)")
+            if self.requestRecordExportQueued == false {
+                NSLog("🌀🌀 Export queued")
+                self.requestRecordExportQueued = true
 
-                let recordsFilenameURL = try self.recordsFilenameURL(option: option)
+                DispatchQueue.global().asyncAfter(deadline: .now() + Constants.exportDebounceDelay,
+                                                  execute: {
 
-                let serializableObject = FNMHTTPRequestRecordCodableContainer(records: requestRecords,
-                                                                             option: option)
+                                                    do {
+                                                        NSLog("🌀🌀🌀 Export executing")
+                                                        let recordsFilenameURL = try self.recordsFilenameURL()
+                                                        let requestRecordsToProcess: [FNMHTTPRequestRecord]
 
-                try self.encodeObject(serializableObject,
-                                      fileUrl: recordsFilenameURL)
+                                                        switch setting {
 
-                FNMRecordExporter.log(message: "Exported Request Records Using Option '\(option)'")
+                                                        case .unlimited:
+                                                            requestRecordsToProcess = requestRecords
 
-            } catch {
+                                                        case .first(let numberOfRecords):
+                                                            requestRecordsToProcess = Array(requestRecords.prefix(numberOfRecords))
 
-                assertionFailure("Failed to export, please advise")
+                                                        case .last(let numberOfRecords):
+                                                            requestRecordsToProcess = Array(requestRecords.suffix(numberOfRecords))
+                                                        }
+
+                                                        let serializableObject = FNMHTTPRequestRecordCodableContainer(records: requestRecordsToProcess)
+
+                                                        try self.encodeObject(serializableObject,
+                                                                              fileUrl: recordsFilenameURL)
+
+                                                        FNMRecordExporter.log(message: "Exported Request Records Using Setting '\(setting)'")
+
+                                                        self.requestRecordExportQueued = false
+                                                        NSLog("🌀🌀🌀🌀 Export executed, \(requestRecordsToProcess.count)")
+
+                                                    } catch {
+
+                                                        assertionFailure("Failed to export, please advise")
+                                                    }
+                                                  })
             }
         }
     }
 
     static func exportRecord(_ record: FNMRecord,
-                                      requestRecords: [FNMHTTPRequestRecord],
-                                      overallRecords: Bool = false) {
+                             requestRecords: [FNMHTTPRequestRecord],
+                             overallRecords: Bool = false) {
 
         DispatchQueue.global().async {
 
@@ -86,14 +119,13 @@ extension FNMRecordExporter {
         return self.currentRunConfigurationFilenameURL(path: currentRunFolderPath)
     }
 
-    static func recordsFilenameURL(option: FNMRecordExporterSortOption) throws -> URL {
+    static func recordsFilenameURL() throws -> URL {
 
         let folderPath = try self.relativeRecordsFolder(title: self.folderBaseName())
 
         _ = try self.createFolder(at: folderPath)
 
-        return self.recordsFilenameURL(path: folderPath,
-                                       option: option)
+        return self.recordsFilenameURL(path: folderPath)
     }
 
     private static func log(message: String) {
@@ -152,14 +184,13 @@ extension FNMRecordExporter {
         }
     }
 
-    private static func recordsFilenameURL(path: URL,
-                                           option: FNMRecordExporterSortOption) -> URL {
+    private static func recordsFilenameURL(path: URL) -> URL {
 
         var filePath = path
 
         filePath.appendPathComponent(Constants.exportRecordsSimpleFilename +
             Constants.exportFileSeparator +
-            option.rawValue +
+            Constants.exportRecordsFilename +
             Constants.exportFileExtension)
 
         return filePath
@@ -213,9 +244,12 @@ private extension FNMRecordExporter {
         static let exportGeneralFolderPath = "AppLaunch"
         static let exportCurrentRunFolderPath = "CurrentRun"
         static let exportRecordsGeneralFolderPath = "Records"
+        static let exportRecordsFilename = "sorted-start-timestamp"
         static let exportCurrentRunFilename = "configuration"
         static let exportRecordsSimpleFilename = "records"
         static let exportFileExtension = ".json"
         static let exportFileSeparator = "-"
+
+        static let exportDebounceDelay = 1.5
     }
 }
