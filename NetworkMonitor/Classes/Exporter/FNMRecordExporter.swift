@@ -30,16 +30,15 @@ struct FNMRecordExporter {
 
         if case let FNMRecordExporterPreference.on(setting) = preference {
 
-            NSLog("🌀 Export requested, \(requestRecords.count)")
             if self.requestRecordExportQueued == false {
-                NSLog("🌀🌀 Export queued")
+
                 self.requestRecordExportQueued = true
 
                 DispatchQueue.global().asyncAfter(deadline: .now() + Constants.exportDebounceDelay,
                                                   execute: {
 
                                                     do {
-                                                        NSLog("🌀🌀🌀 Export executing")
+
                                                         let recordsFilenameURL = try self.recordsFilenameURL()
                                                         let requestRecordsToProcess: [FNMHTTPRequestRecord]
 
@@ -63,7 +62,6 @@ struct FNMRecordExporter {
                                                         FNMRecordExporter.log(message: "Exported Request Records Using Setting '\(setting)'")
 
                                                         self.requestRecordExportQueued = false
-                                                        NSLog("🌀🌀🌀🌀 Export executed, \(requestRecordsToProcess.count)")
 
                                                     } catch {
 
