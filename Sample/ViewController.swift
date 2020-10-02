@@ -95,7 +95,8 @@ final class ViewController: UIViewController {
         FNMNetworkMonitor.registerToLoadingSystem()
         FNMNetworkMonitor.shared.configure(profiles: profiles)
 
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: true)
+        FNMNetworkMonitor.shared.startMonitoring()
+        FNMNetworkMonitor.shared.passiveExportPreference = .on(setting: .unlimited)
         FNMNetworkMonitor.shared.logScope = [.export, .profile, .urlProtocol]
     }
 
