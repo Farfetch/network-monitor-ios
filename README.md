@@ -28,7 +28,7 @@ Preview:
 
 ```swift    
 FNMNetworkMonitor.registerToLoadingSystem()
-FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+FNMNetworkMonitor.shared.startMonitoring()
 ```
     
 2. Monitoring custom URLSessions by supplying the FNMMonitor URL Protocol:
@@ -37,7 +37,7 @@ FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
 let sessionConfig = URLSessionConfiguration.ephemeral
 sessionConfig.protocolClasses = FNMNetworkMonitor.normalizedURLProtocols()
 self.customSession = URLSession(configuration: sessionConfig)
-FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+FNMNetworkMonitor.shared.startMonitoring()
 ```
 
 3. You can also take advantage of sizzling the URLSessionConfiguration creation to configure the URL Protocol to all sessions, allowing to monitor 3rd party SDKs too.
@@ -52,7 +52,7 @@ let profiles = [FNMProfile(request: request,
                                             responseHolder: .keyValue(value: [ "FieldA": 1 ])
                                             delay: 0.25)])]
 FNMNetworkMonitor.shared.configure(profiles: profiles)
-FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
+FNMNetworkMonitor.shared.startMonitoring()
 ```
 
 Make sure to follow steps 1, 2 or 3, depending on the URLSession that runs that particular request.
@@ -73,7 +73,7 @@ FNMNetworkMonitor.shared.logScope = [.export, .profile, .urlProtocol]
 Finally, you can turn on the passive export and the requests will be exported to a json file inside a folder found the Documents application folder.
 
 ```swift    
-FNMNetworkMonitor.shared.startMonitoring(passiveExport: true)
+FNMNetworkMonitor.shared.passiveExportPreference = FNMRecordExporterPreference.on(setting: .unlimited)
 ```
 
 ### Sample app

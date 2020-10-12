@@ -138,13 +138,19 @@ extension XCTestCase {
 
 class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
 
+    override func setUp() {
+
+        FNMNetworkMonitor.registerToLoadingSystem()
+        FNMNetworkMonitor.shared.startMonitoring()
+        FNMNetworkMonitor.shared.passiveExportPreference = .off
+
+        super.setUp()
+    }
+
     func testLiveRequestRecordsConcurrently() {
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)
-
-        FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
 
         let robotsExpectation = expectation(description: "Some Robots")
         self.reachVariousSitesConcurrently(expectation: robotsExpectation)
@@ -189,9 +195,6 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)
 
-        FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
-
         let robotsExpectation = expectation(description: "Some Robots")
         self.reachSitesSequencially(expectation: robotsExpectation)
 
@@ -225,8 +228,6 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
 
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
-        FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)
@@ -288,8 +289,6 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
 
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
-        FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: false)
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)

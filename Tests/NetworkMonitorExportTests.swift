@@ -13,7 +13,7 @@ import XCTest
 
 class NetworkMonitorExportTests: NetworkMonitorUnitTests {
 
-    func testExportPassiveFiles() {
+    func testExportPassiveFilesUnlimited() {
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)
@@ -21,30 +21,66 @@ class NetworkMonitorExportTests: NetworkMonitorUnitTests {
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: true)
+        FNMNetworkMonitor.shared.startMonitoring()
+        FNMNetworkMonitor.shared.passiveExportPreference = .on(setting: .unlimited)
 
         let robotsExpectation = expectation(description: "Some Robots")
         self.reachSitesSequencially(sites: [.alphabet, .intel]) {
 
-            DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
+            self.forceExport {
 
                 let exportFiles = self.exportPassiveFiles
 
                 /// The files arent decodable, so lets just check for the string count. We just want to make sure something is being written out
-                XCTAssertLessThan(exportFiles.startTimestampRecordsFileCount, 1000)
-                XCTAssertLessThan(exportFiles.alphaRecordsFileCount, 1000)
-                XCTAssertLessThan(exportFiles.slowestRecordsFileCount, 1000)
+                XCTAssertLessThan(exportFiles, 1000)
 
-                self.reachSitesSequencially(sites: [.amazon, .netflix]) {
+                self.reachSitesSequencially(sites: [.alphabet, .intel]) {
 
-                    DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
+                    self.forceExport {
 
                         let exportFiles = self.exportPassiveFiles
 
                         /// The files arent decodable, so lets just check for the string count. We just want to make sure something is being written out
-                        XCTAssertGreaterThan(exportFiles.startTimestampRecordsFileCount, 100)
-                        XCTAssertGreaterThan(exportFiles.alphaRecordsFileCount, 1000)
-                        XCTAssertGreaterThan(exportFiles.slowestRecordsFileCount, 1000)
+                        XCTAssertGreaterThan(exportFiles, 1000)
+
+                        robotsExpectation.fulfill()
+                    }
+                }
+            }
+        }
+
+        waitForExpectations(timeout: 60) { _ in }
+    }
+
+    func testExportPassiveFilesLimited() {
+
+        XCTAssertNotNil(FNMNetworkMonitor.shared)
+        XCTAssertEqual(self.networkMonitor.records.count, 0)
+
+        self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
+        self.networkMonitor.clear(completion: { } )
+        FNMNetworkMonitor.registerToLoadingSystem()
+        FNMNetworkMonitor.shared.startMonitoring()
+        FNMNetworkMonitor.shared.passiveExportPreference = .on(setting: .first(numberOfRecords: 2))
+
+        let robotsExpectation = expectation(description: "Some Robots")
+        self.reachSitesSequencially(sites: [.alphabet, .intel]) {
+
+            self.forceExport {
+
+                let exportFiles = self.exportPassiveFiles
+
+                /// The files arent decodable, so lets just check for the string count. We just want to make sure something is being written out
+                XCTAssertLessThan(exportFiles, 1000)
+
+                self.reachSitesSequencially(sites: [.alphabet, .intel]) {
+
+                    self.forceExport {
+
+                        let exportFiles = self.exportPassiveFiles
+
+                        /// The files arent decodable, so lets just check for the string count. We just want to make sure something is being written out
+                        XCTAssertLessThan(exportFiles, 1000)
 
                         robotsExpectation.fulfill()
                     }
@@ -63,7 +99,8 @@ class NetworkMonitorExportTests: NetworkMonitorUnitTests {
         self.networkMonitor.configure(profiles: Constants.Sites.allCases.map { $0.profile })
         self.networkMonitor.clear(completion: { } )
         FNMNetworkMonitor.registerToLoadingSystem()
-        FNMNetworkMonitor.shared.startMonitoring(passiveExport: true)
+        FNMNetworkMonitor.shared.startMonitoring()
+        FNMNetworkMonitor.shared.passiveExportPreference = .on(setting: .unlimited)
 
         let robotsExpectation = expectation(description: "Some Robots")
         self.reachSitesSequencially(sites: [.alphabet, .intel], expectation: robotsExpectation)
@@ -79,22 +116,31 @@ class NetworkMonitorExportTests: NetworkMonitorUnitTests {
         }
     }
 
-    var exportPassiveFiles: (startTimestampRecordsFileCount: Int, alphaRecordsFileCount: Int, slowestRecordsFileCount: Int) {
+    var exportPassiveFiles: Int {
 
         do {
 
-            let startTimestampRecordsFile = try String(contentsOf: FNMRecordExporter.recordsFilenameURL(option: .sortedStartTimestamp),
+            let startTimestampRecordsFile = try String(contentsOf: FNMRecordExporter.recordsFilenameURL(),
                                                        encoding: .utf8)
-            let alphaRecordsFile = try String(contentsOf: FNMRecordExporter.recordsFilenameURL(option: .sortedAlphabetically),
-                                              encoding: .utf8)
-            let slowestRecordsFile = try String(contentsOf: FNMRecordExporter.recordsFilenameURL(option: .sortedSlowest),
-                                                encoding: .utf8)
 
-            return (startTimestampRecordsFile.count, alphaRecordsFile.count, slowestRecordsFile.count)
+            return startTimestampRecordsFile.count
 
         } catch {
 
-            return (0, 0, 0)
+            return 0
+        }
+    }
+
+    func forceExport(closure: @escaping () -> Void) {
+
+        DispatchQueue.global().asyncAfter(deadline: .now() + 4.0) {
+
+            FNMNetworkMonitor.shared.exportRecordData()
+
+            DispatchQueue.global().asyncAfter(deadline: .now() + 4.0) {
+
+                closure()
+            }
         }
     }
 

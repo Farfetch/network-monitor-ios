@@ -41,6 +41,15 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
         static let bodySwimsuitBodyLong = " swimsuit body Swimsuit body "
     }
 
+    override func setUp() {
+
+        FNMNetworkMonitor.registerToLoadingSystem()
+        FNMNetworkMonitor.shared.startMonitoring()
+        FNMNetworkMonitor.shared.passiveExportPreference = .off
+
+        super.setUp()
+    }
+
     func testProfilesCompletionStatic() {
 
         let profileRequest = FNMProfileRequest(urlPattern: .staticPattern(url: URLConstants.repeatTastySecretiveYarnMuddledGET))
@@ -51,8 +60,6 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
                                                  ]))]
 
         FNMNetworkMonitor.shared.configure(profiles: [FNMProfile(request: profileRequest, responses: responses)])
-        FNMNetworkMonitor.shared.startMonitoring()
-        FNMNetworkMonitor.registerToLoadingSystem()
 
         let request = self.request(for: URLConstants.repeatTastySecretiveYarnMuddledGET,
                                    httpMethod: "GET")
@@ -94,8 +101,6 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
                                                  ]))]
 
         FNMNetworkMonitor.shared.configure(profiles: [FNMProfile(request: profileRequest, responses: responses)])
-        FNMNetworkMonitor.shared.startMonitoring()
-        FNMNetworkMonitor.registerToLoadingSystem()
 
         let request = self.request(for: URLConstants.repeatTastySecretiveYarnMuddledGET,
                                    httpMethod: "GET")
@@ -141,8 +146,6 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
 
         FNMNetworkMonitor.shared.configure(profiles: [FNMProfile(request: profileRequestA, responses: responsesA),
                                                       FNMProfile(request: profileRequestB, responses: responsesB)])
-        FNMNetworkMonitor.shared.startMonitoring()
-        FNMNetworkMonitor.registerToLoadingSystem()
 
         let requestA = self.request(for: URLConstants.repeatTastySecretiveYarnMuddledGET,
                                     httpMethod: "GET")

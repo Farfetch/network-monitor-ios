@@ -12,11 +12,9 @@ struct FNMHTTPRequestRecordCodableContainer {
 
     let records: [FNMHTTPRequestRecord]
 
-    init(records: [FNMHTTPRequestRecord],
-         option: FNMRecordExporterSortOption) {
+    init(records: [FNMHTTPRequestRecord]) {
 
-        self.records = type(of: self).sorted(records: records,
-                                             option: option)
+        self.records = type(of: self).sorted(records: records)
     }
 }
 
@@ -41,42 +39,11 @@ private extension FNMHTTPRequestRecordCodableContainer {
 
 private extension FNMHTTPRequestRecordCodableContainer {
 
-    static func sorted(records: [FNMHTTPRequestRecord],
-                       option: FNMRecordExporterSortOption) -> [FNMHTTPRequestRecord] {
+    static func sorted(records: [FNMHTTPRequestRecord]) -> [FNMHTTPRequestRecord] {
 
-        switch option {
-        case .sortedAlphabetically:
+        return records.sorted {
 
-            return records.sorted {
-
-                guard let recordAAbsoluteURL = $0.request.url?.absoluteString,
-                    let recordAScheme = $0.request.url?.scheme,
-                    let recordBAbsoluteURL = $1.request.url?.absoluteString,
-                    let recordBScheme = $1.request.url?.scheme else { return false }
-
-                // The scheme is not relevant for this sort
-                let recordATrimmedURL = recordAAbsoluteURL.replacingOccurrences(of: recordAScheme, with: "")
-                let recordBTrimmedURL = recordBAbsoluteURL.replacingOccurrences(of: recordBScheme, with: "")
-
-                return recordATrimmedURL.compare(recordBTrimmedURL) == .orderedAscending
-            }
-
-        case .sortedSlowest:
-
-            return records.sorted {
-
-                guard let recordATimeSpent = $0.timeSpent,
-                    let recordBTimeSpent = $1.timeSpent else { return false }
-
-                return recordATimeSpent > recordBTimeSpent
-            }
-
-        case .sortedStartTimestamp:
-
-            return records.sorted {
-
-                return $0.startTimestamp.timeIntervalSince1970 < $1.startTimestamp.timeIntervalSince1970
-            }
+            return $0.startTimestamp.timeIntervalSince1970 < $1.startTimestamp.timeIntervalSince1970
         }
     }
 
