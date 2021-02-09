@@ -56,6 +56,11 @@ final public class FNMHTTPRequestRecord: NSObject {
         return endTimestamp.timeIntervalSince1970 - self.startTimestamp.timeIntervalSince1970
     }
 
+    public var profile: FNMProfile? {
+
+        return FNMProfile(record: self)
+    }
+
     public init(key: HTTPRequestRecordKey,
                 request: NSURLRequest,
                 startTimestamp: Date) {

@@ -33,6 +33,7 @@ extension FNMHTTPRequestRecord: Encodable {
         case startTimestamp = "startedAt"
         case endTimestamp = "endedAt"
         case timeSpent = "timeSpent"
+        case profile = "profile"
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -44,6 +45,7 @@ extension FNMHTTPRequestRecord: Encodable {
         try container.encode(self.endTimestamp, forKey: .endTimestamp)
         try container.encode(self.conclusion?.displayRepresentation(), forKey: .conclusion)
         try container.encode(self.timeSpent, forKey: .timeSpent)
+        try container.encode(self.profile, forKey: .profile)
     }
 }
 

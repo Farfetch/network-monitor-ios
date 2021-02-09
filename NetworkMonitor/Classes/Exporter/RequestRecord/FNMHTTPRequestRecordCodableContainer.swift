@@ -29,12 +29,6 @@ private extension FNMHTTPRequestRecordCodableContainer {
 
         return type(of: self).totalTimeSpend(from: records)
     }
-
-    var availableProfiles: [FNMProfile] {
-
-        return records.compactMap { return FNMProfile(record: $0) }
-    }
-
 }
 
 private extension FNMHTTPRequestRecordCodableContainer {
@@ -62,7 +56,6 @@ extension FNMHTTPRequestRecordCodableContainer: Encodable {
     enum CodingKeys: String, CodingKey {
 
         case records
-        case availableProfiles
         case totalRecords
         case totalTimeSpend
     }
@@ -73,6 +66,5 @@ extension FNMHTTPRequestRecordCodableContainer: Encodable {
         try container.encode(self.totalRecords, forKey: .totalRecords)
         try container.encode(self.totalTimeSpend, forKey: .totalTimeSpend)
         try container.encode(self.records, forKey: .records)
-        try container.encode(self.availableProfiles, forKey: .availableProfiles)
     }
 }
