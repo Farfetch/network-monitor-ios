@@ -12,7 +12,6 @@ import UIKit
 final class DebugDetailBodyViewController: UIViewController, HighlightReloadable {
 
     // MARK: Properties
-
     let recordBodyDetailInfo: RecordBodyDetailInfo
 
     private let titleLabel = UILabel()
@@ -21,7 +20,6 @@ final class DebugDetailBodyViewController: UIViewController, HighlightReloadable
     var highlight: String = ""
 
     // MARK: Lifecycle
-
     init(recordBodyDetailInfo: RecordBodyDetailInfo) {
 
         self.recordBodyDetailInfo = recordBodyDetailInfo
@@ -43,7 +41,6 @@ final class DebugDetailBodyViewController: UIViewController, HighlightReloadable
     }
 
     // MARK: Public
-
     func reloadData(with highlight: String?) {
 
         self.highlight = highlight ?? ""
@@ -57,7 +54,6 @@ final class DebugDetailBodyViewController: UIViewController, HighlightReloadable
 private extension DebugDetailBodyViewController {
 
     // MARK: - Constants
-
     enum Constants {
 
            static let goldColor = UIColor(red: 196.0, green: 170.0, blue: 132.0, alpha: 1.0)
@@ -66,7 +62,6 @@ private extension DebugDetailBodyViewController {
     }
 
     // MARK: - Layout Configuration
-
     func configureViews() {
 
         self.view.addSubview(self.titleLabel)

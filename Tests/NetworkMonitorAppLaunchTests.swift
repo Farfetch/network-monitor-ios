@@ -11,11 +11,11 @@ import XCTest
 
 @testable import FNMNetworkMonitor
 
-class NetworkMonitorTests: NetworkMonitorUnitTests {
+class NetworkMonitorAppLaunchTests: NetworkMonitorUnitTests {
 
-    func test() {
+    func testAppLaunch() {
 
-        let recordBuilder = FFSDebugEnvironmentHelperRecordBuilder()
+        let recordBuilder = DebugEnvironmentHelperRecordBuilder()
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
         XCTAssertEqual(self.networkMonitor.records.count, 0)
@@ -33,26 +33,26 @@ class NetworkMonitorTests: NetworkMonitorUnitTests {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { recordBuilder.recordProgress(.overall, dateType: .start) }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { recordBuilder.recordProgress(.firstPartyFramework, dateType: .start) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { recordBuilder.recordProgress(.firstPartyFramework, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { recordBuilder.recordProgress(.innerStep1, dateType: .start) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { recordBuilder.recordProgress(.innerStep1, dateType: .end) }
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
 
-            recordBuilder.recordProgress(.thirdPartyFramework, dateType: .start)
+            recordBuilder.recordProgress(.innerStep2, dateType: .start)
 
             self.reachSitesSequencially(sites: [.alphabet],
                                         completion: {})
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { recordBuilder.recordProgress(.thirdPartyFramework, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { recordBuilder.recordProgress(.innerStep2, dateType: .end) }
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
 
-            recordBuilder.recordProgress(.firstPartyAPISetup, dateType: .start)
+            recordBuilder.recordProgress(.innerStep3, dateType: .start)
 
             self.reachSitesSequencially(sites: [.intel],
                                         completion: {})
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 7) { recordBuilder.recordProgress(.firstPartyAPISetup, dateType: .end) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { recordBuilder.recordProgress(.uiSetup, dateType: .start) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 9) { recordBuilder.recordProgress(.uiSetup, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7) { recordBuilder.recordProgress(.innerStep3, dateType: .end) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { recordBuilder.recordProgress(.innerStep4, dateType: .start) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 9) { recordBuilder.recordProgress(.innerStep4, dateType: .end) }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) { recordBuilder.recordProgress(.overall, dateType: .end)
 
@@ -69,45 +69,45 @@ class NetworkMonitorTests: NetworkMonitorUnitTests {
     }
 }
 
-private extension NetworkMonitorTests {
+private extension NetworkMonitorAppLaunchTests {
 
-    enum FFSLaunchDateType: Int {
+    enum LaunchDateType: Int {
 
         case start
         case end
     }
 
-    enum FFSLaunchReportElement: Int {
+    enum LaunchReportElement: Int {
 
-        private enum Constants {
+        enum Constants {
 
             static let overall = "overall"
-            static let thirdPartyFramework = "thirdPartyFramework"
-            static let firstPartyFramework = "firstPartyFramework"
-            static let firstPartyAPISetup = "firstPartyAPISetup"
-            static let uiSetup = "uiSetup"
+            static let innerStep1 = "innerStep1"
+            static let innerStep2 = "innerStep2"
+            static let innerStep3 = "innerStep3"
+            static let innerStep4 = "innerStep4"
         }
 
         case overall
-        case thirdPartyFramework
-        case firstPartyFramework
-        case firstPartyAPISetup
-        case uiSetup
+        case innerStep1
+        case innerStep2
+        case innerStep3
+        case innerStep4
 
         func elementIdentifier() -> String {
 
             switch self {
 
             case .overall: return Constants.overall
-            case .thirdPartyFramework: return Constants.thirdPartyFramework
-            case .firstPartyFramework: return Constants.firstPartyFramework
-            case .firstPartyAPISetup: return Constants.firstPartyAPISetup
-            case .uiSetup: return Constants.uiSetup
+            case .innerStep1: return Constants.innerStep1
+            case .innerStep2: return Constants.innerStep2
+            case .innerStep3: return Constants.innerStep3
+            case .innerStep4: return Constants.innerStep4
             }
         }
     }
 
-    class FFSElementBuilder {
+    class ElementBuilder {
 
         var identifier: String
         var start: Date?
@@ -132,32 +132,32 @@ private extension NetworkMonitorTests {
         }
     }
 
-    class FFSDebugEnvironmentHelperRecordBuilder: NSObject {
+    class DebugEnvironmentHelperRecordBuilder: NSObject {
 
-        var overall = FFSElementBuilder(identifier: FFSLaunchReportElement.overall.elementIdentifier())
-        var thirdPartyFrameworkSetup = FFSElementBuilder(identifier: FFSLaunchReportElement.thirdPartyFramework.elementIdentifier())
-        var firstPartyFrameworkSetup = FFSElementBuilder(identifier: FFSLaunchReportElement.firstPartyFramework.elementIdentifier())
-        var firstPartyAPISetup = FFSElementBuilder(identifier: FFSLaunchReportElement.firstPartyAPISetup.elementIdentifier())
-        var uiSetup = FFSElementBuilder(identifier: FFSLaunchReportElement.uiSetup.elementIdentifier())
+        var overall = ElementBuilder(identifier: LaunchReportElement.overall.elementIdentifier())
+        var innerStep1 = ElementBuilder(identifier: LaunchReportElement.innerStep1.elementIdentifier())
+        var innerStep2 = ElementBuilder(identifier: LaunchReportElement.innerStep2.elementIdentifier())
+        var innerStep3 = ElementBuilder(identifier: LaunchReportElement.innerStep3.elementIdentifier())
+        var innerStep4 = ElementBuilder(identifier: LaunchReportElement.innerStep4.elementIdentifier())
 
-        func recordProgress(_ elementType: FFSLaunchReportElement, dateType: FFSLaunchDateType) {
+        func recordProgress(_ elementType: LaunchReportElement, dateType: LaunchDateType) {
 
             let date = Date()
 
-            var element: FFSElementBuilder?
+            var element: ElementBuilder?
 
             switch elementType {
 
             case .overall:
                 element = self.overall
-            case .thirdPartyFramework:
-                element = self.thirdPartyFrameworkSetup
-            case .firstPartyFramework:
-                element = self.firstPartyFrameworkSetup
-            case .firstPartyAPISetup:
-                element = self.firstPartyAPISetup
-            case .uiSetup:
-                element = self.uiSetup
+            case .innerStep1:
+                element = self.innerStep1
+            case .innerStep2:
+                element = self.innerStep2
+            case .innerStep3:
+                element = self.innerStep3
+            case .innerStep4:
+                element = self.innerStep4
             }
 
             switch dateType {
@@ -169,33 +169,33 @@ private extension NetworkMonitorTests {
         }
     }
 
-    func commit(from recordBuilder: FFSDebugEnvironmentHelperRecordBuilder) {
+    func commit(from recordBuilder: DebugEnvironmentHelperRecordBuilder) {
 
         guard let overall = recordBuilder.overall.build(),
-            let thirdPartyFrameworkSetup = recordBuilder.thirdPartyFrameworkSetup.build(),
-            let firstPartyFrameworkSetup = recordBuilder.firstPartyFrameworkSetup.build(),
-            let firstPartyAPISetup = recordBuilder.firstPartyAPISetup.build(),
-            let uiSetup = recordBuilder.uiSetup.build() else {
+            let innerStep1 = recordBuilder.innerStep1.build(),
+            let innerStep2 = recordBuilder.innerStep2.build(),
+            let innerStep3 = recordBuilder.innerStep3.build(),
+            let innerStep4 = recordBuilder.innerStep4.build() else {
 
                 assertionFailure("Cannot commit record with insufficient data")
                 return
         }
 
-        let firstPartyRequestNodes: [FNMRequestNode] = FNMRequestNode.decodedElements(from: Bundle.main,
-                                                                                                        filename: Constants.coldStartFirstPartyCallsFilename)
-        let thirdPartyRequestNodes: [FNMRequestNode] = FNMRequestNode.decodedElements(from: Bundle.main,
-                                                                                                        filename: Constants.coldStartThirdPartyCallsFilename)
+        let requestNodesA: [FNMRequestNode] = FNMRequestNode.decodedElements(from: Bundle.main,
+                                                                                      filename: Constants.requestNodesA)
+        let requestNodesB: [FNMRequestNode] = FNMRequestNode.decodedElements(from: Bundle.main,
+                                                                                      filename: Constants.requestNodesB)
 
-        let timestamps = ["overall": overall,
-                          "thirdPartyFrameworkSetup": thirdPartyFrameworkSetup,
-                          "firstPartyFrameworkSetup": firstPartyFrameworkSetup,
-                          "firstPartyAPISetup": firstPartyAPISetup,
-                          "uiSetup": uiSetup]
+        let timestamps = [ LaunchReportElement.Constants.overall: overall,
+                           LaunchReportElement.Constants.innerStep1: innerStep1,
+                           LaunchReportElement.Constants.innerStep2: innerStep2,
+                           LaunchReportElement.Constants.innerStep3: innerStep3,
+                           LaunchReportElement.Constants.innerStep4: innerStep4]
 
         let record = FNMRecord(version: "1.0.0",
-                                                 freshInstall: false,
-                                                 timestamps: timestamps,
-                                                 requestCluster: (firstPartyRequestNodes, thirdPartyRequestNodes))
+                               freshInstall: false,
+                               timestamps: timestamps,
+                               requestCluster: (requestNodesA, requestNodesB))
 
         FNMNetworkMonitor.shared.exportData(record: record)
     }
