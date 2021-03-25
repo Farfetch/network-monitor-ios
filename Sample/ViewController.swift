@@ -15,7 +15,7 @@ final class ViewController: UIViewController {
 
         static let labelTopPadding: CGFloat = 50.0
         static let imageSidePadding: CGFloat = 10.0
-        static let imageBorderWidth: CGFloat = 5.0
+        static let imageBorderWidth: CGFloat = 3.0
 
         static let robotURL = "https://www.alphabet.com/robots.txt"
         static let errorURL = "https://www.ohthehumanity.error"
