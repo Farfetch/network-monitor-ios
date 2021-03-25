@@ -12,7 +12,6 @@ import UIKit
 final class DebugDetailHeadersViewController: UIViewController, HighlightReloadable {
 
     // MARK: Properties
-
     let recordHeaderDetailInfo: RecordHeaderDetailInfo
 
     private let tableView = UITableView(frame: .zero,
@@ -21,7 +20,6 @@ final class DebugDetailHeadersViewController: UIViewController, HighlightReloada
     var highlight: String = ""
 
     // MARK: - Lifecycle
-
     init(recordHeaderDetailInfo: RecordHeaderDetailInfo) {
 
         self.recordHeaderDetailInfo = recordHeaderDetailInfo
@@ -43,7 +41,6 @@ final class DebugDetailHeadersViewController: UIViewController, HighlightReloada
     }
 
     // MARK: Public
-
     func reloadData(with highlight: String?) {
 
         self.highlight = highlight ?? ""
@@ -57,14 +54,12 @@ final class DebugDetailHeadersViewController: UIViewController, HighlightReloada
 private extension DebugDetailHeadersViewController {
 
     // MARK: - Constants
-
     enum Constants {
 
         static let tableViewEstimatedHeight: CGFloat = 60.0
     }
 
     // MARK: - Layout Configuration
-
     func configureViews() {
 
         self.configureTableView()
@@ -107,7 +102,6 @@ private extension DebugDetailHeadersViewController {
 }
 
 // MARK: - DebugDetailHeadersViewController: UITableViewDataSource
-
 extension DebugDetailHeadersViewController: UITableViewDataSource {
 
     enum DebugDetailViewControllerSection: Int {
@@ -200,7 +194,6 @@ extension DebugDetailHeadersViewController: UITableViewDataSource {
 }
 
 // MARK: - DebugDetailHeadersViewController: UITableViewDelegate
-
 extension DebugDetailHeadersViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {

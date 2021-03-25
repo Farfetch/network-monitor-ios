@@ -22,8 +22,8 @@ extension XCTestCase {
         static let matchingProfiles2Filename = "Matching-Profiles-2"
         static let matchingProfiles3Filename = "Matching-Profiles-3"
 
-        static let coldStartFirstPartyCallsFilename = "Cold-Start-First-Party-Calls"
-        static let coldStartThirdPartyCallsFilename = "Cold-Start-Third-Party-Calls"
+        static let requestNodesA = "Request-Nodes-A"
+        static let requestNodesB = "Request-Nodes-B"
 
         static let blackImageFilename = "Image"
 

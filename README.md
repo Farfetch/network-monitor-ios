@@ -7,7 +7,7 @@
 
 ## What is this ?
 
-FNMNetworkMonitor is an iOS networking framework that can be used to monitor the network of an iOS app. 
+FNMNetworkMonitor is a swift iOS networking framework that can be used to monitor the network of an iOS app. 
 It makes **debugging** the network easy, allowing you to pinpoint the root cause of network related problems in your app and share those requests via email. 
 it can also **mock** network requests, making it much easier to use incomplete APIs or model specific states for unit testing.
 
@@ -95,6 +95,4 @@ List of [Maintainers](MAINTAINERS.md)
 
 ## License
 
-[MIT](LICENSE)
-
-
+The FNMNetworkMonitor is released under the [MIT](LICENSE) license. See the LICENSE file for more details.

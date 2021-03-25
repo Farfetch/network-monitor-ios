@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name = 'FNMNetworkMonitor'
   spec.module_name = 'FNMNetworkMonitor'
-  spec.version = '11.0.0'
+  spec.version = '11.1.0'
   spec.summary = 'A network monitor'
   spec.homepage = 'https://github.com/Farfetch/network-monitor-ios'
   spec.license = 'MIT'
@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
 
   spec.cocoapods_version = '>= 1.7'
-  spec.swift_versions = ['5.0']
+  spec.swift_versions = ['5.0', '5.1', '5.2', '5.3']
 
   spec.source_files = 'NetworkMonitor/Classes/**/*.{h,m,swift}'
 end
