@@ -13,8 +13,8 @@ final class ViewController: UIViewController {
 
     enum Constants {
 
-        static let labelTopPadding: CGFloat = 50.0
-        static let imageSidePadding: CGFloat = 10.0
+        static let labelTopPadding: CGFloat = 60.0
+        static let imageSidePadding: CGFloat = 15.0
         static let imageBorderWidth: CGFloat = 3.0
 
         static let robotURL = "https://www.alphabet.com/robots.txt"
