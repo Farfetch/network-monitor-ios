@@ -11,7 +11,7 @@ FNMNetworkMonitor is a swift iOS networking framework that can be used to monito
 It makes **debugging** the network easy, allowing you to pinpoint the root cause of network related problems in your app and share those requests via email. 
 it can also **mock** network requests, making it much easier to use incomplete APIs or model specific states for unit testing.
 
-Supports Swift 5 and is bridged for ObjC compatibility.
+Supports Swift 5 and is bridged for Obj-C compatibility.
 
 Preview:
 
