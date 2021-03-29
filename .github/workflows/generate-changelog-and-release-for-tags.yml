@@ -48,7 +48,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: main
+          ref: master
 
       - name: Get Changelog Entry
         id: changelog_reader
