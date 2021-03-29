@@ -1,4 +1,4 @@
-name: cocoapods-spec-publish
+name: Cocoapods Spec Publish
 
 on:
   push:
