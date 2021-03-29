@@ -1,36 +1,59 @@
 # Changelog
 
-## [11.1.0](https://github.com/diogobalseiro/network-monitor-ios/tree/11.1.0) (2021-03-26)
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/11.0.0...11.1.0)
+**Closed issues:**
 
-## [11.0.0](https://github.com/diogobalseiro/network-monitor-ios/tree/11.0.0) (2021-02-09)
+- No automatic cocoapod spec publishing exists [\#7](https://github.com/Farfetch/network-monitor-ios/issues/7)
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/10.0.0...11.0.0)
+**Merged pull requests:**
 
-## [10.0.0](https://github.com/diogobalseiro/network-monitor-ios/tree/10.0.0) (2020-10-12)
+- Minor Documentation Changes [\#12](https://github.com/Farfetch/network-monitor-ios/pull/12)
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/9.2.0...10.0.0)
+## [11.1.0](https://github.com/Farfetch/network-monitor-ios/tree/11.1.0) (2021-03-26)
 
-## [9.2.0](https://github.com/diogobalseiro/network-monitor-ios/tree/9.2.0) (2020-09-18)
+**Merged pull requests:**
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/9.1.0...9.2.0)
+- Minor housekeeping [\#11](https://github.com/Farfetch/network-monitor-ios/pull/11)
 
-## [9.1.0](https://github.com/diogobalseiro/network-monitor-ios/tree/9.1.0) (2020-09-15)
+## [11.0.0](https://github.com/Farfetch/network-monitor-ios/tree/11.0.0) (2021-02-09)
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/9.0.0...9.1.0)
+**Merged pull requests:**
 
-## [9.0.0](https://github.com/diogobalseiro/network-monitor-ios/tree/9.0.0) (2020-08-18)
+- Change Available Profile in JSON Report.  [\#10](https://github.com/Farfetch/network-monitor-ios/pull/10)
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/8.0.1...9.0.0)
+## [10.0.0](https://github.com/Farfetch/network-monitor-ios/tree/10.0.0) (2020-10-12)
 
-## [8.0.1](https://github.com/diogobalseiro/network-monitor-ios/tree/8.0.1) (2020-07-02)
+**Merged pull requests:**
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/8.0.0...8.0.1)
+- Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
-## [8.0.0](https://github.com/diogobalseiro/network-monitor-ios/tree/8.0.0) (2020-07-02)
+## [9.2.0](https://github.com/Farfetch/network-monitor-ios/tree/9.2.0) (2020-09-18)
 
-[Full Changelog](https://github.com/diogobalseiro/network-monitor-ios/compare/5f9f41c0522ad3bfe489609bf5e6ad0d6757fd07...8.0.0)
+**Merged pull requests:**
+
+- Enables cataloging call using the overall identifier [\#5](https://github.com/Farfetch/network-monitor-ios/pull/5)
+- Tweaked Podspec [\#2](https://github.com/Farfetch/network-monitor-ios/pull/2)
+
+## [9.1.0](https://github.com/Farfetch/network-monitor-ios/tree/9.1.0) (2020-09-15)
+
+**Merged pull requests:**
+
+- Allow copy URL on FNMDebugListingViewController via iOS 11 `UIC… [\#4](https://github.com/Farfetch/network-monitor-ios/pull/4)
+
+## [9.0.0](https://github.com/Farfetch/network-monitor-ios/tree/9.0.0) (2020-08-18)
+
+**Merged pull requests:**
+
+- Removes all mentions of AppLaunch and TimeStamps. FNMElement is now generic [\#3](https://github.com/Farfetch/network-monitor-ios/pull/3)
+
+## [8.0.1](https://github.com/Farfetch/network-monitor-ios/tree/8.0.1) (2020-07-02)
+
+## [8.0.0](https://github.com/Farfetch/network-monitor-ios/tree/8.0.0) (2020-07-02)
+
+**Merged pull requests:**
+
+- Update README.md [\#1](https://github.com/Farfetch/network-monitor-ios/pull/1)
 
 
 
