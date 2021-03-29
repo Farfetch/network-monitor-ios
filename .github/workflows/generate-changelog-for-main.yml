@@ -2,8 +2,8 @@ name: Generate Changelog For Main
 
 on:
   push:
-    branches: [ main ]
-
+    branches: [ master ]
+    
 jobs:
   changelog_prerelease:
     name: Update Changelog For Prerelease
