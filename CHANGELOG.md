@@ -33,7 +33,6 @@
 **Merged pull requests:**
 
 - Enables cataloging call using the overall identifier [\#5](https://github.com/Farfetch/network-monitor-ios/pull/5)
-- Tweaked Podspec [\#2](https://github.com/Farfetch/network-monitor-ios/pull/2)
 
 ## [9.1.0](https://github.com/Farfetch/network-monitor-ios/tree/9.1.0) (2020-09-15)
 
@@ -48,6 +47,10 @@
 - Removes all mentions of AppLaunch and TimeStamps. FNMElement is now generic [\#3](https://github.com/Farfetch/network-monitor-ios/pull/3)
 
 ## [8.0.1](https://github.com/Farfetch/network-monitor-ios/tree/8.0.1) (2020-07-02)
+
+**Merged pull requests:**
+
+- Tweaked Podspec [\#2](https://github.com/Farfetch/network-monitor-ios/pull/2)
 
 ## [8.0.0](https://github.com/Farfetch/network-monitor-ios/tree/8.0.0) (2020-07-02)
 
