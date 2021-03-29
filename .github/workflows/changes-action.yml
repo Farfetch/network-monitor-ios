@@ -1,4 +1,4 @@
-name: PR Action
+name: Changes Action
 
 on:
   push:
