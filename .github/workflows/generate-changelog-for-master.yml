@@ -1,4 +1,4 @@
-name: Generate Changelog For Main
+name: Generate Changelog For Master
 
 on:
   push:
