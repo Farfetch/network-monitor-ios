@@ -1,4 +1,4 @@
-name: CI - Changelog
+name: Generate Changelog For Main
 
 on:
   push:
