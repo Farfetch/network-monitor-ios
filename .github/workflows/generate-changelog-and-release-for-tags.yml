@@ -3,7 +3,7 @@ name: Generate Changelog And Release For Tags
 on:
   push:
     tags:
-      - v*
+      - '*'
 
 jobs:
   changelog:
