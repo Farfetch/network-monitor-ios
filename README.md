@@ -16,6 +16,7 @@ Supports Swift 5 and is bridged for ObjC compatibility.
 Preview:
 
 ![](README.gif)
+
 ## Installation ⚙️
 
 1. Add `pod 'FNMNetworkMonitor'` to your `Podfile`
@@ -64,6 +65,8 @@ A debug UI exists that can be used for easy inspection and export of the network
 ```swift    
 FNMNetworkMonitor.shared.showDebugListingViewController(presentingNavigationController: self.navigationController)
 ```
+
+Generally, the shake gesture is a great way to show/hide the debug view.
 
 Also, different log levels can be applied to see how the requests are navigating through the monitor:
 ```swift    
