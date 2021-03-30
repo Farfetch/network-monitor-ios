@@ -18,7 +18,7 @@ final class ViewController: UIViewController {
         static let imageBorderWidth: CGFloat = 3.0
 
         static let robotURL = "https://www.alphabet.com/robots.txt"
-        static let errorURL = "https://www.ohthehumanity.error"
+        static let errorURL = "https://www.oh.the.humanity/error"
 
         static let randomImageURL = "https://picsum.photos/500?random"
     }
