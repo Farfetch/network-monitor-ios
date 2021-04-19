@@ -25,8 +25,6 @@
 		A3DA63EE201B3637002CB2C0 /* FNMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA63ED201B3637002CB2C0 /* FNMViewController.swift */; };
 		A3E27FC51FC81F9000245188 /* Request-Nodes-A.json in Resources */ = {isa = PBXBuildFile; fileRef = A3E27FC11FC81F8400245188 /* Request-Nodes-A.json */; };
 		A3E27FC71FC81F9000245188 /* Request-Nodes-B.json in Resources */ = {isa = PBXBuildFile; fileRef = A3E27FC01FC81F8400245188 /* Request-Nodes-B.json */; };
-		DDD462ED24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */; };
-		DDD462EE24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F737BF202080F97D00ECCDE3 /* FNMHTTPRequestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF1F2080F97C00ECCDE3 /* FNMHTTPRequestRecord.swift */; };
 		F737BF222080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF212080F9B700ECCDE3 /* FNMHTTPRequestRecord+Codable.swift */; };
 		F737BF262080FC9100ECCDE3 /* FNMProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F737BF252080FC9100ECCDE3 /* FNMProfile.swift */; };
@@ -45,10 +43,6 @@
 		F7ABADDA243C949B008E417A /* NetworkMonitorAppLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABADD5243C949B008E417A /* NetworkMonitorAppLaunchTests.swift */; };
 		F7ABADDB243C949B008E417A /* NetworkMonitorExportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABADD6243C949B008E417A /* NetworkMonitorExportTests.swift */; };
 		F7BD0C5B20A4A3F900B1E3EA /* FNMLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD0C5A20A4A3F900B1E3EA /* FNMLogger.swift */; };
-		F7DA82F424093AF20095D93F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DA82F324093AF20095D93F /* AppDelegate.swift */; };
-		F7DA82F824093AF20095D93F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DA82F724093AF20095D93F /* ViewController.swift */; };
-		F7DA82FD24093AF40095D93F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DA82FC24093AF40095D93F /* Assets.xcassets */; };
-		F7DA830024093AF40095D93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */; };
 		F7DA8306240956280095D93F /* Generic-Profile-Response.json in Resources */ = {isa = PBXBuildFile; fileRef = F7C47A8F2406EA7100875E72 /* Generic-Profile-Response.json */; };
 		F7EDC62020ADB2670027B771 /* FNMCurrentRunCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */; };
 		F7EDC62220ADB2670027B771 /* FNMElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDC61D20ADB2670027B771 /* FNMElement.swift */; };
@@ -57,13 +51,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DDD462EF24DB54C600F14CD6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F793CA441F9E361900AA9C41 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F793CA4C1F9E361900AA9C41;
-			remoteInfo = FNMNetworkMonitor;
-		};
 		F793CA6C1F9E474200AA9C41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F793CA441F9E361900AA9C41 /* Project object */;
@@ -72,20 +59,6 @@
 			remoteInfo = NetworkMonitor;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		DDD462F124DB54C600F14CD6 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				DDD462EE24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1FA99E1422F96E2000C084BF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -130,12 +103,6 @@
 		F7ABADD6243C949B008E417A /* NetworkMonitorExportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitorExportTests.swift; sourceTree = "<group>"; };
 		F7BD0C5A20A4A3F900B1E3EA /* FNMLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNMLogger.swift; sourceTree = "<group>"; };
 		F7C47A8F2406EA7100875E72 /* Generic-Profile-Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Generic-Profile-Response.json"; sourceTree = "<group>"; };
-		F7DA82F124093AF20095D93F /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7DA82F324093AF20095D93F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F7DA82F724093AF20095D93F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F7DA82FC24093AF40095D93F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F7DA82FF24093AF40095D93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F7DA830124093AF40095D93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7EDC61B20ADB2670027B771 /* FNMCurrentRunCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMCurrentRunCodableContainer.swift; sourceTree = "<group>"; };
 		F7EDC61D20ADB2670027B771 /* FNMElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMElement.swift; sourceTree = "<group>"; };
 		F7EDC62520ADE0C30027B771 /* FNMHTTPRequestRecordCodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNMHTTPRequestRecordCodableContainer.swift; sourceTree = "<group>"; };
@@ -155,14 +122,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F793CA6B1F9E474200AA9C41 /* FNMNetworkMonitor.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F7DA82EE24093AF20095D93F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DDD462ED24DB54C600F14CD6 /* FNMNetworkMonitor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +241,6 @@
 			children = (
 				F793CA4F1F9E361900AA9C41 /* NetworkMonitor */,
 				F793CA671F9E474200AA9C41 /* Tests */,
-				F7DA82F224093AF20095D93F /* Sample */,
 				F793CA4E1F9E361900AA9C41 /* Products */,
 				DDD462EC24DB54C600F14CD6 /* Frameworks */,
 			);
@@ -293,7 +251,6 @@
 			children = (
 				F793CA4D1F9E361900AA9C41 /* FNMNetworkMonitor.framework */,
 				F793CA661F9E474200AA9C41 /* FNMNetworkMonitorUnitTests.xctest */,
-				F7DA82F124093AF20095D93F /* Sample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -353,18 +310,6 @@
 				F7BD0C5A20A4A3F900B1E3EA /* FNMLogger.swift */,
 			);
 			path = Log;
-			sourceTree = "<group>";
-		};
-		F7DA82F224093AF20095D93F /* Sample */ = {
-			isa = PBXGroup;
-			children = (
-				F7DA82F324093AF20095D93F /* AppDelegate.swift */,
-				F7DA82F724093AF20095D93F /* ViewController.swift */,
-				F7DA82FC24093AF40095D93F /* Assets.xcassets */,
-				F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */,
-				F7DA830124093AF40095D93F /* Info.plist */,
-			);
-			path = Sample;
 			sourceTree = "<group>";
 		};
 		F7EDC62320ADD2110027B771 /* Records */ = {
@@ -437,25 +382,6 @@
 			productReference = F793CA661F9E474200AA9C41 /* FNMNetworkMonitorUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F7DA82F024093AF20095D93F /* Sample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F7DA830424093AF40095D93F /* Build configuration list for PBXNativeTarget "Sample" */;
-			buildPhases = (
-				F7DA82ED24093AF20095D93F /* Sources */,
-				F7DA82EE24093AF20095D93F /* Frameworks */,
-				F7DA82EF24093AF20095D93F /* Resources */,
-				DDD462F124DB54C600F14CD6 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DDD462F024DB54C600F14CD6 /* PBXTargetDependency */,
-			);
-			name = Sample;
-			productName = Sample;
-			productReference = F7DA82F124093AF20095D93F /* Sample.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -478,11 +404,6 @@
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
-					F7DA82F024093AF20095D93F = {
-						CreatedOnToolsVersion = 11.3;
-						DevelopmentTeam = YRR3Z73Z6M;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = F793CA471F9E361900AA9C41 /* Build configuration list for PBXProject "NetworkMonitor" */;
@@ -500,7 +421,6 @@
 			targets = (
 				F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */,
 				F793CA651F9E474200AA9C41 /* FNMNetworkMonitorUnitTests */,
-				F7DA82F024093AF20095D93F /* Sample */,
 			);
 		};
 /* End PBXProject section */
@@ -526,15 +446,6 @@
 				F7A5E79C208E2C96008C74CE /* Matching-Profiles-2.json in Resources */,
 				F7A5E79A208E29E4008C74CE /* Matching-Profiles-1.json in Resources */,
 				F78DB25A2089F9020064E76C /* Generic-Profiles.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F7DA82EF24093AF20095D93F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F7DA830024093AF40095D93F /* LaunchScreen.storyboard in Resources */,
-				F7DA82FD24093AF40095D93F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,40 +496,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7DA82ED24093AF20095D93F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F7DA82F824093AF20095D93F /* ViewController.swift in Sources */,
-				F7DA82F424093AF20095D93F /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DDD462F024DB54C600F14CD6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */;
-			targetProxy = DDD462EF24DB54C600F14CD6 /* PBXContainerItemProxy */;
-		};
 		F793CA6D1F9E474200AA9C41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F793CA4C1F9E361900AA9C41 /* FNMNetworkMonitor */;
 			targetProxy = F793CA6C1F9E474200AA9C41 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F7DA82FE24093AF40095D93F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F7DA82FF24093AF40095D93F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F793CA531F9E361900AA9C41 /* Debug */ = {
@@ -799,50 +685,6 @@
 			};
 			name = Release;
 		};
-		F7DA830224093AF40095D93F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YRR3Z73Z6M;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Sample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.Sample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F7DA830324093AF40095D93F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = YRR3Z73Z6M;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Sample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.farfetch.Sample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -869,15 +711,6 @@
 			buildConfigurations = (
 				F793CA6E1F9E474200AA9C41 /* Debug */,
 				F793CA6F1F9E474200AA9C41 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F7DA830424093AF40095D93F /* Build configuration list for PBXNativeTarget "Sample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F7DA830224093AF40095D93F /* Debug */,
-				F7DA830324093AF40095D93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

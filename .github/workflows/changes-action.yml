@@ -14,13 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build Network Monitor
-      run: xcodebuild build -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'       
+      run: xcodebuild build -scheme NetworkMonitor -workspace NetworkMonitor.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max'
     - name: Test Network Monitor
-      run: xcodebuild test -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'      
+      run: xcodebuild test -scheme NetworkMonitor -workspace NetworkMonitor.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max'
     - name: Build Sample
-      run: xcodebuild build -scheme Sample -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'       
+      run: xcodebuild build -scheme Sample -workspace NetworkMonitor.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max'
     - name: Install Cocoapods
       run: gem install cocoapods
     - name: Pod lib lint
       run: pod lib lint FNMNetworkMonitor.podspec --allow-warnings --analyze
-

@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name = 'FNMNetworkMonitor'
   spec.module_name = 'FNMNetworkMonitor'
-  spec.version = '11.4.0'
+  spec.version = '11.4.1'
   spec.summary = 'A network monitor'
   spec.homepage = 'https://github.com/Farfetch/network-monitor-ios'
   spec.license = 'MIT'

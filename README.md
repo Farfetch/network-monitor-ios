@@ -7,8 +7,8 @@
 
 ## What is this ?
 
-FNMNetworkMonitor is a swift iOS networking framework that can be used to monitor the network of an iOS app. 
-It makes **debugging** the network easy, allowing you to pinpoint the root cause of network related problems in your app and share those requests via email. 
+FNMNetworkMonitor is a swift iOS networking framework that can be used to monitor the network of an iOS app.
+It makes **debugging** the network easy, allowing you to pinpoint the root cause of network related problems in your app and share those requests via email.
 it can also **mock** network requests, making it much easier to use incomplete APIs or model specific states for unit testing.
 
 Supports Swift 5 and is bridged for Obj-C compatibility.
@@ -19,7 +19,13 @@ Preview:
 
 ## Installation ⚙️
 
-1. Add `pod 'FNMNetworkMonitor'` to your `Podfile`
+### Cocoapods
+
+* Add `pod 'FNMNetworkMonitor'` to your `Podfile`
+
+### Swift Package Manager
+
+* Add [FNMNetworkMonitor](https://github.com/Farfetch/network-monitor-ios.git) to your Apps' Swift Packages in Xcode
 
 ## Usage
 
@@ -27,25 +33,25 @@ Preview:
 
 1. Monitoring URLSession.shared:
 
-```swift    
+```swift
 FNMNetworkMonitor.registerToLoadingSystem()
 FNMNetworkMonitor.shared.startMonitoring()
 ```
-    
+
 2. Monitoring custom URLSessions by supplying the FNMMonitor URL Protocol:
 
-```swift    
+```swift
 let sessionConfig = URLSessionConfiguration.ephemeral
 sessionConfig.protocolClasses = FNMNetworkMonitor.normalizedURLProtocols()
 self.customSession = URLSession(configuration: sessionConfig)
 FNMNetworkMonitor.shared.startMonitoring()
 ```
 
-3. You can also take advantage of sizzling the URLSessionConfiguration creation to configure the URL Protocol to all sessions, allowing to monitor 3rd party SDKs too.
+3. You can also take advantage of swizzling the URLSessionConfiguration creation to configure the URL Protocol to all sessions, allowing to monitor 3rd party SDKs too.
 
 ### Additionally, you can mock certain requests using:
 
-```swift    
+```swift
 let request = FNMProfileRequest(urlPattern: .dynamicPattern(expression: "*farfetch.*robots"))
 let profiles = [FNMProfile(request: request,
                            responses: [request.response(statusCode: 200,
@@ -62,26 +68,26 @@ Make sure to follow steps 1, 2 or 3, depending on the URLSession that runs that 
 
 A debug UI exists that can be used for easy inspection and export of the network:
 
-```swift    
+```swift
 FNMNetworkMonitor.shared.showDebugListingViewController(presentingNavigationController: self.navigationController)
 ```
 
 Generally, the shake gesture is a great way to show/hide the debug view.
 
 Also, different log levels can be applied to see how the requests are navigating through the monitor:
-```swift    
+```swift
 FNMNetworkMonitor.shared.logScope = [.export, .profile, .urlProtocol]
 ```
 
 Finally, you can turn on the passive export and the requests will be exported to a json file inside a folder found the Documents application folder.
 
-```swift    
+```swift
 FNMNetworkMonitor.shared.passiveExportPreference = FNMRecordExporterPreference.on(setting: .unlimited)
 ```
 
-### Sample app
+## Sample app
 
-The project contains a sample app where you can test the tool.
+The project contains a sample app where you can test the tool. You can run the Sample Target Scheme in `NetworkMonitor.xcworkspace` to see a working example of the framework.
 
 ## Contributing
 
