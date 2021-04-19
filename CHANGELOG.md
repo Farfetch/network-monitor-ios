@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Closed issues:**
+
+- The change log is stale and needs to be updated [\#9](https://github.com/Farfetch/network-monitor-ios/issues/9)
+
+**Merged pull requests:**
+
+- Add Swift Package Manager Support [\#16](https://github.com/Farfetch/network-monitor-ios/pull/16)
+
 ## [11.4.0](https://github.com/Farfetch/network-monitor-ios/tree/11.4.0) (2021-03-30)
 
 **Merged pull requests:**
