@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Implemented enhancements:**
+
+- Swift Package Manager Support [\#15](https://github.com/Farfetch/network-monitor-ios/issues/15)
+
+**Merged pull requests:**
+
+- Fixed Xcode 12.5 Warnings Related to Protocol Composition [\#17](https://github.com/Farfetch/network-monitor-ios/pull/17)
+
 ## [11.4.1](https://github.com/Farfetch/network-monitor-ios/tree/11.4.1) (2021-04-19)
 
 **Closed issues:**
