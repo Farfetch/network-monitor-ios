@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @objc
-public protocol FNMNetworkMonitorObserver: class {
+public protocol FNMNetworkMonitorObserver: AnyObject {
 
     func recordsUpdated(records: [FNMHTTPRequestRecord])
 }
