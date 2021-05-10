@@ -25,4 +25,4 @@ protocol FNMNetworkMonitorURLProtocolDataSourceProfile {
     func bumpUses(for profileResponseIdentifier: String)
 }
 
-protocol FNMNetworkMonitorURLProtocolDataSource: class, FNMNetworkMonitorURLProtocolDataSourceRecord, FNMNetworkMonitorURLProtocolDataSourceProfile { }
+protocol FNMNetworkMonitorURLProtocolDataSource: AnyObject, FNMNetworkMonitorURLProtocolDataSourceRecord, FNMNetworkMonitorURLProtocolDataSourceProfile { }
