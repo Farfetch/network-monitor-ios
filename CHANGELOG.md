@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+## [11.5.1](https://github.com/Farfetch/network-monitor-ios/tree/11.5.1) (2021-05-19)
 
 **Merged pull requests:**
 
