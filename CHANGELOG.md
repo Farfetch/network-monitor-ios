@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- Add URLSession invalidate [\#18](https://github.com/Farfetch/network-monitor-ios/pull/18)
+
 ## [11.5.0](https://github.com/Farfetch/network-monitor-ios/tree/11.5.0) (2021-05-10)
 
 **Implemented enhancements:**
