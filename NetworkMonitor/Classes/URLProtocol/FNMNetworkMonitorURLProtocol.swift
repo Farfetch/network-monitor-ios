@@ -211,6 +211,8 @@ extension FNMNetworkMonitorURLProtocol: URLSessionDataDelegate {
 
         self.handleDataTaskCompletion(response: task.response,
                                       error: error)
+
+        session.finishTasksAndInvalidate()
     }
 }
 
