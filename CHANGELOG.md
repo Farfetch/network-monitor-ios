@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- Adds ability to copy the contents of a record to the pasteboard [\#19](https://github.com/Farfetch/network-monitor-ios/pull/19)
+
 ## [11.5.1](https://github.com/Farfetch/network-monitor-ios/tree/11.5.1) (2021-05-19)
 
 **Merged pull requests:**
