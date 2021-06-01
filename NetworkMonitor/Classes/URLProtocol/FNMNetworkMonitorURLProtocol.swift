@@ -389,6 +389,9 @@ private extension FNMNetworkMonitorURLProtocol {
         guard let rawScheme = url.scheme,
             AllowedURLScheme.isSchemeAllowed(urlScheme: rawScheme) else { return false }
 
+        // Avoid monitoring the url belongs to an ignored domain
+        guard FNMNetworkMonitorURLProtocol.dataSource?.shouldIgnoreRequest(with: url) == false else { return false }
+
         // Avoid monitoring already monitored requests
         guard URLProtocol.property(forKey: GeneralConstants.tagKey, in: request) == nil else { return false }
 

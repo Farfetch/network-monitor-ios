@@ -59,6 +59,8 @@ public final class FNMNetworkMonitor: NSObject {
     /// Date used for internal logic
     let referenceDate = Date()
 
+    var ignoredDomains: [String] = []
+
     /// Start monitoring the network
     @objc
     public func startMonitoring() {
@@ -114,7 +116,7 @@ public final class FNMNetworkMonitor: NSObject {
 
         self.observers = self.observers.filter { $0.innerObserver != nil }
 
-        if self.observers.contains(where: { (wrapper) -> Bool in return observer === wrapper.innerObserver }) == false {
+        if self.observers.contains(where: { observer === $0.innerObserver }) == false {
 
             let wrapper = NetworkMonitorObserverWrapper()
             wrapper.innerObserver = observer
@@ -129,7 +131,7 @@ public final class FNMNetworkMonitor: NSObject {
     @objc
     public func unsubscribe(observer: FNMNetworkMonitorObserver) {
 
-        if let index = self.observers.firstIndex(where: { (wrapper) -> Bool in return observer === wrapper.innerObserver }) {
+        if let index = self.observers.firstIndex(where: { observer === $0.innerObserver }) {
 
             self.observers.remove(at: index)
         }
@@ -248,6 +250,12 @@ public final class FNMNetworkMonitor: NSObject {
 
         config.protocolClasses = customProtocolClasses
     }
+
+    @objc
+    public func configure(ignoredDomains: [String]) {
+
+        self.ignoredDomains = ignoredDomains
+    }
 }
 
 private extension FNMNetworkMonitor {
@@ -285,6 +293,11 @@ extension FNMNetworkMonitor {
 }
 
 extension FNMNetworkMonitor: FNMNetworkMonitorURLProtocolDataSource {
+
+    func shouldIgnoreRequest(with url: URL) -> Bool {
+
+        self.ignoredDomains.contains(where: { url.absoluteString.contains($0) } )
+    }
 
     func requestRecord(for key: HTTPRequestRecordKey) -> FNMHTTPRequestRecord? {
 
