@@ -18,7 +18,7 @@ final class FNMDebugDetailViewController: FNMViewController {
 
     private let searchBar = UISearchBar()
     private let pageController = UIPageViewController(transitionStyle: .scroll,
-                                                            navigationOrientation: .horizontal)
+                                                      navigationOrientation: .horizontal)
 
     let headersViewController: DebugDetailHeadersViewController & HighlightReloadable
     let requestBodyViewController: DebugDetailBodyViewController & HighlightReloadable
@@ -30,13 +30,15 @@ final class FNMDebugDetailViewController: FNMViewController {
 
         self.record = record
         self.recordDetailInfo = FNMRecordDetailInfo(record: record)
-        self.headersViewController = DebugDetailHeadersViewController(recordHeaderDetailInfo: RecordHeaderDetailInfo(record: self.recordDetailInfo.record,
-                                                                                                                     requestHeaders: self.recordDetailInfo.requestHeaders,
-                                                                                                                     responseHeaders: self.recordDetailInfo.responseHeaders))
-        self.requestBodyViewController = DebugDetailBodyViewController(recordBodyDetailInfo: RecordBodyDetailInfo(record: self.recordDetailInfo.record,
-                                                                                                                  body: self.recordDetailInfo.requestBody))
-        self.responseBodyViewController = DebugDetailBodyViewController(recordBodyDetailInfo: RecordBodyDetailInfo(record: self.recordDetailInfo.record,
-                                                                                                                   body: self.recordDetailInfo.responseBody))
+
+        let headerDetails = self.recordDetailInfo.headersDetails
+        self.headersViewController = DebugDetailHeadersViewController(recordHeaderDetailInfo: headerDetails)
+
+        let requestBodyDetails = self.recordDetailInfo.requestBodyDetails
+        self.requestBodyViewController = DebugDetailBodyViewController(recordBodyDetailInfo: requestBodyDetails)
+
+        let responseBodyDetails = self.recordDetailInfo.responseBodyDetails
+        self.responseBodyViewController = DebugDetailBodyViewController(recordBodyDetailInfo: responseBodyDetails)
 
         super.init(nibName: nil,
                    bundle: nil)
@@ -73,6 +75,7 @@ private extension FNMDebugDetailViewController {
         static let title = "Network"
         static let searchPlaceholderTitle = "Highlight keyword"
         static let exportTitle = "Export"
+        static let copyTitle = "Copy"
         static let exportMime = "application/json"
         static let exportFilename = "request-original.json"
         static let alertTitle = "This device can't send emails 🤷"
@@ -82,6 +85,7 @@ private extension FNMDebugDetailViewController {
 
         static let backImage = "chevron.left"
         static let exportImage = "square.and.arrow.up"
+        static let copyImage = "doc.on.doc"
     }
 
     // MARK: - Layout Configuration
@@ -97,16 +101,31 @@ private extension FNMDebugDetailViewController {
                                                                      target: self,
                                                                      action: #selector(self.back))
 
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.exportImage),
-                                                                     style: .plain,
-                                                                     target: self,
-                                                                     action: #selector(self.exportViaEmail))
+            let copyButton = UIBarButtonItem(image: UIImage(systemName: Constants.copyImage),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(self.copyResponseContents))
+
+            let exportButton = UIBarButtonItem(image: UIImage(systemName: Constants.exportImage),
+                                               style: .plain,
+                                               target: self,
+                                               action: #selector(self.exportViaEmail))
+
+            self.navigationItem.rightBarButtonItems = [exportButton, copyButton]
+
         } else {
 
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.exportTitle,
-                                                                     style: .plain,
-                                                                     target: self,
-                                                                     action: #selector(self.exportViaEmail))
+            let copyButton = UIBarButtonItem(title: Constants.copyTitle,
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(self.exportViaEmail))
+
+            let exportButton = UIBarButtonItem(title: Constants.exportTitle,
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(self.exportViaEmail))
+
+            self.navigationItem.rightBarButtonItems = [exportButton, copyButton]
         }
     }
 
@@ -165,21 +184,7 @@ private extension FNMDebugDetailViewController {
 
         if MFMailComposeViewController.canSendMail() {
 
-            let encodedRecordsData: Data?
-
-            let jsonEncoder = JSONEncoder()
-            jsonEncoder.outputFormatting = .prettyPrinted // Inefficient but the file size difference isn't significant
-
-            do {
-
-                encodedRecordsData = try jsonEncoder.encode(self.recordDetailInfo)
-
-            } catch {
-
-                encodedRecordsData = nil
-            }
-
-            if let encodedRecordsData = encodedRecordsData {
+            if let encodedRecordsData = self.encodedRecordData {
 
                 let date = Date()
                 let formatter = DateFormatter()
@@ -215,9 +220,35 @@ private extension FNMDebugDetailViewController {
     }
 
     @objc
+    func copyResponseContents() {
+
+        UIPasteboard.general.string = self.encodedRecordString ?? "Invalid copy contents"
+    }
+
+    @objc
     func back() {
 
         self.navigationController?.popViewController(animated: true)
+    }
+
+    private var encodedRecordData: Data? {
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted // Inefficient but the file size difference isn't significant
+
+        return try? encoder.encode(self.recordDetailInfo)
+    }
+
+    private var encodedRecordString: String? {
+
+        if let encodedData = self.encodedRecordData {
+
+            return String(data: encodedData, encoding: .utf8)
+
+        } else {
+
+            return nil
+        }
     }
 }
 
@@ -280,5 +311,27 @@ extension FNMDebugDetailViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 
         searchBar.resignFirstResponder()
+    }
+}
+
+// MARK: - Private FNMRecordDetailInfo utilities
+
+private extension FNMRecordDetailInfo {
+
+    var headersDetails: RecordHeaderDetailInfo {
+
+        RecordHeaderDetailInfo(record: self.record,
+                               requestHeaders: self.requestHeaders,
+                               responseHeaders: self.responseHeaders)
+    }
+
+    var requestBodyDetails: RecordBodyDetailInfo {
+
+        RecordBodyDetailInfo(record: self.record, body: self.requestBody)
+    }
+
+    var responseBodyDetails: RecordBodyDetailInfo {
+
+        RecordBodyDetailInfo(record: self.record, body: self.responseBody)
     }
 }

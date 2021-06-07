@@ -1,5 +1,17 @@
 # Changelog
 
+## [11.6.0](https://github.com/Farfetch/network-monitor-ios/tree/11.6.0) (2021-06-01)
+
+**Merged pull requests:**
+
+- Adds ability to copy the contents of a record to the pasteboard [\#19](https://github.com/Farfetch/network-monitor-ios/pull/19)
+
+## [11.5.1](https://github.com/Farfetch/network-monitor-ios/tree/11.5.1) (2021-05-19)
+
+**Merged pull requests:**
+
+- Add URLSession invalidate [\#18](https://github.com/Farfetch/network-monitor-ios/pull/18)
+
 ## [11.5.0](https://github.com/Farfetch/network-monitor-ios/tree/11.5.0) (2021-05-10)
 
 **Implemented enhancements:**
