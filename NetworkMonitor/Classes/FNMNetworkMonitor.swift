@@ -84,7 +84,7 @@ public final class FNMNetworkMonitor: NSObject {
 
     /// Configure if media payload will be recorded (default is true)
     @objc
-    public func recordMediaPayload(value: Bool) {
+    public func recordMediaPayload(_ value: Bool) {
 
         FNMNetworkMonitorURLProtocol.recordMediaPayload = value
     }
