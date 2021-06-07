@@ -87,7 +87,7 @@ private extension DebugDetailBodyViewController {
         switch self.recordBodyDetailInfo.body.contentType {
         
         case .text(_):
-            
+
             self.view.addSubview(self.textView)
 
             self.textView.translatesAutoresizingMaskIntoConstraints = false
