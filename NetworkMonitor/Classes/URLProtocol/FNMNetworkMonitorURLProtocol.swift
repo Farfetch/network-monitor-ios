@@ -19,6 +19,8 @@ public enum FNMNetworkMonitorURLProtocolLoadState {
 final class FNMNetworkMonitorURLProtocol: URLProtocol {
 
     static var active = false
+    static var recordMediaPayload = true
+    
     static weak var dataSource: FNMNetworkMonitorURLProtocolDataSource?
 
     // The load state that represents the current request
@@ -94,6 +96,8 @@ extension FNMNetworkMonitorURLProtocol {
             assertionFailure()
             return
         }
+
+        self.requestRecord?.requestSize = self.request.contentLength
 
         // Save
         FNMNetworkMonitorURLProtocol.dataSource?.setRequestRecord(requestRecord: requestRecord,
@@ -321,9 +325,13 @@ extension FNMNetworkMonitorURLProtocol {
 
         } else {
 
+            self.requestRecord?.responseSize = self.dataDownloaded?.count ?? 0
+
+            let shouldSkipMedia = Self.recordMediaPayload == false && response?.isImage == true
+
             self.concludeRecordIfNeeded(conclusion: .completed(URLProtocolLoadState: self.loadState,
                                                                response: response as? HTTPURLResponse,
-                                                               data: self.dataDownloaded))
+                                                               data: shouldSkipMedia ? nil : self.dataDownloaded))
 
             self.client?.urlProtocolDidFinishLoading(self)
 
@@ -511,8 +519,8 @@ extension FNMNetworkMonitorURLProtocol {
                              request: NSURLRequest) -> FNMHTTPRequestRecord {
 
         return FNMHTTPRequestRecord(key: key,
-                                 request: request,
-                                 startTimestamp: Date())
+                                    request: request,
+                                    startTimestamp: Date())
     }
 
     func concludeRecordIfNeeded(conclusion: FNMHTTPRequestRecordConclusionType) {

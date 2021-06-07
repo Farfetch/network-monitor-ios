@@ -7,14 +7,49 @@
 //
 
 import Foundation
+import UIKit
 
 typealias Headers = [FNMTitleSubtitlePair]
-typealias Body = FNMTitleSubtitlePair
+typealias Body = FNMBody
 
 struct FNMTitleSubtitlePair: Encodable {
 
     let title: String
     let subtitle: String
+}
+
+enum FNMContentType: Encodable {
+    
+    case text(data: String)
+    case image(data: UIImage)
+    
+    enum CodingKeys: CodingKey {
+        case type
+        case value
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        switch self {
+        case .text(let data):
+
+            try container.encode("text", forKey: .type)
+            try container.encode(data, forKey: .value)
+            
+        case .image(_):
+            
+            try container.encode("image", forKey: .type)
+            try container.encode("N/A", forKey: .value)
+        }
+    }
+}
+
+struct FNMBody: Encodable {
+
+    let title: String
+    let contentType: FNMContentType
 }
 
 final class FNMRecordDetailInfo: Encodable {
@@ -106,7 +141,7 @@ final class FNMRecordDetailInfo: Encodable {
             subtitle = "N/A"
         }
 
-        return Body(title: Constants.requestBodyTitle, subtitle: subtitle)
+        return Body(title: Constants.requestBodyTitle, contentType: .text(data: subtitle))
     }
 
     static func responseBody(from record: FNMHTTPRequestRecord) -> Body {
@@ -140,12 +175,17 @@ final class FNMRecordDetailInfo: Encodable {
 
             subtitle = error.debugDescription
 
+        } else if let bodyData = bodyData,
+            let image = UIImage(data: bodyData) {
+
+            return Body(title: Constants.responseBodyTitle, contentType: .image(data: image))
+
         } else {
 
             subtitle = "N/A"
         }
 
-        return Body(title: Constants.responseBodyTitle, subtitle: subtitle)
+        return Body(title: Constants.responseBodyTitle, contentType: .text(data: subtitle))
     }
 }
 

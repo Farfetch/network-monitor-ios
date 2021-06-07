@@ -171,6 +171,30 @@ public extension Decodable {
     }
 }
 
+extension Int {
+
+    var byteString: String {
+
+        return ByteCountFormatter.string(fromByteCount: Int64(self), countStyle: .memory)
+    }
+}
+
+extension URLRequest {
+    
+    var contentLength: Int {
+
+        return Int(self.allHTTPHeaderFields?["Content-Length"] ?? "") ?? 0
+    }
+}
+
+extension URLResponse {
+
+    var isImage: Bool {
+
+        return self.mimeType?.hasPrefix("image") ?? false
+    }
+}
+
 // Profile Matching
 extension NSURLRequest {
 

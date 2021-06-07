@@ -50,6 +50,9 @@ final public class FNMHTTPRequestRecord: NSObject {
     public var endTimestamp: Date?
     public var conclusion: FNMHTTPRequestRecordConclusionType?
 
+    public var requestSize = 0
+    public var responseSize = 0
+
     public var timeSpent: TimeInterval? {
 
         guard let endTimestamp = self.endTimestamp else { return nil }

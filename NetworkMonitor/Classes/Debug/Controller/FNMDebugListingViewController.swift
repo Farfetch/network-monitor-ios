@@ -31,6 +31,7 @@ final class FNMDebugListingViewController: FNMViewController {
     let tableView = UITableView(frame: .zero,
                                 style: .plain)
     private let searchBar = UISearchBar()
+    private let statusLabel = UILabel()
 
     private var sortOrder: SortOrder {
         get {
@@ -114,6 +115,9 @@ private extension FNMDebugListingViewController {
         static let sortImage = "arrow.up.arrow.down"
         static let errorImage = "exclamationmark.triangle.fill"
         static let resetImage = "trash"
+
+        static let statUpArrowUnicode = "\u{2191}"
+        static let statDownArrowUnicode = "\u{2193}"
     }
 
     func configureViews() {
@@ -172,6 +176,9 @@ private extension FNMDebugListingViewController {
 
     func configureTableView() {
 
+        self.statusLabel.backgroundColor = .lightGray
+        self.statusLabel.textAlignment = .center
+
         self.searchBar.delegate = self
         self.searchBar.placeholder = Constants.searchPlaceholderTitle
         self.searchBar.barTintColor = .white
@@ -190,6 +197,7 @@ private extension FNMDebugListingViewController {
 
         self.view.addSubview(self.searchBar)
         self.view.addSubview(self.tableView)
+        self.view.addSubview(self.statusLabel)
 
         let superviewGuide: UILayoutGuide
 
@@ -209,9 +217,14 @@ private extension FNMDebugListingViewController {
 
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: superviewGuide.bottomAnchor).isActive = true
+        self.tableView.bottomAnchor.constraint(equalTo: self.statusLabel.topAnchor).isActive = true
         self.tableView.leadingAnchor.constraint(equalTo: superviewGuide.leadingAnchor).isActive = true
         self.tableView.trailingAnchor.constraint(equalTo: superviewGuide.trailingAnchor).isActive = true
+        
+        self.statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.statusLabel.leadingAnchor.constraint(equalTo: superviewGuide.leadingAnchor).isActive = true
+        self.statusLabel.trailingAnchor.constraint(equalTo: superviewGuide.trailingAnchor).isActive = true
+        self.statusLabel.bottomAnchor.constraint(equalTo: superviewGuide.bottomAnchor).isActive = true
     }
 }
 
@@ -245,11 +258,21 @@ private extension FNMDebugListingViewController {
         return self.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" ? self.searchBar.text : nil
     }
 
+    func updateStatus() {
+
+        let count = FNMNetworkMonitor.shared.records.count
+        let requestSize = FNMNetworkMonitor.shared.totalRequestSize.byteString
+        let responseSize = FNMNetworkMonitor.shared.totalResponseSize.byteString
+
+        self.statusLabel.text = "(\(count))  \(Constants.statUpArrowUnicode) \(requestSize)  \(Constants.statDownArrowUnicode) \(responseSize)"
+    }
+
     func updateAllRecords(to newAllRecords: [FNMHTTPRequestRecord]) {
 
         self.allRecords = newAllRecords.sorted { $0.startTimestamp.timeIntervalSince1970 < $1.startTimestamp.timeIntervalSince1970 }
 
         self.updateFilteredValues()
+        self.updateStatus()
     }
 
     func updateFilteredValues() {

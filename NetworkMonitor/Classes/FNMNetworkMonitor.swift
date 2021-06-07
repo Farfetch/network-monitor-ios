@@ -37,6 +37,12 @@ public final class FNMNetworkMonitor: NSObject {
     @objc
     public private(set) var records = [HTTPRequestRecordKey: FNMHTTPRequestRecord]()
 
+    /// The sum of all recorded request payload sizes
+    public private(set) var totalRequestSize = 0
+
+    /// The sum of all recorded response payload sizes
+    public private(set) var totalResponseSize = 0
+
     /// The profiles used for record matching. Can be edited
     @objc
     public private(set) var profiles = [FNMProfile]()
@@ -76,6 +82,13 @@ public final class FNMNetworkMonitor: NSObject {
         return FNMNetworkMonitorURLProtocol.active
     }
 
+    /// Configure if media payload will be recorded (default is true)
+    @objc
+    public func recordMediaPayload(value: Bool) {
+
+        FNMNetworkMonitorURLProtocol.recordMediaPayload = value
+    }
+
     /// Reset the current state
     ///
     /// - Parameter completion: a completion
@@ -86,6 +99,8 @@ public final class FNMNetworkMonitor: NSObject {
 
             self.records.removeAll()
             self.profilesUsageMap.removeAll()
+            self.totalRequestSize = 0
+            self.totalResponseSize = 0
 
             self.reportRecordsChange(completion: completion)
         }
@@ -282,6 +297,8 @@ extension FNMNetworkMonitor: FNMNetworkMonitorURLProtocolDataSource {
         self.recordsSyncQueue.async {
 
             self.records[requestRecord.key] = requestRecord
+            self.totalRequestSize += requestRecord.requestSize
+            self.totalResponseSize += requestRecord.responseSize
 
             self.reportRecordsChange(completion: completion)
         }

@@ -67,6 +67,8 @@ extension FNMDebugSummaryTableViewCell {
         static let padding: CGFloat = 4.0
         static let negativePadding: CGFloat = Constants.padding * -1
         static let timeUnit = "ms"
+        static let statUpArrowUnicode = "\u{2191}"
+        static let statDownArrowUnicode = "\u{2193}"
         static let downArrowUnicode = "\u{25BC}"
         static let emSpaceUnicode = "\u{2003}"
         static let enSpaceUnicode = "\u{2002}"
@@ -240,7 +242,14 @@ extension FNMDebugSummaryTableViewCell {
 
         guard let requestURL = requestRecord.request.url else { return "" }
 
-        var text = requestURL.absoluteString
+        let requestSize = requestRecord.requestSize.byteString
+        let responseSize = requestRecord.responseSize.byteString
+
+        var text = """
+            \(Constants.statUpArrowUnicode) \(requestSize) \(Constants.statDownArrowUnicode) \(responseSize)
+        
+            \(requestURL.absoluteString)
+        """
 
         if let conclusion = requestRecord.conclusion,
             case FNMHTTPRequestRecordConclusionType.redirected(let newRequest) = conclusion,
