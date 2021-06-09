@@ -15,7 +15,8 @@ final class DebugDetailBodyViewController: UIViewController, HighlightReloadable
     let recordBodyDetailInfo: RecordBodyDetailInfo
 
     private let titleLabel = UILabel()
-    private let textView = UITextView()
+    private lazy var textView = UITextView()
+    private lazy var imageView = UIImageView()
 
     var highlight: String = ""
 
@@ -56,17 +57,13 @@ private extension DebugDetailBodyViewController {
     // MARK: - Constants
     enum Constants {
 
-           static let goldColor = UIColor(red: 196.0, green: 170.0, blue: 132.0, alpha: 1.0)
-           static let titleLabelFontSize: CGFloat = 15.0
+           static let goldColor = UIColor(red: 196.0/255, green: 170.0/255, blue: 132.0/255, alpha: 1.0)
+           static let titleLabelMinHeight: CGFloat = 25.0
            static let textViewFontSize: CGFloat = 14.0
     }
 
     // MARK: - Layout Configuration
     func configureViews() {
-
-        self.view.addSubview(self.titleLabel)
-        self.view.addSubview(self.textView)
-        self.textView.backgroundColor = .white
 
         let guide: UILayoutGuide
 
@@ -79,60 +76,76 @@ private extension DebugDetailBodyViewController {
             guide = self.view.readableContentGuide
         }
 
+        self.view.addSubview(self.titleLabel)
+
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
         self.titleLabel.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
         self.titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+        self.titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.titleLabelMinHeight).isActive = true
 
-        self.textView.translatesAutoresizingMaskIntoConstraints = false
-        self.textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-        self.textView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
-        self.textView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
-        self.textView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+        switch self.recordBodyDetailInfo.body.contentType {
+        
+        case .text(_):
 
-        self.textView.isEditable = false
+            self.view.addSubview(self.textView)
+
+            self.textView.translatesAutoresizingMaskIntoConstraints = false
+            self.textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+            self.textView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+            self.textView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
+            self.textView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+
+        case .image(_):
+
+            self.view.addSubview(self.imageView)
+
+            self.imageView.translatesAutoresizingMaskIntoConstraints = false
+            self.imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+            self.imageView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+            self.imageView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
+            self.imageView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+        }
 
         self.reloadText()
     }
 
     func reloadText() {
+        
+        switch self.recordBodyDetailInfo.body.contentType {
+        
+        case .text(let data):
 
-        let titleAttributedText = NSMutableAttributedString(string: self.recordBodyDetailInfo.body.title)
-        let style = NSMutableParagraphStyle()
-        style.alignment = .natural
+            self.titleLabel.text = self.recordBodyDetailInfo.body.title
 
-        let titleAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: Constants.titleLabelFontSize),
-                                                              .kern: 0.0,
-                                                              .baselineOffset: 0.0,
-                                                              .foregroundColor: UIColor.black,
-                                                              .paragraphStyle: style]
+            self.textView.isEditable = false
+            self.textView.backgroundColor = .white
 
-        titleAttributedText.addAttributes(titleAttributes, range: NSRange(location: 0, length: titleAttributedText.string.count))
+            let textViewAttributedText = NSMutableAttributedString(string: data)
 
-        NSString(string: titleAttributedText.string).rangesOfSubstring(NSString(string: self.highlight)).forEach {
+            let textViewAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: Constants.textViewFontSize),
+                                                                     .kern: 0.0,
+                                                                     .baselineOffset: 0.0,
+                                                                     .foregroundColor: UIColor.black]
 
-            titleAttributedText.addAttributes([.backgroundColor: Constants.goldColor], range: $0)
-        }
+            textViewAttributedText.addAttributes(textViewAttributes, range: NSRange(location: 0, length: textViewAttributedText.string.count))
 
-        self.textView.attributedText = titleAttributedText
+            if self.highlight.count > 0 {
 
-        let textViewAttributedText = NSMutableAttributedString(string: self.recordBodyDetailInfo.body.subtitle)
+                NSString(string: textViewAttributedText.string).rangesOfSubstring(NSString(string: self.highlight)).forEach {
 
-        let textViewAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: Constants.textViewFontSize),
-                                                                 .kern: 0.0,
-                                                                 .baselineOffset: 0.0,
-                                                                 .foregroundColor: UIColor.black]
-
-        textViewAttributedText.addAttributes(textViewAttributes, range: NSRange(location: 0, length: textViewAttributedText.string.count))
-
-        if self.highlight.count > 0 {
-
-            NSString(string: textViewAttributedText.string).rangesOfSubstring(NSString(string: self.highlight)).forEach {
-
-                textViewAttributedText.addAttributes([.backgroundColor: Constants.goldColor], range: $0)
+                    textViewAttributedText.addAttributes([.backgroundColor: Constants.goldColor], range: $0)
+                }
             }
-        }
 
-        self.textView.attributedText = textViewAttributedText
+            self.textView.attributedText = textViewAttributedText
+            
+        case .image(let data):
+
+            self.titleLabel.text = "\(self.recordBodyDetailInfo.body.title) Image (\(Int(data.size.width))x\(Int(data.size.height)))"
+
+            self.imageView.contentMode = .scaleAspectFit
+            self.imageView.image = data
+        }
     }
 }

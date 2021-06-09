@@ -85,6 +85,14 @@ Finally, you can turn on the passive export and the requests will be exported to
 FNMNetworkMonitor.shared.passiveExportPreference = FNMRecordExporterPreference.on(setting: .unlimited)
 ```
 
+## Media payload recording
+
+If you want to allocate less memory while using network monitor, you can disable media paylod recording:
+
+```swift
+FNMNetworkMonitor.shared.recordMediaPayload(false)
+```
+
 ## Sample app
 
 The project contains a sample app where you can test the tool. You can run the Sample Target Scheme in `NetworkMonitor.xcworkspace` to see a working example of the framework.

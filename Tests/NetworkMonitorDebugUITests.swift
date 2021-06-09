@@ -60,17 +60,26 @@ class NetworkMonitorDebugUITests: NetworkMonitorUnitTests {
 
                 XCTAssertEqual(self.networkMonitor.records.count, 1)
                 XCTAssertEqual(debugDetailViewController.requestBodyViewController.recordBodyDetailInfo.body.title, "Request Body")
-                XCTAssertEqual(debugDetailViewController.requestBodyViewController.recordBodyDetailInfo.body.subtitle, "N/A")
+                
+                if case let .text(text) = debugDetailViewController.requestBodyViewController.recordBodyDetailInfo.body.contentType {
+
+                    XCTAssertEqual(text, "N/A")
+                }
+                
                 XCTAssertEqual(debugDetailViewController.headersViewController.recordHeaderDetailInfo.requestHeaders.first?.title, "HeaderA")
                 XCTAssertEqual(debugDetailViewController.headersViewController.recordHeaderDetailInfo.requestHeaders.first?.subtitle, "ValueA")
                 XCTAssertEqual(debugDetailViewController.responseBodyViewController.recordBodyDetailInfo.body.title, "Response")
-                XCTAssertEqual(debugDetailViewController.responseBodyViewController.recordBodyDetailInfo.body.subtitle, """
-                {
-                    fieldA = valueA;
-                    fieldB = valueB;
-                }
-                ""","")
 
+                if case let .text(text) = debugDetailViewController.responseBodyViewController.recordBodyDetailInfo.body.contentType {
+
+                    XCTAssertEqual(text, """
+                    {
+                        fieldA = valueA;
+                        fieldB = valueB;
+                    }
+                    ""","")
+                }
+    
             } else {
 
                 XCTFail("Should have record")
