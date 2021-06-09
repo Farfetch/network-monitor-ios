@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- Add toggle to save media payload and upload/download information [\#20](https://github.com/Farfetch/network-monitor-ios/pull/20)
+
 ## [11.6.0](https://github.com/Farfetch/network-monitor-ios/tree/11.6.0) (2021-06-01)
 
 **Merged pull requests:**
