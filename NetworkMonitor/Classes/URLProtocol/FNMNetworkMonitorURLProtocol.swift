@@ -327,11 +327,11 @@ extension FNMNetworkMonitorURLProtocol {
 
             self.requestRecord?.responseSize = self.dataDownloaded?.count ?? 0
 
-            let shouldSkipMedia = Self.recordMediaPayload == false && response?.isImage == true
+            let shouldSkipData = Self.recordMediaPayload == false && response?.isImage == true
 
             self.concludeRecordIfNeeded(conclusion: .completed(URLProtocolLoadState: self.loadState,
                                                                response: response as? HTTPURLResponse,
-                                                               data: shouldSkipMedia ? nil : self.dataDownloaded))
+                                                               data: shouldSkipData ? nil : self.dataDownloaded))
 
             self.client?.urlProtocolDidFinishLoading(self)
 
