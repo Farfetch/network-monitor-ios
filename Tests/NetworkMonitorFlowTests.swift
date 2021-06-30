@@ -147,6 +147,13 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
         super.setUp()
     }
 
+    override func tearDown() {
+
+        FNMNetworkMonitor.shared.configure(ignoredDomains: [])
+
+        super.tearDown()
+    }
+
     func testLiveRequestRecordsConcurrently() {
 
         XCTAssertNotNil(FNMNetworkMonitor.shared)
@@ -416,5 +423,20 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
         XCTAssertFalse(self.networkMonitor.validate(profiles: profileResponsesDuplicated))
         XCTAssertTrue(self.networkMonitor.validate(profiles: profiles))
         XCTAssertTrue(self.networkMonitor.validate(profiles: profileResponsesEmpty))
+    }
+
+    func testIgnoredDomains() {
+
+        FNMNetworkMonitor.shared.configure(ignoredDomains: ["https://www.amazon.com"])
+
+        let robotsExpectation = expectation(description: "Some Robots")
+
+        self.reachSitesSequencially {
+
+            robotsExpectation.fulfill()
+            XCTAssertEqual(self.networkMonitor.records.count, Constants.Sites.allCases.count - 1)
+        }
+
+        waitForExpectations(timeout: 100, handler: { _ in })
     }
 }

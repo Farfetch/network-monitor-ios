@@ -19,7 +19,7 @@ final class ViewController: UIViewController {
 
         static let robotURL = "https://www.alphabet.com/robots.txt"
         static let errorURL = "https://www.oh.the.humanity/error"
-
+        static let chuckNorrisURL = "https://api.chucknorris.io/jokes/random"
         static let randomImageURL = "https://picsum.photos/500?random"
     }
 
@@ -28,6 +28,7 @@ final class ViewController: UIViewController {
         case imageRedirect
         case error
         case robot
+        case chuckNorris
 
         static var random: TestRequest {
 
@@ -57,6 +58,7 @@ final class ViewController: UIViewController {
                                           repeats: true,
                                           block: { _ in self.fire() })
 
+        FNMNetworkMonitor.shared.configure(ignoredDomains: ["https://api.chucknorris.io"])
         FNMNetworkMonitor.shared.showDebugListingViewController(presentingNavigationController: self.navigationController)
     }
 
@@ -124,6 +126,9 @@ final class ViewController: UIViewController {
 
         case .robot:
             URLSession.shared.dataTask(with: URL(string: Constants.robotURL)!).resume()
+
+        case .chuckNorris:
+            URLSession.shared.dataTask(with: URL(string: Constants.chuckNorrisURL)!).resume()
         }
     }
 

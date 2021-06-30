@@ -62,6 +62,16 @@ FNMNetworkMonitor.shared.configure(profiles: profiles)
 FNMNetworkMonitor.shared.startMonitoring()
 ```
 
+You can also ignore domains using:
+
+```swift
+FNMNetworkMonitor.shared.configure(ignoredDomains: ["somedomain.com"])
+``` 
+
+This won't record nor intercept requests for this domain.
+
+
+
 Make sure to follow steps 1, 2 or 3, depending on the URLSession that runs that particular request.
 
 ### How to see it all
