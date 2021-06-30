@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- Adds ignore list capability to be able to filter out undesired domains [\#21](https://github.com/Farfetch/network-monitor-ios/pull/21)
+
 ## [11.7.0](https://github.com/Farfetch/network-monitor-ios/tree/11.7.0) (2021-06-09)
 
 **Merged pull requests:**
@@ -49,6 +55,7 @@
 **Merged pull requests:**
 
 - Minor Documentation Changes [\#13](https://github.com/Farfetch/network-monitor-ios/pull/13)
+- Tweaked Podspec [\#2](https://github.com/Farfetch/network-monitor-ios/pull/2)
 
 ## [11.2.0](https://github.com/Farfetch/network-monitor-ios/tree/11.2.0) (2021-03-29)
 
@@ -97,10 +104,6 @@
 - Removes all mentions of AppLaunch and TimeStamps. FNMElement is now generic [\#3](https://github.com/Farfetch/network-monitor-ios/pull/3)
 
 ## [8.0.1](https://github.com/Farfetch/network-monitor-ios/tree/8.0.1) (2020-07-02)
-
-**Merged pull requests:**
-
-- Tweaked Podspec [\#2](https://github.com/Farfetch/network-monitor-ios/pull/2)
 
 ## [8.0.0](https://github.com/Farfetch/network-monitor-ios/tree/8.0.0) (2020-07-02)
 
