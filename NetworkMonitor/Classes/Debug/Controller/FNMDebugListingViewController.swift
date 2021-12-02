@@ -287,7 +287,7 @@ private extension FNMDebugListingViewController {
             guard let currentSearchFilters = self.currentSearchFilters(),
                   let requestUrl = $0.request.url?.absoluteString.lowercased() else { return true }
 
-            return currentSearchFilters.map { $0.lowercased() } .contains(where: requestUrl.contains)
+            return currentSearchFilters.contains(where: { requestUrl.contains($0.lowercased()) })
         }
 
         let errorFilter: RecordFilter = {
