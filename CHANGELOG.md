@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- Added support for search with multiple keywords [\#23](https://github.com/Farfetch/network-monitor-ios/pull/23)
+
 ## [11.8.0](https://github.com/Farfetch/network-monitor-ios/tree/11.8.0) (2021-06-30)
 
 **Merged pull requests:**
