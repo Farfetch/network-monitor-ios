@@ -253,9 +253,13 @@ private extension FNMDebugListingViewController {
         FNMNetworkMonitor.shared.subscribe(observer: self)
     }
 
-    func currentSearchFilter() -> String? {
+    func currentSearchFilters() -> [String]? {
 
-        return self.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" ? self.searchBar.text : nil
+        guard let searchQuery = self.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines), searchQuery != "" else { return nil }
+
+        let filters = searchQuery.components(separatedBy: " ")
+
+        return filters.count > 0 ? filters : nil
     }
 
     func updateStatus() {
@@ -280,8 +284,10 @@ private extension FNMDebugListingViewController {
         typealias RecordFilter = (FNMHTTPRequestRecord) -> Bool
 
         let searchFilter: RecordFilter = {
-            guard let currentSearchFilter = self.currentSearchFilter() else { return true }
-            return $0.request.url?.absoluteString.lowercased().contains(currentSearchFilter.lowercased()) == true
+            guard let currentSearchFilters = self.currentSearchFilters(),
+                  let requestUrl = $0.request.url?.absoluteString.lowercased() else { return true }
+
+            return currentSearchFilters.contains(where: { requestUrl.contains($0.lowercased()) })
         }
 
         let errorFilter: RecordFilter = {
