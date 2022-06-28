@@ -70,6 +70,15 @@ FNMNetworkMonitor.shared.configure(ignoredDomains: ["somedomain.com"])
 
 This won't record nor intercept requests for this domain.
 
+You can also assign priority values to each profile, so that in case of a tie, the profile with the highest priority will be used.
+Priority is a UInt, being 0 the highest priority and UInt.max the lowest.
+
+```swift
+let request = FNMProfileRequest(urlPattern: .dynamicPattern(expression: "*farfetch.*robots"))
+let profiles = [FNMProfile(request: request,
+                           responses: [request.response(statusCode: 200)],
+                           priority: 123)]
+```
 
 
 Make sure to follow steps 1, 2 or 3, depending on the URLSession that runs that particular request.
