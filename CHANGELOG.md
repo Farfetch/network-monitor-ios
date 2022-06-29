@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- Adds priority to FNMProfile [\#24](https://github.com/Farfetch/network-monitor-ios/pull/24)
+
 ## [11.9.0](https://github.com/Farfetch/network-monitor-ios/tree/11.9.0) (2022-01-05)
 
 **Merged pull requests:**
@@ -61,6 +67,7 @@
 **Merged pull requests:**
 
 - Minor Documentation Changes [\#13](https://github.com/Farfetch/network-monitor-ios/pull/13)
+- Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
 ## [11.2.0](https://github.com/Farfetch/network-monitor-ios/tree/11.2.0) (2021-03-29)
 
@@ -85,10 +92,6 @@
 - Change Available Profile in JSON Report.  [\#10](https://github.com/Farfetch/network-monitor-ios/pull/10)
 
 ## [10.0.0](https://github.com/Farfetch/network-monitor-ios/tree/10.0.0) (2020-10-12)
-
-**Merged pull requests:**
-
-- Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
 ## [9.2.0](https://github.com/Farfetch/network-monitor-ios/tree/9.2.0) (2020-09-18)
 
