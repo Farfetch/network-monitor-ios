@@ -15,11 +15,17 @@ open class FNMProfile: NSObject, Codable {
     let request: FNMProfileRequest
     let responses: [FNMProfileResponse]
 
+    /// Priority is used as a tiebreaker when we have several possible profiles for the request made.
+    /// The profile with the highest priority (Uint.min [aka 0] being the highest value and UInt.max the lowest value) will be used.
+    let priority: UInt
+
     public required init(request: FNMProfileRequest,
-                         responses: [FNMProfileResponse]) {
+                         responses: [FNMProfileResponse],
+                         priority: UInt = UInt.min) {
 
         self.request = request
         self.responses = responses
+        self.priority = priority
     }
 
     convenience init?(record: FNMHTTPRequestRecord) {
@@ -70,6 +76,7 @@ open class FNMProfile: NSObject, Codable {
 
         case request
         case responses
+        case priority
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -77,6 +84,7 @@ open class FNMProfile: NSObject, Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.request, forKey: .request)
         try container.encode(self.responses, forKey: .responses)
+        try container.encode(self.priority, forKey: .priority)
     }
 
     public convenience required init(from decoder: Decoder) throws {
@@ -85,8 +93,11 @@ open class FNMProfile: NSObject, Codable {
 
         do {
 
+            let priority = try values.decodeIfPresent(UInt.self, forKey: .priority) ?? UInt.min
+
             try self.init(request: values.decode(FNMProfileRequest.self, forKey: .request),
-                          responses: values.decode([FNMProfileResponse].self, forKey: .responses))
+                          responses: values.decode([FNMProfileResponse].self, forKey: .responses),
+                          priority: priority)
         }
     }
 }

@@ -22,6 +22,8 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
         static let dynamicBalanceAbandonedGruesomeBreatheUseGET = "^.*gruesome.breathe/use/get"
         static let dynamicBalanceAbandonedGruesomeBreatheUsePOST = "^.*gruesome.breathe/use/post"
 
+        static let httpsWildcard = "https://*"
+
         static let GET = "GET"
         static let POST = "POST"
 
@@ -386,5 +388,176 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
                                                                           body: URLConstants.bodySwimsuitBodyLong))!.request.body!,
                               encoding: .utf8),
                        URLConstants.bodySwimsuitBody)
+    }
+
+    func testProfilesWithSamePriority() {
+
+        let profileRequest = FNMProfileRequest(urlPattern: .staticPattern(url: URLConstants.repeatTastySecretiveYarnMuddledGET))
+        let responses = [profileRequest.response(headers: ["Content-Type": "application/json"],
+                                                 responseHolder: FNMProfileRequest.ResponseHolder.keyValue(value: [
+                                                    "FieldA": 1,
+                                                    "FieldB": 2
+                                                 ]))]
+
+        let profileGet = FNMProfile(request: profileRequest,
+                                    responses: responses,
+                                    priority: 1)
+
+        let profileRequestCore = FNMProfileRequest(urlPattern: .dynamicPattern(expression: URLConstants.repeatTastySecretiveYarnMuddledCore))
+        let responsesCore = [profileRequestCore.response(headers: ["Content-Type": "application/json"],
+                                                         responseHolder: FNMProfileRequest.ResponseHolder.keyValue(value: [
+                                                            "FieldA": 3,
+                                                            "FieldB": 4
+                                                         ]))]
+
+        let profileCore = FNMProfile(request: profileRequestCore,
+                                     responses: responsesCore,
+                                     priority: 1)
+
+        FNMNetworkMonitor.shared.configure(profiles: [profileGet, profileCore])
+
+        let request = self.request(for: URLConstants.repeatTastySecretiveYarnMuddledGET,
+                                   httpMethod: "GET")
+
+        let profileExpectation = expectation(description: "Some Robots")
+
+        URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+
+            do {
+
+                let dict = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(data),
+                                                                      options: []) as? [String: Any])
+
+                // Values are expected to match those of the first profile in the array
+                XCTAssertEqual(dict.values.count, 2)
+                XCTAssertEqual(dict["FieldA"] as! Int, 1)
+                XCTAssertEqual(dict["FieldB"] as! Int, 2)
+            }
+            catch {
+
+                XCTFail()
+            }
+
+            profileExpectation.fulfill()
+
+        }.resume()
+
+        waitForExpectations(timeout: 60) { _ in
+
+        }
+    }
+
+    func testProfilesWithDifferentPriorities() {
+
+        let profileRequest = FNMProfileRequest(urlPattern: .staticPattern(url: URLConstants.repeatTastySecretiveYarnMuddledGET))
+        let responses = [profileRequest.response(headers: ["Content-Type": "application/json"],
+                                                 responseHolder: FNMProfileRequest.ResponseHolder.keyValue(value: [
+                                                    "FieldA": 1,
+                                                    "FieldB": 2
+                                                 ]))]
+
+        let profileGet = FNMProfile(request: profileRequest,
+                                    responses: responses,
+                                    priority: 2)
+
+        let profileRequestCore = FNMProfileRequest(urlPattern: .dynamicPattern(expression: URLConstants.repeatTastySecretiveYarnMuddledCore))
+        let responsesCore = [profileRequestCore.response(headers: ["Content-Type": "application/json"],
+                                                         responseHolder: FNMProfileRequest.ResponseHolder.keyValue(value: [
+                                                            "FieldA": 3,
+                                                            "FieldB": 4
+                                                         ]))]
+
+        let profileCore = FNMProfile(request: profileRequestCore,
+                                     responses: responsesCore,
+                                     priority: 1)
+
+        FNMNetworkMonitor.shared.configure(profiles: [profileGet, profileCore])
+
+        let request = self.request(for: URLConstants.repeatTastySecretiveYarnMuddledGET,
+                                   httpMethod: "GET")
+
+        let profileExpectation = expectation(description: "Some Robots")
+
+        URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+
+            do {
+
+                let dict = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(data),
+                                                                      options: []) as? [String: Any])
+
+                // Values are expected to match those of the profile with highest priority(1) in the array
+                XCTAssertEqual(dict.values.count, 2)
+                XCTAssertEqual(dict["FieldA"] as! Int, 3)
+                XCTAssertEqual(dict["FieldB"] as! Int, 4)
+            }
+            catch {
+
+                XCTFail()
+            }
+
+            profileExpectation.fulfill()
+
+        }.resume()
+
+        waitForExpectations(timeout: 60) { _ in
+
+        }
+    }
+
+    func testProfileWildcard() {
+
+        let profileRequestTasty = FNMProfileRequest(urlPattern: .staticPattern(url: URLConstants.repeatTastySecretiveYarnMuddledGET))
+        let responsesTasty = [profileRequestTasty.response(headers: ["Content-Type": "application/json"],
+                                                           responseHolder: FNMProfileRequest.ResponseHolder.keyValue(value: [
+                                                            "FieldA": 1,
+                                                            "FieldB": 2
+                                                           ]))]
+
+        let profileTasty = FNMProfile(request: profileRequestTasty,
+                                      responses: responsesTasty,
+                                      priority: 1)
+
+        let profileRequestWildcard = FNMProfileRequest(urlPattern: .dynamicPattern(expression: URLConstants.httpsWildcard))
+        let responsesWildcard = [profileRequestWildcard.response(headers: ["Content-Type": "application/json"],
+                                                                 responseHolder: FNMProfileRequest.ResponseHolder.keyValue(value: [
+                                                                    "FieldA": 3,
+                                                                    "FieldB": 4
+                                                                 ]))]
+
+        let profileWildcard = FNMProfile(request: profileRequestWildcard,
+                                         responses: responsesWildcard,
+                                         priority: 2)
+
+        FNMNetworkMonitor.shared.configure(profiles: [profileTasty, profileWildcard])
+
+        let request = self.request(for: URLConstants.balanceAbandonedGruesomeBreatheUseGET,
+                                   httpMethod: "GET")
+
+        let profileExpectation = expectation(description: "Some Robots")
+
+        URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+
+            do {
+
+                let dict = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(data),
+                                                                      options: []) as? [String: Any])
+
+                // Values are expected to match those of the wildcard profile in the array
+                XCTAssertEqual(dict.values.count, 2)
+                XCTAssertEqual(dict["FieldA"] as! Int, 3)
+                XCTAssertEqual(dict["FieldB"] as! Int, 4)
+            }
+            catch {
+
+                XCTFail()
+            }
+
+            profileExpectation.fulfill()
+
+        }.resume()
+
+        waitForExpectations(timeout: 60) { _ in
+
+        }
     }
 }

@@ -230,7 +230,7 @@ extension NSURLRequest {
             return .noAvailableProfiles
         }
 
-        let individualProfileRequestMatchingResults = dataSource.availableProfiles().map { profile -> FNMProfile.ProfileRequestMatchingResult in return profile.matches(self) }
+        let individualProfileRequestMatchingResults = dataSource.availableProfiles(sorted: true).map { profile -> FNMProfile.ProfileRequestMatchingResult in return profile.matches(self) }
 
         let firstAvailableProfile = individualProfileRequestMatchingResults.compactMap { (result) -> FNMProfile? in
 

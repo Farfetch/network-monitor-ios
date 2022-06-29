@@ -22,11 +22,19 @@ protocol FNMNetworkMonitorURLProtocolDataSourceRecord {
 
 protocol FNMNetworkMonitorURLProtocolDataSourceProfile {
 
-    func availableProfiles() -> [FNMProfile]
+    func availableProfiles(sorted: Bool) -> [FNMProfile]
 
     func availableProfileResponseAllowable() -> FNMProfileResponseAllowable
 
     func bumpUses(for profileResponseIdentifier: String)
+}
+
+extension FNMNetworkMonitorURLProtocolDataSourceProfile {
+
+    func availableProfiles(sorted: Bool = false) -> [FNMProfile] {
+
+        return self.availableProfiles(sorted: sorted)
+    }
 }
 
 protocol FNMNetworkMonitorURLProtocolDataSource: AnyObject, FNMNetworkMonitorURLProtocolDataSourceRecord, FNMNetworkMonitorURLProtocolDataSourceProfile { }

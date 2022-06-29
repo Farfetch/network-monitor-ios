@@ -317,9 +317,11 @@ extension FNMNetworkMonitor: FNMNetworkMonitorURLProtocolDataSource {
         }
     }
 
-    func availableProfiles() -> [FNMProfile] {
+    func availableProfiles(sorted: Bool = false) -> [FNMProfile] {
 
-        return self.profiles
+        return sorted
+        ? self.profiles.sorted { $0.priority < $1.priority }
+        : self.profiles
     }
 
     func availableProfileResponseAllowable() -> FNMProfileResponseAllowable {
