@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+## [11.10.0](https://github.com/Farfetch/network-monitor-ios/tree/11.10.0) (2022-06-29)
 
 **Merged pull requests:**
 
@@ -52,10 +52,6 @@
 
 - The change log is stale and needs to be updated [\#9](https://github.com/Farfetch/network-monitor-ios/issues/9)
 
-**Merged pull requests:**
-
-- Add Swift Package Manager Support [\#16](https://github.com/Farfetch/network-monitor-ios/pull/16)
-
 ## [11.4.0](https://github.com/Farfetch/network-monitor-ios/tree/11.4.0) (2021-03-30)
 
 **Merged pull requests:**
@@ -63,11 +59,6 @@
 - Changed the Sample App Error URL  [\#14](https://github.com/Farfetch/network-monitor-ios/pull/14)
 
 ## [11.3.0](https://github.com/Farfetch/network-monitor-ios/tree/11.3.0) (2021-03-30)
-
-**Merged pull requests:**
-
-- Minor Documentation Changes [\#13](https://github.com/Farfetch/network-monitor-ios/pull/13)
-- Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
 ## [11.2.0](https://github.com/Farfetch/network-monitor-ios/tree/11.2.0) (2021-03-29)
 
@@ -83,12 +74,14 @@
 
 **Merged pull requests:**
 
+- Minor Documentation Changes [\#13](https://github.com/Farfetch/network-monitor-ios/pull/13)
 - Minor housekeeping [\#11](https://github.com/Farfetch/network-monitor-ios/pull/11)
 
 ## [11.0.0](https://github.com/Farfetch/network-monitor-ios/tree/11.0.0) (2021-02-09)
 
 **Merged pull requests:**
 
+- Add Swift Package Manager Support [\#16](https://github.com/Farfetch/network-monitor-ios/pull/16)
 - Change Available Profile in JSON Report.  [\#10](https://github.com/Farfetch/network-monitor-ios/pull/10)
 
 ## [10.0.0](https://github.com/Farfetch/network-monitor-ios/tree/10.0.0) (2020-10-12)
@@ -97,7 +90,7 @@
 
 **Merged pull requests:**
 
-- Enables cataloging call using the overall identifier [\#5](https://github.com/Farfetch/network-monitor-ios/pull/5)
+- Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
 ## [9.1.0](https://github.com/Farfetch/network-monitor-ios/tree/9.1.0) (2020-09-15)
 
@@ -109,6 +102,7 @@
 
 **Merged pull requests:**
 
+- Enables cataloging call using the overall identifier [\#5](https://github.com/Farfetch/network-monitor-ios/pull/5)
 - Removes all mentions of AppLaunch and TimeStamps. FNMElement is now generic [\#3](https://github.com/Farfetch/network-monitor-ios/pull/3)
 
 ## [8.0.1](https://github.com/Farfetch/network-monitor-ios/tree/8.0.1) (2020-07-02)
