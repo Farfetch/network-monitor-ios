@@ -418,7 +418,7 @@ class NetworkMonitorFlowTests: NetworkMonitorUnitTests {
                                                                              filename: Constants.matchingProfiles1Filename)
         XCTAssertEqual(profiles.count, 3)
         XCTAssertEqual(profileResponsesDuplicated.count, 3)
-        XCTAssertEqual(profileResponsesEmpty.count, 4)
+        XCTAssertEqual(profileResponsesEmpty.count, 5)
 
         XCTAssertFalse(self.networkMonitor.validate(profiles: profileResponsesDuplicated))
         XCTAssertTrue(self.networkMonitor.validate(profiles: profiles))

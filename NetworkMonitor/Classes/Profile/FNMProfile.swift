@@ -301,11 +301,12 @@ extension FNMRequestURLPattern: Equatable {
 
 public enum FNMHTTPMethod: String {
 
+    case delete = "DELETE"
     case get = "GET"
+    case head = "HEAD"
+    case patch = "PATCH"
     case post = "POST"
     case put = "PUT"
-    case delete = "DELETE"
-    case patch = "PATCH"
 
     func matches(httpMethodString: String) -> Bool {
 

@@ -15,6 +15,7 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
 
         static let repeatTastySecretiveYarnMuddledGET = "https://repeat.tasty.secretive.yarn/muddled/get"
         static let repeatTastySecretiveYarnMuddledPOST = "https://repeat.tasty.secretive.yarn/muddled/post"
+        static let repeatTastySecretiveYarnMuddledHEAD = "https://repeat.tasty.secretive.yarn/muddled/head"
         static let repeatTastySecretiveYarnMuddledCore = "repeat.tasty.secretive.yarn"
         static let balanceAbandonedGruesomeBreatheUseGET = "https://balance.abandoned.gruesome.breathe/use/get"
         static let balanceAbandonedGruesomeBreatheUsePOST = "https://balance.abandoned.gruesome.breathe/use/post"
@@ -26,6 +27,7 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
 
         static let GET = "GET"
         static let POST = "POST"
+        static let HEAD = "HEAD"
 
         static let headerKeyNaco = "Naco"
         static let headerValuePimenta = "Pimenta"
@@ -184,7 +186,7 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
         let profiles: [FNMProfile] = FNMProfile.decodedElements(from: Self.testBundle,
                                                                 filename: Constants.matchingProfiles1Filename)
 
-        XCTAssertEqual(profiles.count, 4)
+        XCTAssertEqual(profiles.count, 5)
 
         self.networkMonitor.configure(profiles: profiles)
 
@@ -256,6 +258,17 @@ class NetworkMonitorProfileTests: NetworkMonitorUnitTests {
                                        request: self.request(for: URLConstants.balanceAbandonedGruesomeBreatheUsePOST,
                                                                               httpMethod: URLConstants.POST))!.request.httpMethod,
                        .post)
+        
+        /// Right URL, Static, Right method, HEAD
+        XCTAssertEqual(self.firstMatch(profiles: profiles,
+                                       request: self.request(for: URLConstants.repeatTastySecretiveYarnMuddledHEAD,
+                                                             httpMethod: URLConstants.HEAD))!.request.urlPattern,
+                       FNMRequestURLPattern.staticPattern(url: URLConstants.repeatTastySecretiveYarnMuddledHEAD))
+        
+        XCTAssertEqual(self.firstMatch(profiles: profiles,
+                                       request: self.request(for: URLConstants.repeatTastySecretiveYarnMuddledHEAD,
+                                                             httpMethod: URLConstants.HEAD))!.request.httpMethod,
+                       .head)
     }
 
     func testProfileMatchingHeaders() {
