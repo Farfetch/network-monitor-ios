@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+## [11.11.0](https://github.com/Farfetch/network-monitor-ios/tree/11.11.0) (2022-07-06)
 
 **Merged pull requests:**
 
@@ -86,6 +86,10 @@
 
 ## [11.1.0](https://github.com/Farfetch/network-monitor-ios/tree/11.1.0) (2021-03-26)
 
+**Merged pull requests:**
+
+- Minor housekeeping [\#11](https://github.com/Farfetch/network-monitor-ios/pull/11)
+
 ## [11.0.0](https://github.com/Farfetch/network-monitor-ios/tree/11.0.0) (2021-02-09)
 
 **Merged pull requests:**
@@ -96,7 +100,6 @@
 
 **Merged pull requests:**
 
-- Minor housekeeping [\#11](https://github.com/Farfetch/network-monitor-ios/pull/11)
 - Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
 ## [9.2.0](https://github.com/Farfetch/network-monitor-ios/tree/9.2.0) (2020-09-18)
