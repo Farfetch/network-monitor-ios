@@ -86,4 +86,31 @@ class NetworkMonitorDebugUITests: NetworkMonitorUnitTests {
             }
         }
     }
+    
+    func testUnescapedStrings() {
+        
+        let newLine = "Some \n text."
+        let escapedNewLine = "Some \\n text."
+
+        XCTAssertEqual(newLine, newLine.unescaped)
+        XCTAssertEqual(escapedNewLine.unescaped, newLine)
+
+        let tab = "Some \t text."
+        let escapedTab = "Some \\t text."
+
+        XCTAssertEqual(tab, tab.unescaped)
+        XCTAssertEqual(escapedTab.unescaped, tab)
+
+        let carriageReturn = "Some \r text."
+        let escapedCarriageReturn = "Some \\r text."
+
+        XCTAssertEqual(carriageReturn, carriageReturn.unescaped)
+        XCTAssertEqual(escapedCarriageReturn.unescaped, carriageReturn)
+        
+        let multipleSpecialCharacters = "\n\t\tSome\t\ttext.\r"
+        let escapedMultipleSpecialCharacters = "\\n\\t\\tSome\\t\\ttext.\\r"
+        
+        XCTAssertEqual(multipleSpecialCharacters, multipleSpecialCharacters.unescaped)
+        XCTAssertEqual(escapedMultipleSpecialCharacters.unescaped, multipleSpecialCharacters)
+    }
 }
