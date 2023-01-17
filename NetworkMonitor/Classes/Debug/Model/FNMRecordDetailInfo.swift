@@ -185,7 +185,7 @@ final class FNMRecordDetailInfo: Encodable {
             subtitle = "N/A"
         }
 
-        return Body(title: Constants.responseBodyTitle, contentType: .text(data: subtitle.unescaped))
+        return Body(title: Constants.responseBodyTitle, contentType: .text(data: subtitle))
     }
 }
 
