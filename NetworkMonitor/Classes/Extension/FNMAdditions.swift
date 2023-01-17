@@ -131,6 +131,19 @@ public extension NSString {
     }
 }
 
+extension String {
+    
+    var unescaped: String {
+        
+        let entities = ["\t": "\\t", "\n": "\\n", "\r": "\\r"]
+
+        return entities.reduce(self) { string, entity in
+            
+            string.replacingOccurrences(of: entity.value, with: entity.key)
+        }
+    }
+}
+
 extension Dictionary where Key == String, Value == String {
 
     func contains(pair: (key: Key, value: Value)) -> Bool {
