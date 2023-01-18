@@ -1,10 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- Improves NetworkMonitor JSON Readability [\#26](https://github.com/Farfetch/network-monitor-ios/pull/26)
+
 ## [11.11.0](https://github.com/Farfetch/network-monitor-ios/tree/11.11.0) (2022-07-06)
 
 **Merged pull requests:**
 
 - Adds new FNMHTTPMethod -\> HEAD [\#25](https://github.com/Farfetch/network-monitor-ios/pull/25)
+- Adds ignore list capability to be able to filter out undesired domains [\#21](https://github.com/Farfetch/network-monitor-ios/pull/21)
 
 ## [11.10.0](https://github.com/Farfetch/network-monitor-ios/tree/11.10.0) (2022-06-29)
 
@@ -19,10 +26,6 @@
 - Added support for search with multiple keywords [\#23](https://github.com/Farfetch/network-monitor-ios/pull/23)
 
 ## [11.8.0](https://github.com/Farfetch/network-monitor-ios/tree/11.8.0) (2021-06-30)
-
-**Merged pull requests:**
-
-- Adds ignore list capability to be able to filter out undesired domains [\#21](https://github.com/Farfetch/network-monitor-ios/pull/21)
 
 ## [11.7.0](https://github.com/Farfetch/network-monitor-ios/tree/11.7.0) (2021-06-09)
 
@@ -61,6 +64,7 @@
 **Merged pull requests:**
 
 - Add Swift Package Manager Support [\#16](https://github.com/Farfetch/network-monitor-ios/pull/16)
+- Minor housekeeping [\#11](https://github.com/Farfetch/network-monitor-ios/pull/11)
 
 ## [11.4.0](https://github.com/Farfetch/network-monitor-ios/tree/11.4.0) (2021-03-30)
 
@@ -85,10 +89,6 @@
 - Minor Documentation Changes [\#12](https://github.com/Farfetch/network-monitor-ios/pull/12)
 
 ## [11.1.0](https://github.com/Farfetch/network-monitor-ios/tree/11.1.0) (2021-03-26)
-
-**Merged pull requests:**
-
-- Minor housekeeping [\#11](https://github.com/Farfetch/network-monitor-ios/pull/11)
 
 ## [11.0.0](https://github.com/Farfetch/network-monitor-ios/tree/11.0.0) (2021-02-09)
 
