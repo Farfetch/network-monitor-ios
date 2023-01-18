@@ -141,7 +141,7 @@ final class FNMRecordDetailInfo: Encodable {
             subtitle = "N/A"
         }
 
-        return Body(title: Constants.requestBodyTitle, contentType: .text(data: subtitle))
+        return Body(title: Constants.requestBodyTitle, contentType: .text(data: subtitle.unescaped))
     }
 
     static func responseBody(from record: FNMHTTPRequestRecord) -> Body {
