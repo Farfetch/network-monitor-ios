@@ -112,5 +112,16 @@ class NetworkMonitorDebugUITests: NetworkMonitorUnitTests {
         
         XCTAssertEqual(multipleSpecialCharacters, multipleSpecialCharacters.unescaped)
         XCTAssertEqual(escapedMultipleSpecialCharacters.unescaped, multipleSpecialCharacters)
+        
+        let multipleSpecialCharactersData = multipleSpecialCharacters.data(using: .utf8)
+        let utf8String = String(data: multipleSpecialCharactersData ?? Data(), encoding: .utf8)
+        let base64Encoded = multipleSpecialCharactersData?.base64EncodedString()
+        
+        XCTAssertNotNil(multipleSpecialCharactersData)
+        XCTAssertNotNil(utf8String)
+        XCTAssertNotNil(base64Encoded)
+        
+        XCTAssertEqual(utf8String, utf8String?.unescaped)
+        XCTAssertEqual(base64Encoded, base64Encoded?.unescaped)
     }
 }
