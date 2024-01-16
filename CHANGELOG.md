@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+
+**Merged pull requests:**
+
+- chore: delete security.md so global policy is applied [\#27](https://github.com/Farfetch/network-monitor-ios/pull/27)
+
 ## [11.11.1](https://github.com/Farfetch/network-monitor-ios/tree/11.11.1) (2023-01-18)
 
 **Merged pull requests:**
