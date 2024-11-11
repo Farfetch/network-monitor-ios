@@ -36,7 +36,7 @@ class NetworkMonitorUnitTests: XCTestCase {
 
     static var testBundle: Bundle {
 
-        return Bundle(for: NetworkMonitorUnitTests.self as AnyClass)
+        .module
     }
 
     func reachVariousSitesConcurrently(expectation: XCTestExpectation) {
