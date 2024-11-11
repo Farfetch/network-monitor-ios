@@ -1,0 +1,16 @@
+PODS:
+  - FNMNetworkMonitor (11.11.1)
+
+DEPENDENCIES:
+  - FNMNetworkMonitor
+
+SPEC REPOS:
+  trunk:
+    - FNMNetworkMonitor
+
+SPEC CHECKSUMS:
+  FNMNetworkMonitor: 8dc090b3d0873c5fec8e389d6568af73683312cd
+
+PODFILE CHECKSUM: ed71bf10e5bc3bdbe6c5632c5a63496350fa381f
+
+COCOAPODS: 1.15.2
