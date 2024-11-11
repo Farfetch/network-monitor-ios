@@ -14,9 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build Network Monitor
-      run: xcodebuild build -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max'
+      run: xcodebuild build -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
     - name: Test Network Monitor
-      run: xcodebuild test -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max'
+      run: xcodebuild test -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
     - name: Install Cocoapods
       run: gem install cocoapods
     - name: Pod lib lint
