@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- General cleanup [\#28](https://github.com/Farfetch/network-monitor-ios/pull/28)
 - chore: delete security.md so global policy is applied [\#27](https://github.com/Farfetch/network-monitor-ios/pull/27)
 
 ## [11.11.1](https://github.com/Farfetch/network-monitor-ios/tree/11.11.1) (2023-01-18)
@@ -49,6 +50,10 @@
 - Adds ability to copy the contents of a record to the pasteboard [\#19](https://github.com/Farfetch/network-monitor-ios/pull/19)
 
 ## [11.5.1](https://github.com/Farfetch/network-monitor-ios/tree/11.5.1) (2021-05-19)
+
+**Merged pull requests:**
+
+- Add URLSession invalidate [\#18](https://github.com/Farfetch/network-monitor-ios/pull/18)
 
 ## [11.5.0](https://github.com/Farfetch/network-monitor-ios/tree/11.5.0) (2021-05-10)
 
@@ -108,7 +113,6 @@
 
 **Merged pull requests:**
 
-- Add URLSession invalidate [\#18](https://github.com/Farfetch/network-monitor-ios/pull/18)
 - Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
 ## [9.2.0](https://github.com/Farfetch/network-monitor-ios/tree/9.2.0) (2020-09-18)
