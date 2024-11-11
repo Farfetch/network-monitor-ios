@@ -50,10 +50,6 @@
 
 ## [11.5.1](https://github.com/Farfetch/network-monitor-ios/tree/11.5.1) (2021-05-19)
 
-**Merged pull requests:**
-
-- Add URLSession invalidate [\#18](https://github.com/Farfetch/network-monitor-ios/pull/18)
-
 ## [11.5.0](https://github.com/Farfetch/network-monitor-ios/tree/11.5.0) (2021-05-10)
 
 **Implemented enhancements:**
@@ -112,6 +108,7 @@
 
 **Merged pull requests:**
 
+- Add URLSession invalidate [\#18](https://github.com/Farfetch/network-monitor-ios/pull/18)
 - Fixes A Performance Bottleneck Related to Exporting [\#6](https://github.com/Farfetch/network-monitor-ios/pull/6)
 
 ## [9.2.0](https://github.com/Farfetch/network-monitor-ios/tree/9.2.0) (2020-09-18)
