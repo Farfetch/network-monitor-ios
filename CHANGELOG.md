@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/Farfetch/network-monitor-ios/tree/HEAD)
+## [12.0.0](https://github.com/Farfetch/network-monitor-ios/tree/12.0.0) (2024-11-11)
 
 **Merged pull requests:**
 
@@ -86,6 +86,7 @@
 **Merged pull requests:**
 
 - Minor Documentation Changes [\#13](https://github.com/Farfetch/network-monitor-ios/pull/13)
+- Change Available Profile in JSON Report.  [\#10](https://github.com/Farfetch/network-monitor-ios/pull/10)
 
 ## [11.2.0](https://github.com/Farfetch/network-monitor-ios/tree/11.2.0) (2021-03-29)
 
@@ -104,10 +105,6 @@
 - Minor housekeeping [\#11](https://github.com/Farfetch/network-monitor-ios/pull/11)
 
 ## [11.0.0](https://github.com/Farfetch/network-monitor-ios/tree/11.0.0) (2021-02-09)
-
-**Merged pull requests:**
-
-- Change Available Profile in JSON Report.  [\#10](https://github.com/Farfetch/network-monitor-ios/pull/10)
 
 ## [10.0.0](https://github.com/Farfetch/network-monitor-ios/tree/10.0.0) (2020-10-12)
 
