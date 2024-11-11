@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Boot Simulator
-    - run: xcrun simctl boot 5E4C21FA-303F-461E-81AD-F50D186A79FC
+      run: xcrun simctl boot 5E4C21FA-303F-461E-81AD-F50D186A79FC
     - name: Build Network Monitor
       run: xcodebuild build -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
     - name: Test Network Monitor
