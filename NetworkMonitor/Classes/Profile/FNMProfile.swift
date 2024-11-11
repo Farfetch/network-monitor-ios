@@ -213,10 +213,10 @@ extension Sequence where Iterator.Element == FNMProfile.ProfileRequestMatchingRe
 
 public final class FNMProfileRequest: NSObject {
 
-    let urlPattern: FNMRequestURLPattern
-    let httpMethod: FNMHTTPMethod
-    let headers: [String: String]?
-    let body: Data?
+    public let urlPattern: FNMRequestURLPattern
+    public let httpMethod: FNMHTTPMethod
+    public let headers: [String: String]?
+    public let body: Data?
 
     public init(urlPattern: FNMRequestURLPattern,
                 httpMethod: FNMHTTPMethod = .get,
@@ -338,14 +338,14 @@ extension FNMResponseRepeatability: Equatable {
 
 public final class FNMProfileResponse: NSObject {
 
-    let identifier: String
+    public let identifier: String
 
-    let meta: FNMHTTPURLResponse
-    let response: Data?
-    let redirectionURL: URL?
+    public let meta: FNMHTTPURLResponse
+    public let response: Data?
+    public let redirectionURL: URL?
 
-    var repeatability: FNMResponseRepeatability
-    let delay: TimeInterval
+    public private(set) var repeatability: FNMResponseRepeatability
+    public let delay: TimeInterval
 
     public init(identifier: String,
                 meta: FNMHTTPURLResponse,
@@ -439,7 +439,7 @@ public extension FNMProfileResponse {
 
 public final class FNMHTTPURLResponse: NSObject {
 
-    let meta: HTTPURLResponse
+    public let meta: HTTPURLResponse
 
     init(meta: HTTPURLResponse) {
 
