@@ -12,12 +12,12 @@ public typealias FNMProfileResponseAllowable = (FNMProfileResponse) -> Bool
 
 open class FNMProfile: NSObject, Codable {
 
-    let request: FNMProfileRequest
-    let responses: [FNMProfileResponse]
+    public let request: FNMProfileRequest
+    public let responses: [FNMProfileResponse]
 
     /// Priority is used as a tiebreaker when we have several possible profiles for the request made.
     /// The profile with the highest priority (Uint.min [aka 0] being the highest value and UInt.max the lowest value) will be used.
-    let priority: UInt
+    public let priority: UInt
 
     public required init(request: FNMProfileRequest,
                          responses: [FNMProfileResponse],

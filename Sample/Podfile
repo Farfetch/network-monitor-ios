@@ -1,0 +1,14 @@
+# Sources configuration
+source 'https://cdn.cocoapods.org/'
+
+PLATFORM_DEPLOYMENT_TARGET = '15.0'.freeze
+
+platform :ios, PLATFORM_DEPLOYMENT_TARGET
+use_frameworks!
+
+workspace 'Sample'
+
+target 'Sample' do
+
+  pod 'FNMNetworkMonitor'
+end

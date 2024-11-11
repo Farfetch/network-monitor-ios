@@ -1,16 +1,14 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.10
 
 import PackageDescription
 
 let package = Package(
     name: "NetworkMonitor",
     platforms: [
-        .iOS(.v10),
+        .iOS(.v15),
     ],
     products: [
-        .library(
-            name: "FNMNetworkMonitor",
-            targets: ["FNMNetworkMonitor"]),
+        .library(name: "FNMNetworkMonitor", targets: ["FNMNetworkMonitor"])
     ],
     dependencies: [],
     targets: [
@@ -21,7 +19,8 @@ let package = Package(
         .testTarget(
             name: "NetworkMonitorTests",
             dependencies: ["FNMNetworkMonitor"],
-            path: "Tests"),
+            path: "Tests", 
+            resources: [.process("Resources")]),
     ],
     swiftLanguageVersions: [.v5]
 )
