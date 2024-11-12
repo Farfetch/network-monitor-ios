@@ -18,14 +18,17 @@ open class FNMProfile: NSObject, Codable {
     /// Priority is used as a tiebreaker when we have several possible profiles for the request made.
     /// The profile with the highest priority (Uint.min [aka 0] being the highest value and UInt.max the lowest value) will be used.
     public let priority: UInt
+    public let tag: String
 
     public required init(request: FNMProfileRequest,
                          responses: [FNMProfileResponse],
-                         priority: UInt = UInt.min) {
+                         priority: UInt = UInt.min,
+                         tag: String = "") {
 
         self.request = request
         self.responses = responses
         self.priority = priority
+        self.tag = tag
     }
 
     convenience init?(record: FNMHTTPRequestRecord) {
@@ -77,6 +80,7 @@ open class FNMProfile: NSObject, Codable {
         case request
         case responses
         case priority
+        case tag
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -85,6 +89,7 @@ open class FNMProfile: NSObject, Codable {
         try container.encode(self.request, forKey: .request)
         try container.encode(self.responses, forKey: .responses)
         try container.encode(self.priority, forKey: .priority)
+        try container.encode(self.tag, forKey: .tag)
     }
 
     public convenience required init(from decoder: Decoder) throws {
@@ -94,10 +99,12 @@ open class FNMProfile: NSObject, Codable {
         do {
 
             let priority = try values.decodeIfPresent(UInt.self, forKey: .priority) ?? UInt.min
+            let tag = try values.decodeIfPresent(String.self, forKey: .tag) ?? ""
 
             try self.init(request: values.decode(FNMProfileRequest.self, forKey: .request),
                           responses: values.decode([FNMProfileResponse].self, forKey: .responses),
-                          priority: priority)
+                          priority: priority,
+                          tag: tag)
         }
     }
 }
@@ -213,10 +220,10 @@ extension Sequence where Iterator.Element == FNMProfile.ProfileRequestMatchingRe
 
 public final class FNMProfileRequest: NSObject {
 
-    let urlPattern: FNMRequestURLPattern
-    let httpMethod: FNMHTTPMethod
-    let headers: [String: String]?
-    let body: Data?
+    public let urlPattern: FNMRequestURLPattern
+    public let httpMethod: FNMHTTPMethod
+    public let headers: [String: String]?
+    public let body: Data?
 
     public init(urlPattern: FNMRequestURLPattern,
                 httpMethod: FNMHTTPMethod = .get,
@@ -338,14 +345,14 @@ extension FNMResponseRepeatability: Equatable {
 
 public final class FNMProfileResponse: NSObject {
 
-    let identifier: String
+    public let identifier: String
 
-    let meta: FNMHTTPURLResponse
-    let response: Data?
-    let redirectionURL: URL?
+    public let meta: FNMHTTPURLResponse
+    public let response: Data?
+    public let redirectionURL: URL?
 
-    var repeatability: FNMResponseRepeatability
-    let delay: TimeInterval
+    public private(set) var repeatability: FNMResponseRepeatability
+    public let delay: TimeInterval
 
     public init(identifier: String,
                 meta: FNMHTTPURLResponse,
@@ -439,7 +446,7 @@ public extension FNMProfileResponse {
 
 public final class FNMHTTPURLResponse: NSObject {
 
-    let meta: HTTPURLResponse
+    public let meta: HTTPURLResponse
 
     init(meta: HTTPURLResponse) {
 

@@ -19,7 +19,5 @@ jobs:
       run: xcodebuild build -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
     - name: Test Network Monitor
       run: xcodebuild clean test -scheme NetworkMonitor -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
-    - name: Install Cocoapods
-      run: gem install cocoapods
-    - name: Pod lib lint
-      run: pod lib lint FNMNetworkMonitor.podspec --allow-warnings --analyze
+    - name: Build Sample
+      run: cd Sample; xcodebuild build -scheme Sample -project Sample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
